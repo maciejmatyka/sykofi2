@@ -1,2 +1,4 @@
-# sykofi2
-Drugie wydanie książki "Symulacje Komputerowe w Fizyce" - kody źródłowe.
+# Symulacje Komputerowe w Fizyce
+
+Zbiór kodów źródłowych dołączonych do drugiego wydania książki "Symulacje Komputerowe w Fizyce" (Helion).
+
