@@ -1,0 +1,1826 @@
+<!-- sound https://modernweb.com/audio-synthesis-in-javascript/-->
+<!DOCTYPE html>
+<html>
+  <head>
+<meta charset="UTF-8">
+<meta Http-Equiv="Cache" content="no-cache">
+<meta Http-Equiv="Pragma-Control" content="no-cache">
+<meta Http-Equiv="Cache-directive" Content="no-cache">
+<meta Http-Equiv="Pragma-directive" Content="no-cache">
+<meta Http-Equiv="Cache-Control" Content="no-cache">
+<meta Http-Equiv="Pragma" Content="no-cache">
+<meta Http-Equiv="Expires" Content="0">
+<meta Http-Equiv="Pragma-directive: no-cache">
+<meta Http-Equiv="Cache-directive: no-cache">  
+<title>Konstruktor</title>
+  <meta name="description" content="This program simulates particles with springs and var user to interact using mouse or touch. Do you remember Soda Constructor? So I do. Just because it is not available anymore I spend some time to build something as close to original as possible. Have fun. It is free. One may call it struts spring physics gravity simulator. Or java browser interactive appvar lines thing.">
+  <script src="js/jquery-3.3.1.slim.min.js"></script>
+  <!--<link rel="stylesheet" href="fontawesome-free-5.11.2-web/css/font-awesome.min.css">-->
+  <link href="icons/css/all.min.css" rel="stylesheet">
+ </head>
+<body>
+	<br><br>
+<div class="div800">
+<!--<h1 style="text-align: left;"> <a href="http://panoramx.ift.uni.wroc.pl/%7Emaq/felp.pl/sanjose/index.html">San Jose</a></h1>-->
+
+	<!--<h1 style="text-align: left;"> <img src="gfx/sanjose1.png" style="width: 100px;"> </h1>-->
+		
+		
+		
+		<div class="aRight">
+	<!--		<a href="http://panoramx.ift.uni.wroc.pl/%7Emaq/felp.pl/sanjose/index.html"> <img src="gfx/sanjose1.png" style="float: left;  vertical-align: bottom; width: 150px;"> </a>
+ 🇵🇱
+-->
+	<div style="float: left; color: white; font-size:26px;"> Konstruktor</div>
+
+	
+	<button class="btn"><i class="fa fa-trash" onclick="gototrash()"></i></button>
+	<button class="btn"><i class="fa fa-wrench" onclick="edit()"></i></button>
+	<button class="btn"><i class="fa fa-play" onclick="play()"></i></button>
+	
+
+			<!--
+			<div>
+			 <select id="selectreverse"   onChange="SelectReverse();">
+			  <option value="Reverse"> Automatyczna zmiana kierunku </option>
+			  <option value="NoReverse" selected="selected"> Bez automatycznej zmiany kierunku </option>
+			</select>
+			</div>-->
+			<div>
+			 <!--<select id="loadmodel" class='selectmenu'  onChange="LoadModel();">
+		  		  <option value="LoadModel"> Załaduj obiekt </option>
+			  <option value="SaveModel"> Zapisz obiekt </option>
+			</select>-->
+		 <!--<select id="selectmodel"   onChange="SelectModel();">		 
+			  <option value="1"> obiekt 1 </option>
+			  <option value="2"> obiekt 2 </option>
+			  <option value="3"> obiekt 3 </option>
+			  <option value="4"> obiekt 4 </option>
+			  <option value="5"> obiekt 5 </option>
+			  <option value="6"> obiekt 6 </option>
+			  <option value="7"> obiekt 7 </option>
+			</select>-->
+			</div>
+
+		<!--<div style="padding-left: 1px;">
+				 <select id="selectconstruct"  onChange="SelectConstruct();">		
+				  <option value="Simulate">Symulacja</option>
+				  <option value="Construct" selected="selected"> Konstruktor </option>
+				   <option value="Clear"> Czyść </option>
+	  			  <option value="About"> O Programie </option>
+
+				</select>
+			</div>-->
+
+		</div>
+
+		<canvas id="mycanvas" width="800" height="600" oncontextmenu="return false;"></canvas>
+<button class="btn"><i class="fa fa-random" onclick="random()"></i></button>
+
+
+</div>
+
+<script src="../include/back.js"></script>
+
+<script type="text/javascript">
+
+
+
+	var model1="GRAVITY 32.25806451612903 POINTS 10 SPRINGS 23 629.6 415.4 -0.5 -3.7 4.0 12.0 0.0 569.0 415.6 -0.8 -0.9 4.0 12.0 0.0 659.9 383.3 1.0 4.8 4.0 12.0 0.0 660.2 450.2 -3.5 4.5 4.0 12.0 0.0 691.3 417.7 -0.8 9.1 4.0 12.0 0.0 760.0 412.4 -1.6 -1.5 4.0 12.0 0.0 617.7 496.0 0.0 -8.9 4.0 12.0 0.0 583.6 493.3 15.7 -9.9 4.0 12.0 0.0 742.4 496.0 0.0 -4.1 4.0 12.0 0.0 731.4 486.1 15.8 3.4 4.0 12.0 0.0 1 0 60.6 60.6 0.0 0.0 0.0 0 2 45.0 45.0 0.0 0.0 0.0 2 4 45.9 45.9 0.0 0.0 0.0 4 3 45.6 45.6 0.0 0.0 0.0 3 0 45.6 45.6 0.0 0.0 0.0 4 5 68.8 68.8 0.0 0.0 0.0 2 3 67.1 67.1 0.0 0.0 0.0 0 4 61.6 61.6 0.0 0.0 0.0 2 1 96.7 96.7 0.0 0.0 0.0 1 3 97.2 97.2 0.0 0.0 0.0 3 5 105.6 105.6 0.0 0.0 0.0 5 2 105.2 105.2 0.0 0.0 0.0 1 6 95.0 88.6 1.0 -3.0 -184.0 6 0 83.8 81.5 1.0 -6.0 -258.0 1 7 79.8 83.1 1.0 -2.0 -81.0 7 0 89.6 89.1 1.0 -1.0 -115.0 4 8 94.5 90.3 1.0 -2.0 -147.0 8 5 86.2 81.0 1.0 -5.0 -219.0 5 9 79.6 85.5 1.0 -1.0 -52.0 9 4 77.8 84.7 1.0 1.0 -21.0 1 5 190.9 190.9 0.0 0.0 0.0 4 1 122.1 122.1 0.0 0.0 0.0 0 5 130.3 130.3 0.0 0.0 0.0 ";
+
+var model2 = "GRAVITY 59.13978494623656 POINTS 5 SPRINGS 7 643.3 387.9 -8.0 -10.6 4.0 12.0 0.0 584.5 495.1 4.9 -4.4 4.0 12.0 0.0 710.7 496.0 1.1 -3.5 4.0 12.0 0.0 634.1 476.0 -12.9 4.8 4.0 12.0 0.0 635.0 411.9 -19.0 -21.3 4.0 12.0 0.0 0 1 122.1 122.1 0.0 0.0 0.0 1 2 128.1 128.1 0.0 0.0 0.0 2 0 127.1 127.1 0.0 0.0 0.0 0 3 89.3 104.0 1.0 39.0 -187.0 3 2 76.6 71.0 1.0 39.0 -275.0 3 1 53.0 57.2 1.0 39.0 -103.0 0 4 24.4 24.4 0.0 0.0 0.0 ";
+
+var model3 = "GRAVITY 30 POINTS 7 SPRINGS 11 428.1 336.9 1.9 -8.6 4.0 12.0 0.0 393.6 413.1 29.7 -3.1 4.0 12.0 0.0 539.0 379.8 -0.8 -6.9 4.0 12.0 0.0 515.0 456.9 16.1 85.6 4.0 12.0 0. 431.5 496.0 0.9 -0.9 4.0 12.0 0.0 447.2 432.2 -1.5 -8.6 4.0 12.0 0.0 574.5 477.4 -1.1 -7.3 4.0 12.0 0.0 0 1 83.8 83.8 0.0 0.0 0.0 1 2 151.2 138.0 1.0 39.0 -159.0 2 0 116.2 162 0.0 0.0 0.0 1 3 127.0 113.6 1.0 15.0 -72.0 3 4 93.4 100.5 1.0 39.0 -206.0 4 1 92.3 92.3 0.0 0.0 0.0 4 0 158.0 158.0 0.0 0.0 0.0 2 5 107.1 107.1 0.0 0.0 0.0 5 6 133.4 133. .0 0.0 0.0 6 2 102.0 102.0 0.0 0.0 0.0 0 6 206.2 206.2 0.0 0.0 0.0";
+
+var model4 = "GRAVITY 23.655913978494624 POINTS 15 SPRINGS 31 564.8 377.6 -21.9 -49.2 4.0 12.0 0.0 633.8 360.2 -5.5 -40.2 4.0 12.0 0.0 714.5 345.3 0.1 -43.7 4.0 12.0 0.0 720.6 398.6 -1.4 -38.5 4.0 12.0 0.0 651.6 406.6 -12.2 -52.9 4.0 12.0 0.0 580.6 424.1 -8.9 -47.5 4.0 12.0 0.0 658.3 493.8 -14.0 -10.3 4.0 12.0 0.0 697.5 465.8 -24.2 -18.0 4.0 12.0 0.0 627.1 491.4 -7.3 -25.5 4.0 12.0 0.0 567.2 495.9 -8.7 -1.1 4.0 12.0 0.0 780.0 447.0 13.3 -22.5 4.0 12.0 0.0 675.9 490.9 0.3 -14.7 4.0 12.0 0.0 660.9 496.0 0.0 -19.6 4.0 12.0 0.0 509.9 459.3 -7.0 -47.7 4.0 12.0 0.0 745.3 453.3 -32.3 -26.5 4.0 12.0 0.0 0 1 70.0 70.0 0.0 0.0 0.0 1 2 80.0 80.0 0.0 0.0 0.0 2 3 47.2 47.2 0.0 0.0 0.0 3 4 74.1 74.1 0.0 0.0 0.0 4 5 76.0 76.0 0.0 0.0 0.0 5 0 47.2 47.2 0.0 0.0 0.0 1 4 49.0 49.0 0.0 0.0 0.0 0 4 92.3 92.3 0.0 0.0 0.0 1 5 82.2 82.2 0.0 0.0 0.0 1 3 95.3 95.3 0.0 0.0 0.0 2 4 86.0 86.0 0.0 0.0 0.0 5 6 99.8 95.3 1.0 0.0 -212.0 6 3 106.9 99.4 1.0 12.0 -218.0 4 7 74.2 68.1 1.0 37.0 -212.0 7 3 67.3 62.6 1.0 24.0 -212.0 5 8 81.4 75.2 1.0 25.0 -214.0 8 4 83.6 78.0 1.0 22.0 -212.0 0 9 115.8 107.3 1.0 25.0 -213.0 9 4 124.3 117.8 1.0 7.0 -212.0 1 10 169.9 163.2 1.0 -6.0 -213.0 10 2 119.0 113.2 1.0 2.0 -213.0 0 11 157.2 146.0 1.0 21.0 -214.0 11 3 102.7 95.6 1.0 24.0 -212.0 2 12 167.1 154.2 1.0 24.0 -215.0 12 5 107.3 99.5 1.0 16.0 -217.0 0 13 98.5 98.5 0.0 0.0 0.0 13 5 78.7 78.7 0.0 0.0 0.0 13 1 160.5 160.5 0.0 0.0 0.0 4 14 105.6 105.6 0.0 0.0 0.0 14 3 59.8 59.8 0.0 0.0 0.0 14 2 111.4 111.4 0.0 0.0 0.0 ";
+
+var model5 = "GRAVITY 32.25806451612903 POINTS 11 SPRINGS 29 279.7 430.0 2.6 8.0 4.0 12.0 0.0 340.6 422.9 2.3 -2.5 4.0 12.0 0.0 249.0 462.0 4.8 9.2 4.0 12.0 0.0 250.2 395.0 0.3 9.5 4.0 12.0 0.0 218.4 428.5 2.1 11.5 4.0 12.0 0.0 149.9 419.0 2.0 11.9 4.0 12.0 0.0 292.7 349.3 2.5 10.8 4.0 12.0 0.0 326.4 496.0 2.5 -11.9 4.0 12.0 0.0 164.8 496.0 0.2 -5.8 4.0 12.0 0.0 197.3 347.4 9.6 4.6 4.0 12.0 0.0 240.0 279.0 0.0 0.0 4.0 12.0 0.0 1 0 61.3 61.3 0.0 0.0 0.0 0 2 44.4 44.4 0.0 0.0 0.0 2 4 45.4 45.4 0.0 0.0 0.0 4 3 46.2 46.2 0.0 0.0 0.0 3 0 45.8 45.8 0.0 0.0 0.0 4 5 69.1 69.1 0.0 0.0 0.0 2 3 66.9 66.9 0.0 0.0 0.0 0 4 61.4 61.4 0.0 0.0 0.0 2 1 99.7 99.7 0.0 0.0 0.0 1 3 94.6 94.6 0.0 0.0 0.0 3 5 103.2 103.2 0.0 0.0 0.0 5 2 108.0 108.0 0.0 0.0 0.0 1 6 87.8 87.8 1.0 -11.0 -234.0 6 0 81.8 81.8 1.0 -8.0 -289.0 1 7 74.5 74.5 1.0 -4.0 -122.0 7 0 80.8 80.8 1.0 -9.0 -160.0 4 8 86.2 86.2 1.0 -7.0 -200.0 8 5 78.4 78.4 1.0 -8.0 -234.0 5 9 85.9 85.9 1.0 -6.0 -63.0 9 4 83.7 83.7 1.0 -7.0 -23.0 1 5 190.8 190.8 0.0 0.0 0.0 4 1 122.4 122.4 0.0 0.0 0.0 0 5 130.3 130.3 0.0 0.0 0.0 6 3 62.4 62.4 0.0 0.0 0.0 0 6 81.8 81.8 0.0 0.0 0.0 9 0 116.7 116.7 0.0 0.0 0.0 9 4 83.7 83.7 0.0 0.0 0.0 9 10 80.6 80.6 0.0 0.0 0.0 10 6 87.8 87.8 0.0 0.0 0.0";
+
+var model6 = "GRAVITY 23.655913978494624 POINTS 11 SPRINGS 22 365.0 216.0 0.0 0.0 4.0 12.0 1.0 316.0 261.0 0.0 0.0 4.0 12.0 0.0 338.0 268.0 0.0 0.0 4.0 12.0 0.0 373.0 281.0 0.0 0.0 4.0 12.0 0.0 395.0 281.0 0.0 0.0 4.0 12.0 0.0 323.0 282.0 0.0 0.0 4.0 12.0 0.0 355.0 293.0 0.0 0.0 4.0 12.0 0.0 383.0 295.0 0.0 0.0 4.0 12.0 0.0 446.0 320.0 0.0 0.0 4.0 12.0 0.0 301.0 240.0 0.0 0.0 4.0 12.0 0.0 294.0 267.0 0.0 0.0 4.0 12.0 0.0 0 1 66.5 66.5 1.0 28.0 -278.0 0 2 58.6 58.6 1.0 14.0 -270.0 0 3 65.5 65.5 0.0 0.0 0.0 0 4 71.6 71.6 0.0 0.0 0.0 1 5 22.1 22.1 1.0 11.0 -194.0 5 2 20.5 20.5 0.0 0.0 0.0 2 6 30.2 30.2 0.0 0.0 0.0 6 3 21.6 21.6 0.0 0.0 0.0 3 7 17.2 17.2 0.0 0.0 0.0 7 4 18.4 18.4 0.0 0.0 0.0 1 2 23.1 23.1 1.0 3.0 -143.0 2 3 37.3 37.3 1.0 14.0 -194.0 3 4 22.0 22.0 0.0 0.0 0.0 7 6 28.1 28.1 0.0 0.0 0.0 6 5 33.8 33.8 1.0 5.0 -157.0 6 8 94.9 94.9 0.0 0.0 0.0 0 9 68.4 68.4 0.0 0.0 0.0 9 1 25.8 25.8 0.0 0.0 0.0 9 10 27.9 27.9 1.0 5.0 -175.0 10 1 22.8 22.8 1.0 24.0 -184.0 10 1 22.8 22.8 0.0 0.0 0.0 10 5 32.6 32.6 1.0 15.0 -167.0";
+
+var model7 = "GRAVITY 32.25806451612903 POINTS 23 SPRINGS 46 478.3 418.6 0.1 -9.8 4.0 12.0 0.0 417.7 411.5 -2.2 -6.3 4.0 12.0 0.0 510.3 388.3 -1.0 -8.7 4.0 12.0 0.0 507.6 454.1 -1.6 -6.0 4.0 12.0 0.0 540.3 424.4 -0.6 -0.7 4.0 12.0 0.0 608.7 413.3 -0.7 -3.8 4.0 12.0 0.0 448.7 496.0 0.4 -7.6 4.0 12.0 0.0 425.1 491.1 1.5 -23.9 4.0 12.0 0.0 604.7 496.0 -3.0 -2.2 4.0 12.0 0.0 588.0 490.7 21.7 2.4 4.0 12.0 0.0 333.3 496.0 0.7 -1.2 4.0 12.0 0.0 205.6 496.0 0.8 -1.8 4.0 12.0 0.0 658.4 496.0 -1.5 -6.6 4.0 12.0 0.0 716.4 420.3 -1.2 0.1 4.0 12.0 0.0 695.3 496.0 -0.1 -0.2 4.0 12.0 0.0 778.1 496.0 -0.1 -0.8 4.0 12.0 0.0 656.2 66.7 6.3 -4.9 4.0 12.0 0.0 121.2 496.0 0.5 -1.9 4.0 12.0 0.0 219.9 280.7 -4.3 -4.9 4.0 12.0 0.0 370.5 74.6 -2.5 -8.1 4.0 12.0 0.0 506.3 53.6 2.9 -15.5 4.0 12.0 0.0 776.1 140.4 5.3 0.0 4.0 12.0 0.0 119.7 45.3 -5.8 -3.4 4.0 12.0 0.0 1 0 60.6 60.6 0.0 0.0 0.0 0 2 45.0 45.0 0.0 0.0 0.0 2 4 45.9 45.9 0.0 0.0 0.0 4 3 45.6 45.6 0.0 0.0 0.0 3 0 45.6 45.6 0.0 0.0 0.0 4 5 68.8 68.8 0.0 0.0 0.0 2 3 67.1 67.1 0.0 0.0 0.0 0 4 61.6 61.6 0.0 0.0 0.0 2 1 96.7 96.7 0.0 0.0 0.0 1 3 97.2 97.2 0.0 0.0 0.0 3 5 105.6 105.6 0.0 0.0 0.0 5 2 105.2 105.2 0.0 0.0 0.0 1 6 93.7 88.6 1.0 -11.0 -234.0 6 0 84.8 81.5 1.0 -8.0 -289.0 1 7 79.6 83.1 1.0 -4.0 -122.0 7 0 89.6 89.1 1.0 -9.0 -160.0 4 8 94.7 90.3 1.0 -7.0 -200.0 8 5 86.1 81.0 1.0 -8.0 -234.0 5 9 79.7 85.5 1.0 -6.0 -63.0 9 4 81.1 84.7 1.0 -7.0 -23.0 1 5 190.9 190.9 0.0 0.0 0.0 4 1 122.1 122.1 0.0 0.0 0.0 0 5 130.3 130.3 0.0 0.0 0.0 6 10 115.0 115.0 0.0 0.0 0.0 10 11 127.5 127.5 0.0 0.0 0.0 5 12 97.9 97.9 0.0 0.0 0.0 12 13 97.5 97.5 0.0 0.0 0.0 13 5 106.4 106.4 0.0 0.0 0.0 13 14 78.0 78.0 0.0 0.0 0.0 14 15 83.1 83.1 0.0 0.0 0.0 15 13 97.2 97.2 0.0 0.0 0.0 5 16 351.5 351.5 0.0 0.0 0.0 16 2 351.8 351.8 0.0 0.0 0.0 7 17 303.5 303.5 0.0 0.0 0.0 17 18 236.8 236.8 0.0 0.0 0.0 18 1 237.1 237.1 0.0 0.0 0.0 19 18 254.3 254.3 0.0 0.0 0.0 19 2 345.3 345.3 0.0 0.0 0.0 20 2 335.9 335.9 0.0 0.0 0.0 20 19 136.3 136.3 0.0 0.0 0.0 20 16 149.9 149.9 0.0 0.0 0.0 16 21 140.3 140.3 0.0 0.0 0.0 21 13 286.5 286.5 0.0 0.0 0.0 22 19 252.5 252.5 0.0 0.0 0.0 22 18 255.8 255.8 0.0 0.0 0.0 22 17 451.1 451.1 0.0 0.0 0.0 "
+
+
+var W = 800;
+var H = 500;
+var RADIUS = W/200;
+var RC = RADIUS*3; // correct for the radius (UI)
+var NUMP = 71;
+var NUMS = 0;
+var parRADIUS = 40;
+var KD = 15;
+var mouseIsDown = false;
+var m=[];
+var x=[];
+var y=[];
+var PT=[];		// static or dynamic
+var POINT_DYNAMIC = 0;
+var POINT_FIXED = 1;
+//var P1color = "rgb(51,255,51)";		// https://superuser.com/questions/361297/what-colour-is-the-dark-green-on-old-fashioned-green-screen-computer-displays
+//var Black = "rgb(0,0,0)";		// https://superuser.com/questions/361297/what-colour-is-the-dark-green-on-old-fashioned-green-screen-computer-displays
+var P1color = "rgb(51,55,51)";		// https://superuser.com/questions/361297/what-colour-is-the-dark-green-on-old-fashioned-green-screen-computer-displays
+var P2color = "rgb(221,25,81)";		// https://superuser.com/questions/361297/what-colour-is-the-dark-green-on-old-fashioned-green-screen-computer-displays
+var Black = "rgb(250,253,250)";		// https://superuser.com/questions/361297/what-colour-is-the-dark-green-on-old-fashioned-green-screen-computer-displays
+//var GrayColor = "rgb(40,40,40)";
+var GrayColor = "rgb(40,40,40)";
+
+function deletePoint(p)
+{
+	x[p] = x[NUMP-1];
+	y[p] = y[NUMP-1];
+	m[p] = m[NUMP-1];
+	PT[p] = PT[NUMP-1];
+	// delete springs with that point
+	for(var s=0; s<NUMS; s++)
+	{
+		if(springs[s*3+0]==p || springs[s*3+1]==p)
+			deleteSpring(s);
+	}
+
+	// rewrite NUMP-1 -> p
+	for(var s=0; s<NUMS; s++)
+	{
+		if(springs[s*3+0]==NUMP-1)
+			springs[s*3+0]=p;
+		if(springs[s*3+1]==NUMP-1)
+			springs[s*3+1]=p;
+	}
+
+	NUMP--;
+}
+
+
+var xm1 = [];
+var ym1 = [];
+var xp1 = [];
+var yp1 = [];
+var vx=[];
+var vy=[];
+var fx=[];
+var fy=[];
+//var nx=[];		// normal to spring
+//var ny=[];
+var springs=[];
+var springslen = [];		// keep it for sinusoidal change
+var muscle=[];				// 0-static, 1-muscle
+var musclebarx=[];			// the gui for changing muscle properties varying with sinus
+var musclebary=[];			// 
+var slen=[];				// spring length (keep, it changes frame by frame)
+var NUMS=0;		// number of springs
+var NUMP=0;		// number of particles
+var R=[];	
+
+//var drawing=0;		// semafor to check if drawing actually is performed
+					// for fast  (c)
+var DEFAULT_MASS = 12;
+var AMPMAX = 0.35;			// amplitude for spring oscillations
+var AMP = 0.16;			// amplitude for spring oscillations
+var SPEED = 7.0;
+var CDRAG = 0.0;
+
+var step=0;
+var dt = 0.08;
+var pause = 0;
+var deletemode = 0;
+var constructmode = 0;
+var initialized=0;
+var wavedir = 1;
+
+var gonoff = 1;
+var autoreverseonoff = 1;
+var waslefthit = 0;				// to autoreverse once when hit
+var wasrighthit = 0;
+
+var ms=-1;							// mouse over spring index
+
+// variables for sliders
+var GMAX = 100.0;
+var g = 55.;
+var f = 0.005;
+var FMAX = 1.00;
+var KMAX = 1000;
+var k = 500;
+
+var alwaystime = 0;		// this timer updates even if pause on
+var simtime = 0;
+var deltatime = 0.015;
+
+
+// GUI
+var GUIW = RADIUS*20;
+var GUISY = 0;//20;				// gui start y
+var SINHEIGHT = H-GUIW*2-GUISY;					// place where sinus starts/ends (GUI element at the very bottom)
+
+var DEFDISTBELOWSINHEIGHT = RADIUS*5;		// def. distance of the marker for musclke in gui belos SINHEIGHT point
+var DEFMUSCLEBARY = SINHEIGHT + DEFDISTBELOWSINHEIGHT;
+var xbarmuscle1 = 0;				// small rectangle at left panel where mouse may select bars
+var xbarmuscle2 = GUIW;
+var ybarmuscle1 =  SINHEIGHT;
+var ybarmuscle2 =  DEFMUSCLEBARY + DEFDISTBELOWSINHEIGHT;
+
+var FS = 12*1.5;		// font size for info
+var YBOTTOMGFK = ybarmuscle2 + FS * 1.5;
+var XBOTTOMDELTA = GUIW/3;
+var XBOTTOMG = 0;
+var XBOTTOMF = XBOTTOMDELTA;
+var XBOTTOMK = 2*XBOTTOMDELTA;
+var YBOTTOMHEIGHT = H-YBOTTOMGFK;
+
+// thumbnails for right panel
+var thumbs = [];
+thumbs[0] = new Image();
+thumbs[1] = new Image();
+thumbs[0].src = 'data/gangam.png';
+thumbs[1].src = 'data/box.png';
+
+var canvas = document.getElementById('mycanvas');
+canvas.width = W;
+canvas.height = H;
+var ctx = canvas.getContext('2d');
+
+var offscreenCanvas = document.createElement('canvas');
+offscreenCanvas.width = canvas.width;
+offscreenCanvas.height = canvas.height;
+offscreenCtx = offscreenCanvas.getContext('2d');
+
+/*function resizeCanvas() 
+{
+	canvas.style.width = window.innerWidth + "px";
+  	setTimeout(  function() { canvas.style.height = window.innerHeight + "px"; }, 0);
+};
+// Webkit/Blink will fire this on load, but Gecko doesn't.
+window.onresize = resizeCanvas;
+// So we fire it manually...
+resizeCanvas();
+*/
+//offscreenCtx.shadowBlur = 15;
+//offscreenCtx.shadowColor = P1color;
+
+(function() 
+{   var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+	  window.requestAnimationFrame = requestAnimationFrame;
+})();
+
+
+function mouseIn(xm, ym, x1, y1, x2, y2)
+{
+	if(xm>x1 && xm<x2 && ym>y1 && ym<y2)	return 1;
+	else                                    return 0;
+}
+
+function dot(x1,y1,x2,y2)
+{
+	return x1*x2 + y1*y2;
+}
+
+function dist(x1,y1,x2,y2)
+{
+	return Math.sqrt( (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) );
+}
+
+//alert('109');
+function AddSpring(i,j)
+{
+	var d = dist(x[i], y[i], x[j], y[j]);
+	springs[NUMS*3+0] = i;
+	springs[NUMS*3+1] = j;
+	springs[NUMS*3+2] = d;    //Math.sqrt( (x[i]-x[j])*(x[i]-x[j])+(y[i]-y[j])*(y[i]-y[j]));
+	springslen[NUMS] = d;
+	muscle[NUMS]=0;
+	musclebary[NUMS] = 0;
+	musclebarx[NUMS] = 0;
+	NUMS++;
+}
+
+// animate spring
+function MouseReleasedAddSpring(mouse_start_point, mouse_end_point, _x, _y)
+{
+	mousemode = MOUSE_SPRING_STARTED;		// still we want to draw it
+
+	 //AddSpring(i,j);
+	 var EPS = 0.01;
+	 var id = setInterval(springmove, 10);
+	 var Mxp = x[mouse_end_point];
+	 var Myp = y[mouse_end_point];
+	 var Mxm = _x;
+	 var Mym = _y;
+	 var Mtloc = 0;
+
+	 function springmove() 
+	 {
+	    if(Mtloc>=1)
+	    {
+	      	AddSpring(mouse_start_point, mouse_end_point);
+	      	mousemode == -1;	 
+	      	clearInterval(id);
+	  	  } else 
+	  	  {
+	  	  	Mtloc += 0.25;
+	      	sxend = Mxp * Mtloc + (1-Mtloc) * Mxm;
+	      	syend = Myp * Mtloc + (1-Mtloc) * Mym;
+	      	//alert(Mtloc+" " + sxend + " " + syend);
+		  }
+	  }
+}
+
+//alert('110');
+
+function animateball(b,r) {					// function the winner
+  var id = setInterval(frame, 10);
+  function frame() 
+  {
+    if (R[b] >= r) 
+    {
+      clearInterval(id);
+  	  } else 
+  	  {
+      	R[b]+=0.2*r; 
+    }
+  }
+}
+
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+function Addpar(_x,_y)
+{
+	//R[NUMP]=_r;
+	R[NUMP]=0;
+	animateball(NUMP,RADIUS);
+	x[NUMP] = _x;//(i+1)*RR*4;
+	y[NUMP] = _y;//H/2-20;
+	vx[NUMP]= 0;//_vx;
+	vy[NUMP]= 0;//_vy;
+	m[NUMP]=DEFAULT_MASS;//_mass;		
+	PT[NUMP] = POINT_DYNAMIC;
+	NUMP++;
+}
+
+function setMenuConstruct() { 
+	//document.getElementById('selectconstruct').value = "Construct"; 
+}
+function setMenuSimulate() { //document.getElementById('selectconstruct').value = "Simulate"; 
+}
+function setMenuModel() { 
+// document.getElementById('selectmodel').value = "themodel"; 
+}
+
+
+function init()
+{
+	//alert('0');
+	// perfect initializer
+	initialized=1;
+	offscreenCtx.lineWidth=2;
+	offscreenCtx.fillStyle =  Black;
+	offscreenCtx.fillRect(0,0,W,H);			
+
+	//alert('1');
+	updategui();
+	clearModelTextBox();
+
+	//alert('2');
+
+	canvas.addEventListener ("mouseout", canvas.onmouseout, false);
+	canvas.addEventListener("touchstart", touchStartHandlerMain, false);
+	canvas.addEventListener("touchend", touchEndHandlerMain, false);
+	canvas.addEventListener("touchmove", touchMoveHandlerMain, false);   	
+
+	setMenuConstruct();
+	setMenuModel();
+//	document.getElementById('selectgravity').value = "Gravity";
+	//document.getElementById('selectreverse').value = "Reverse";
+
+
+
+	// load def. model
+	loadModel(model1);
+	random();
+
+	setMenuModel();
+  	setMenuSimulate();
+  	pauseoff();
+}
+
+function addnew(event)
+{
+	mouseIsDown = true; 
+	_x-=canvas.offsetLeft;
+	_y-=canvas.offsetTop;
+}
+
+// returns par number or -1
+function findpar(_x, _y, _rc)
+{
+	for(var b=0; b<NUMP; b++)
+		if(dist(x[b], y[b], _x, _y) < R[b]+_rc)	
+			return b;
+	return -1;
+}
+function findparh(_x, _y, _rc)
+{
+	for(var b=0; b<NH; b++)
+	if(ah[b])		// active?
+		if(dist(xh[b], _x, yh[b], _y) < RADIUS+_rc)	
+			return b;
+	return -1;
+}
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// all about textbox
+function scrollUp(e) {e.scrollTop = e.scrollHeight;}
+function clearModelTextBox()
+{
+    $("#modeltextbox").val(''); 
+}
+function copyToClipboard() {
+    //var $temp = $("<input>");
+    //$("body").append($temp);
+    var $output = $("#modeltextbox");
+    $output.select();
+    document.execCommand("copy");
+    //$output.selectionStart = dataarea.selectionEnd = -1;
+    scrollUp(output);
+    ////alert("Data copied to clipboard...");
+    scrollUp(output);
+}
+
+var themodel;			// text coded model
+function saveModel()
+{
+    var $output = $("#modeltextbox");
+    themodel="";// = $output.val();
+   // $output.val(val + NUMP + "\n" + NUMS + "\n" + "you\n");
+    themodel+="GRAVITY " + g + " \n";
+    themodel+="POINTS " + NUMP + " \n"			// 1
+    themodel+="SPRINGS " + NUMS + " \n"			// 2
+    for(var i=0; i<NUMP; i++)
+	    themodel = themodel + x[i].toFixed(1) + " " + y[i].toFixed(1)+ " " +vx[i].toFixed(1) + " " + vy[i].toFixed(1) + " " + R[i].toFixed(1) + " "+ m[i].toFixed(1) + " " + 
+	PT[i].toFixed(1) + " ";
+	
+	
+    for(var i=0; i<NUMS; i++)
+        {
+	    	themodel = themodel + springs[i*3+0] + " " + springs[i*3+1] + " " + springs[i*3+2].toFixed(1) + " " + springslen[i].toFixed(1) + " " + muscle[i].toFixed(1)+" " + musclebarx[i].toFixed(1) + " " + musclebary[i].toFixed(1) + " ";
+		}
+
+themodel+="\n";
+
+	//alert(themodel);
+	$output.val(themodel);
+    scrollUp(output);
+}
+
+function loadModel(mymodel)
+{
+//var coolVar = '123-abc-itchy-knee';
+//var partsArray = coolVar.split('-');
+	//var $output = $("#modeltextbox");
+	 //themodel = $output.val();
+	 themodel = mymodel;
+	 if(!themodel)
+	 	return;
+
+	 var themodelparts = themodel.split(' ');
+
+	 //var i;
+	 //for(i in themodelparts)
+	 //{
+	 //}
+	 	var NP = 7;
+	 	g=parseFloat(themodelparts[1]);
+	 	NUMP=parseFloat(themodelparts[3]);
+	 	NUMS=parseFloat(themodelparts[5]);
+	 	for(var i=0; i<NUMP; i++)
+	 	{
+	 		x[i] = parseFloat(themodelparts[5+i*NP+1]);
+	 		y[i] = parseFloat(themodelparts[5+i*NP+2]);
+	 		vx[i] = parseFloat(themodelparts[5+i*NP+3]);
+	 		vy[i] = parseFloat(themodelparts[5+i*NP+4]);
+	 		R[i] = parseFloat(themodelparts[5+i*NP+5]);
+			m[i] = parseFloat(themodelparts[5+i*NP+6]);
+			PT[i] = parseFloat(themodelparts[5+i*NP+7]);
+	 	}
+	 	var NS = 7;
+	 	for(var i=0; i<NUMS; i++)
+	 	{
+	 		springs[i*3+0] = parseFloat(themodelparts[5+NP*NUMP+i*NS+1])
+	 		springs[i*3+1] = parseFloat(themodelparts[5+NP*NUMP+i*NS+2]);
+	 		springs[i*3+2] = parseFloat(themodelparts[5+NP*NUMP+i*NS+3]);
+	 		springslen[i] = parseFloat(themodelparts[5+NP*NUMP+i*NS+4]);
+	 		muscle[i] = parseFloat(themodelparts[5+NP*NUMP+i*NS+5]);
+	 		musclebarx[i] = parseFloat(themodelparts[5+NP*NUMP+i*NS+6]);
+	 		musclebary[i] = parseFloat(themodelparts[5+NP*NUMP+i*NS+7]);
+		}
+	////alert(themodel);
+}
+
+
+
+function loadModelFromTextbox()
+{
+	var $output = $("#modeltextbox");
+	 themodel = $output.val();
+	 if(!themodel)
+	 	return;
+	 var themodelparts = themodel.split(' ');
+	 	var NP = 7;
+	 	g=parseFloat(themodelparts[1]);
+	 	NUMP=parseFloat(themodelparts[3]);
+	 	NUMS=parseFloat(themodelparts[5]);
+	 	for(var i=0; i<NUMP; i++)
+	 	{
+	 		x[i] = parseFloat(themodelparts[5+i*NP+1]);
+	 		y[i] = parseFloat(themodelparts[5+i*NP+2]);
+	 		vx[i] = parseFloat(themodelparts[5+i*NP+3]);
+	 		vy[i] = parseFloat(themodelparts[5+i*NP+4]);
+	 		R[i] = parseFloat(themodelparts[5+i*NP+5]);
+			m[i] = parseFloat(themodelparts[5+i*NP+6]);
+			PT[i] = parseFloat(themodelparts[5+i*NP+7]);
+	 	}
+	 	var NS = 7;
+	 	for(var i=0; i<NUMS; i++)
+	 	{
+	 		springs[i*3+0] = parseFloat(themodelparts[5+NP*NUMP+i*NS+1])
+	 		springs[i*3+1] = parseFloat(themodelparts[5+NP*NUMP+i*NS+2]);
+	 		springs[i*3+2] = parseFloat(themodelparts[5+NP*NUMP+i*NS+3]);
+	 		springslen[i] = parseFloat(themodelparts[5+NP*NUMP+i*NS+4]);
+	 		muscle[i] = parseFloat(themodelparts[5+NP*NUMP+i*NS+5]);
+	 		musclebarx[i] = parseFloat(themodelparts[5+NP*NUMP+i*NS+6]);
+	 		musclebary[i] = parseFloat(themodelparts[5+NP*NUMP+i*NS+7]);
+		}
+}
+
+
+function updateguielement(e, semafor)
+{
+	document.getElementById(e).style.background = semafor ? "#dddddd" : "white";
+	//document.getElementById(e).style.color = (1-semafor) ? "black" : "white";
+	//document.getElementById(e).style.border = (1-semafor) ? "solid 1px" : "dotted 1px";
+	//document.getElementById(e).style.color = (1-semafor) ? "" : "white";
+
+
+
+}
+
+function updategui()
+{
+	
+	//updateguielement("buttongravity", gonoff);
+	//updateguielement("buttonconstruct", constructmode);
+	//updateguielement("buttonplay", 1-pause);
+	//updateguielement("buttondelete", deletemode);
+
+	//clearModelTextBox();
+}
+
+function gototrash()
+{
+clearall(); constructOn(); setMenuConstruct(); setMenuModel(); 
+     			constructOn();  setMenuConstruct();
+
+}
+
+function edit()
+{				pauseon();  
+				constructOn(); setMenuConstruct(); setMenuModel(); 
+     			constructOn();  setMenuConstruct();
+
+}
+
+function play()
+{
+   		pauseoff();  
+   		if(pause)
+   			setMenuConstruct(); 
+
+}
+
+var previousmodel = -1;
+function random()
+{
+	var i;
+	do
+	{
+		i =  Math.floor((Math.random() * 7) + 1); 
+	} while (i==previousmodel);
+	previousmodel = i;
+	LoadTheModel(i);
+}
+
+function deleteonoff() 
+{
+
+	if((NUMP>0 && deletemode==0) || deletemode==1)
+	{
+		deletemode = 1;//-deletemode;
+		if(deletemode)
+		{
+			pause = 1;
+			constructmode = 0;
+		}
+	}
+	//else
+	//	pause = 0;
+}
+
+
+function SelectConstruct()
+{
+   var x = document.getElementById("selectconstruct").value;
+   if(x=="Construct")  
+   	{ 
+   		constructOn(); 
+   	}
+   if(x=="Simulate") 
+   	{	
+   		pauseoff();  
+   		if(pause)
+   			setMenuConstruct(); 
+   	}
+   if(x=="About") 
+   	{	
+
+		alert("San Jose by Maciej Matyka (2018)\n\nMore info: https://maciejmatyka.blogspot.com/2018/02/soda-constructor-revisited.html\nContact: maciej.matyka@gmail.com\nHomepage: http://panoramix.ift.uni.wroc.pl/~maq");
+   	}
+   	if(x=="Clear")	
+   	{ clearall(); constructOn(); setMenuConstruct(); setMenuModel(); 
+     			constructOn();  setMenuConstruct(); }
+  
+	updategui();
+}
+
+function SelectGravity()
+{
+
+   var x = document.getElementById("selectgravity").value;
+   if(x=="Gravity")  { gravityOn(); }
+   if(x=="NoGravity") {	gravityOff();  }
+
+   updategui();
+}
+
+function SelectReverse()
+{
+
+   var x = document.getElementById("selectreverse").value;
+   //if(x=="Reverse")  { autoreverseonoff=1; }
+   //if(x=="NoReverse") {	autoreverseonoff=0;  }
+}
+
+
+
+
+
+function LoadTheModel(x)
+{
+    if(x==1){
+		loadModel(model2);
+		setMenuModel();
+	  	setMenuSimulate();
+		pauseoff();
+	}
+	else if(x==2)	{
+	 	loadModel(model3); 
+	 	setMenuModel();
+	  	setMenuSimulate();
+	  	pauseoff();
+	}
+	else
+	if(x==3){
+		loadModel(model1);
+		setMenuModel();
+	  	setMenuSimulate();
+		pauseoff();
+	
+	}		
+	else if(x==4){  loadModel(model4); 		setMenuModel(); 		setMenuSimulate();		pauseoff(); }
+	else if(x==5){	loadModel(model5); 		setMenuModel(); 	  	setMenuSimulate(); 		pauseoff(); }		
+	else if(x==6){	loadModel(model6); 		setMenuModel(); 	  	setMenuSimulate(); 		pauseoff(); }		
+	else if(x==7){	loadModel(model7); 		setMenuModel(); 	  	setMenuSimulate(); 		pauseoff(); }
+
+	offscreenCtx.fillStyle = Black;
+	offscreenCtx.fillRect(0,0,W,H);		
+}
+
+
+/* <select id="loadmodel" class='selectmenu'  onChange="LoadModel();">
+ 		  <option value="LoadModel"> Załaduj obiekt </option>
+		  <option value="SaveModel"> Zapisz obiekt </option>
+		</select>
+	 <select id="selectmodel" class='modelmenu'  onChange="SelectModel();">		*/
+
+
+function SelectModel()
+{
+	var x = document.getElementById("selectmodel").value;
+   	LoadTheModel(parseInt(x));
+}
+
+function LoadModel()
+{
+	var x = document.getElementById("loadmodel").value;
+
+	if(x=="save")
+	{
+		saveModel();
+		setMenuModel();
+	}
+	else if(x=="LoadModel")
+    {
+			  loadModelFromTextbox();
+    } else if(x=="SaveModel")
+    {
+		saveModel();
+    }
+}
+
+
+function gravityOn()
+{
+	
+	gonoff = 1;
+}
+function gravityOff()
+{
+	gonoff = 0;
+}
+function gravityonoff() 
+{
+	gonoff = 1-gonoff;
+}
+function pauseon() 
+{
+	pause = 1;
+}
+function constructOn()
+{
+	pause = 1;
+	deletemode = 0;
+	constructmode = 1;
+	setMenuConstruct();
+}
+
+
+
+function pauseoff() 
+{
+	if((NUMP>0 && pause==1))
+	{
+		pause = 0;
+		//if(pause==0)
+		//{
+		deletemode=0;		// no devaring while playing
+		constructmode=0;
+		setMenuSimulate();
+		//}
+	}
+
+}
+function clearall() {
+	NUMP=NUMS=0;
+}
+
+function highlightmousepoint(_x, _y)
+{
+	// nevertheless mouse is down or not
+	if(dragpoint == -1)
+		highlightp = findpar(_x, _y, RC);		// make range larger if pause is off
+}
+
+//function highlightmousespring(_x, _y)
+//{
+//	// it's bad when spring highlights during creation of a new spring
+//	if(mousemode != MOUSE_SPRING_STARTED && highlightp == -1 && pause)
+//	if(dragspring ==-1)
+//		highlights = findspring(_x, _y);		// mouse over spring
+//}
+
+// https://developer.apple.com/library/safari/documentation/AudioVideo/Conceptual/HTML-canvas-guide/AddingMouseandTouchControlstoCanvas/AddingMouseandTouchControlstoCanvas.html
+function getMousePos(e)
+{
+	var r = canvas.getBoundingClientRect();
+	return {
+			x: e.pageX - canvas.offsetLeft,
+			y: e.pageY - canvas.offsetTop
+		};
+}
+
+// find spring closest to _x and _y (for selection and drag)
+// returns number of string (-1 if not found)
+function findspring(_x, _y)
+{
+	var distmin = 100000;
+	var foundspring = -1;
+
+	for(var s=0; s<NUMS; s++)
+	{
+		var x1 = x[springs[s*3+0]];
+		var y1 = y[springs[s*3+0]];
+		var x2 = x[springs[s*3+1]];
+		var y2 = y[springs[s*3+1]];
+		var px = _x - x1;
+		var py = _y - y1;
+		var d = dist(x1,y1,x2,y2);
+		var nx = (x2-x1)/d;
+		var ny = (y2-y1)/d;
+		////alert(1);
+		
+		var mydot = dot(px, py, nx, ny);
+		
+		if(mydot>0 && mydot<d)
+		{
+			var hx = px - nx * mydot;
+			var hy = py - ny * mydot;
+			var distance = Math.sqrt(hx * hx + hy*hy);
+			
+			if(distance < distmin && distance < RADIUS*8)	// drag spring
+			{
+				distmin = distance;
+				foundspring = s;
+				x10 = _x-x1;		// need to store these for dragging
+				y10 = _y-y1;
+				x20 = _x-x2;
+				y20 = _y-y2;
+			}
+		}
+	}
+	return foundspring;
+}
+
+function deleteSpring(s)
+{
+	if(NUMS>=1)
+	{
+		springs[s*3+0] = springs[(NUMS-1)*3+0];
+		springs[s*3+1] = springs[(NUMS-1)*3+1];
+		springs[s*3+2] = springs[(NUMS-1)*3+2];
+		springslen[s] = springslen[(NUMS-1)];
+		muscle[s] = muscle[(NUMS-1)];
+		slen[s] = slen[(NUMS-1)];
+		NUMS--;
+	} 
+}
+
+// some variables needed for mouse
+var mx0, my0;
+var x10, y10, x20, y20;		// positions that we keep for dragging springs
+var dragpoint = -1;
+var dragspring = -1;
+var RBUT = 2;
+var mousemode = 0;
+var MOUSE_SPRING_STARTED = 1;
+var MOUSE_MOVEBAR_STARTED = 2;
+var MOUSE_SINMOVE_STARTED = 3;
+var MOUSE_SLIDER_STARTED_G = 4;
+var MOUSE_SLIDER_STARTED_F = 5;
+var MOUSE_SLIDER_STARTED_K = 6;
+var mousemovebar = 0;				// the number of muscle bar that has been selected to drag..
+var MOUSE_NONE = 0;
+var mouse_start_point = -1;
+
+function mymousedown(_x, _y, event)
+{
+	mouseIsDown=true;
+
+	// mouse in the GUI bar area
+	if(_x < GUIW && _y > YBOTTOMGFK)			// sliders
+	{
+		if(_x < XBOTTOMG + XBOTTOMDELTA)		// GRAVITY
+		{
+			mousemode = MOUSE_SLIDER_STARTED_G;
+			g = GMAX * ( (H-_y) / YBOTTOMHEIGHT);
+			return;
+		}else if(_x < XBOTTOMF + XBOTTOMDELTA)		// FRICTION
+		{
+			mousemode = MOUSE_SLIDER_STARTED_F;
+			f = FMAX * ( (H-_y) / YBOTTOMHEIGHT);
+			return;
+		} else if(_x < XBOTTOMK + XBOTTOMDELTA)		// HOOKE
+		{
+			mousemode = MOUSE_SLIDER_STARTED_K;
+			k = KMAX * ( (H-_y) / YBOTTOMHEIGHT);
+			return;
+		}
+	}
+	else if(_x<GUIW && _y<ybarmuscle2)		// gui area but in this little window for muscle selection
+	{
+		// find if any of the muscles was actually just set up
+		for(var s=0; s<NUMS; s++)
+		if(muscle[s])					// muscle?
+		{
+			////alert(s);
+			// if mouse close to this marker
+			if( Math.abs( _y-ybarmuscle2 - musclebary[s]+DEFDISTBELOWSINHEIGHT)< RADIUS*3 )
+			{
+				mousemode = MOUSE_MOVEBAR_STARTED;
+				mousemovebar = s;
+				return;
+			}
+		}
+
+		// mouse in the GUI area
+		if(_x<GUIW && _y<SINHEIGHT)
+		{
+
+			//AMP = (Math.abs(_x - GUIW/2)/(GUIW/2) * AMPMAX);
+			mousemode = MOUSE_SINMOVE_STARTED;
+			//mx0 = _x;
+			AMP = Math.max(0, ((_x-GUIW*0.25)/(GUIW*0.75) * AMPMAX) );
+			return;
+		}
+
+		return;		// anyway return (no particle add there)
+	}
+	else
+	if(_x<GUIW)// || _x>W-GUIW)		// sinus or GUI on the right
+	{
+		return;
+	}
+
+
+	//highlightmousepoint(_x, _y);	
+	// see if mouse down over particle				
+	var p=findpar(_x, _y, RC);
+	ms=findspring(_x, _y);		// mouse over spring
+
+	if(deletemode)
+	{
+		
+		// delete selected point
+		if(p != -1)
+		{
+			deletePoint(p);
+			p=findpar(_x, _y, RC);
+		} else
+		// delete selected spring
+		if(ms != -1)
+		{
+			deleteSpring(ms);
+			// find new spring (after devaring old one)
+			 ms=findspring(_x, _y);
+		}
+		
+		
+	}
+	else
+	if(p == -1)
+	{
+		// spring clicked in construction and play mode
+		if(event.button == RBUT && ms!=-1)	
+		{
+			// clicked muscle / non muscle
+			muscle[ms] = 1-muscle[ms];
+			if(muscle[ms])
+			{
+				// if muscle was just turned on we're going to put a new marker
+				// in the GUI so that the user may move it and set up the muscle properties
+				// regarding to the sinus function
+
+				musclebarx[ms] = 0;
+				musclebary[ms] = 0;
+			}
+			mousemode = -1;
+
+		}
+		else
+		if(pause)  // place point
+		{
+			Addpar(_x, _y);	// normally add at mouse position
+			p=NUMP-1;
+			// and continue with spring...
+			mousemode = MOUSE_SPRING_STARTED;
+			mouse_start_point = p;
+			sxend = x[p];
+			syend = y[p];
+		}
+		else
+		if(!pause)		// play
+		{
+			// find selected spring
+			if(ms!=-1)
+			{
+				dragspring = ms;		// start			
+			}
+		}
+	}
+	else				
+	if(p!=-1)	// mouse down over some point
+	{
+		if(event.button == RBUT || (!pause) )		// drag point if pause is off or RIGHT mouse click
+		{
+			mx0 = _x-x[p];
+			my0 = _y-y[p];
+			dragpoint = p;
+			mousemode = MOUSE_NONE;
+		}
+		else
+		{
+			// start dynamic spring
+			mousemode = MOUSE_SPRING_STARTED;
+			mouse_start_point = p;
+			sxend = x[p];
+			syend = y[p];
+		}
+	}
+
+	highlightmousepoint(_x, _y);
+	//highlightmousespring(_x, _y);
+	
+	//updateModelTextBox();
+}
+
+
+function mymouseup(_x, _y, event)
+{
+	if(mouseIsDown && (mousemode == MOUSE_SPRING_STARTED))
+	{
+		// release and add spring
+		mouseIsDown = 0; 
+		mousemode = MOUSE_NONE;
+
+		if(_x<GUIW)// || _x>W-GUIW)
+		{
+			// don't add here
+			return;					// batman return
+		}
+
+	
+		//mouse_starting_point
+		var mouse_end_point = findpar(_x, _y, RC);
+
+		if(mouse_end_point == -1)		// exp. add particle if released in empty region
+		{
+			Addpar(_x, _y);
+			mouse_end_point = NUMP-1;
+		}
+
+
+
+		if(mouse_start_point != mouse_end_point)					// yes we've got it connected
+		{
+			//alert(1);
+			MouseReleasedAddSpring(mouse_start_point, mouse_end_point, _x, _y);
+			dragpoint = -1;
+			mouseIsDown = 0; 
+			dragspring = -1;
+			return;
+		}
+		else
+		{
+			if(PT[mouse_start_point] == POINT_DYNAMIC)
+				PT[mouse_start_point] = POINT_FIXED;
+			else
+				PT[mouse_start_point] = POINT_DYNAMIC;
+		}
+
+	
+
+		//else
+		//	PT[mouse_start_point] = POINT_FIXED;
+	}
+	else if(deletemode)
+	{
+
+	}
+	else if(dragpoint != -1 && (pause))		// released drag point
+	{
+		// recalculate spring lengths
+		for(var s=0; s<NUMS; s++)
+		{
+			//if(springs[s*3+0]==dragpoint || springs[s*3+1]==dragpoint)
+			{
+					// reset this spring
+				var x1=x[springs[s*3+0]];
+				var y1=y[springs[s*3+0]];
+				var x2=x[springs[s*3+1]];
+				var y2=y[springs[s*3+1]];
+				var d = dist(x1, y1, x2, y2);
+				springs[s*3+2] = d;
+				springslen[s] = d;
+			}
+		}
+
+		dragpoint = -1;
+		mouseIsDown = 0; 
+		dragspring = -1;
+
+
+	}
+	else
+	{
+		dragpoint = -1;
+		dragspring = -1;
+		mouseIsDown = 0; 
+	}
+
+
+	highlightp = -1;				// deselect
+	highlights = -1;				// deselect
+	mousemode = MOUSE_NONE;
+	mousemovebar = 0;
+
+	// ifNUMP==0 && deletemode then deactivate it
+	if(NUMP==0 && deletemode)
+	{
+		deleteonoff();
+		updategui();
+	}
+	if(NUMP==0 && pause==0)
+	{
+		pauseon();
+		updategui();
+	}
+}
+
+
+function mymousemove(_x, _y, event)
+{
+	if(event.button == RBUT)
+		return;
+
+	// mouse in the guibar area
+	if(mouseIsDown && 
+		(mousemode==MOUSE_SLIDER_STARTED_G
+		||
+		mousemode==MOUSE_SLIDER_STARTED_F
+		||
+		mousemode==MOUSE_SLIDER_STARTED_K))
+	{
+		//if(_x < GUIW && 
+		if(_y >= YBOTTOMGFK && _y<=H)			// sliders
+		{
+			if(mousemode == MOUSE_SLIDER_STARTED_G)//GRAVITY
+			{
+				g = GMAX * ( (H-_y) / YBOTTOMHEIGHT);
+				return;
+			}else if(mousemode == MOUSE_SLIDER_STARTED_F)//FRICTION
+			{	
+				f = FMAX * ((H-_y) / YBOTTOMHEIGHT);
+				return;
+			} else if(mousemode == MOUSE_SLIDER_STARTED_K)//HOOKE
+			{
+				k = KMAX * ( (H-_y) / YBOTTOMHEIGHT);
+				return;
+			}
+		}
+		return;
+	}
+
+
+	// turn on the animation or special annotation
+	// to hover the mouse over spring-muscles 
+	if(!mouseIsDown)
+	{
+		if(_x<GUIW && _y<ybarmuscle2)		// gui area but in this little window for muscle selection
+		{
+			mousemode = 0;
+			mousemovebar = -1;
+
+			// find if any of the muscles was actually just set up
+			for(var s=0; s<NUMS; s++)
+			if(muscle[s])					// muscle?
+			{
+				if( Math.abs( _y-ybarmuscle2 - musclebary[s]+DEFDISTBELOWSINHEIGHT)< RADIUS*3 )
+				{
+					mousemode = MOUSE_MOVEBAR_STARTED;
+					mousemovebar = s;
+					return;
+				}
+			}
+		}
+		else
+		{
+			ms=findspring(_x, _y);
+			mousemode = 0;
+			mousemovebar = -1;
+		}
+	}
+
+
+	var relMouseY =  ybarmuscle2 - _y;		// mouse position relative to bottom gui bar
+	if(mouseIsDown)
+	if(mousemode == MOUSE_MOVEBAR_STARTED)
+	if(mousemovebar != -1)
+	{
+		if(_y<ybarmuscle2)
+			musclebary[ mousemovebar ] = _y - ybarmuscle2+DEFDISTBELOWSINHEIGHT; //relMouseY;	
+		if(_x<GUIW)
+			musclebarx[ mousemovebar ] = _x-GUIW/2;	
+		return;
+	}
+	
+	// mouse in the GUI area
+	if(mouseIsDown && mousemode == MOUSE_SINMOVE_STARTED)
+	if(_x<GUIW && _y<SINHEIGHT)
+	{
+		//AMP = (Math.abs(_x - GUIW/2)/(GUIW/2) * AMPMAX);
+		AMP = Math.max(0, ((_x-GUIW*0.25)/(GUIW*0.75) * AMPMAX) );
+		return;
+	}
+
+	highlightmousepoint(_x, _y);	
+	//highlightmousespring(_x, _y);	
+
+	// move points
+	if(mouseIsDown)
+	{
+		if(mousemode == MOUSE_SPRING_STARTED)		// spring mode
+		{
+			sxend = _x;
+			syend = _y;			
+		}
+		else if(dragpoint != -1)		// drag some point
+		{
+			x[dragpoint] = _x-mx0;
+			y[dragpoint] = _y-my0;
+		}
+		else if(dragspring != -1)		// drag two points from selected spring
+		{			
+			var p1 = springs[dragspring*3+0];
+			var p2 = springs[dragspring*3+1];
+			x[p1] = _x-x10;
+			y[p1] = _y-y10;
+			x[p2] = _x-x20;
+			y[p2] = _y-y20;
+		}
+	}
+}
+
+canvas.onmousedown = function(event) 
+{	
+	//var _x = event.clientX-canvas.offsetLeft;
+	//var _y = event.clientY-canvas.offsetTop;			
+	var m = getMousePos(event);
+	var _x = m.x;
+	var _y = m.y;
+	mymousedown(_x, _y, event);
+			
+} 
+canvas.onmouseup = function (event) 
+{ 
+	//var _x = event.clientX-canvas.offsetLeft;
+	//var _y = event.clientY-canvas.offsetTop;	
+	var m = getMousePos(event);
+	var _x = m.x;
+	var _y = m.y;
+
+	mymouseup(_x, _y, event);
+}
+
+//var xm0,ym0;
+//var mousex0, mousey0;
+var highlightp = -1;
+var highlights = -1;
+var sxend = -1;
+var syend = -1;
+
+canvas.onmousemove = function (event)
+{
+	var m = getMousePos(event);
+	var _x = m.x;
+	var _y = m.y;
+
+	mymousemove(_x, _y, event);
+		
+
+}
+
+canvas.onmouseout = function (event)
+{
+	// this was annoying to continue this mode when mouse was out
+	if(mousemode == MOUSE_SINMOVE_STARTED || MOUSE_MOVEBAR_STARTED || MOUSE_SLIDER_STARTED)
+		mousemode = MOUSE_NONE;
+}
+
+
+
+
+var touches;
+// prevent from scrolling
+function touchMoveHandlerMain(e)
+{
+		touches = e.changedTouches;
+		var _x = (touches[0].pageX-canvas.offsetLeft);
+		var _y = (touches[0].pageY-canvas.offsetTop);    			
+		mymousemove(_x,_y, event);
+		e.preventDefault();
+}
+function touchStartHandlerMain(e)
+{ 
+		touches = e.changedTouches;
+		var _x = (touches[0].pageX-canvas.offsetLeft);
+		var _y = (touches[0].pageY-canvas.offsetTop);    			
+		mymousedown(_x,_y,event);				
+		e.preventDefault();
+}
+function touchEndHandlerMain(event)
+{ 
+		var _x = (touches[0].pageX-canvas.offsetLeft);
+		var _y = (touches[0].pageY-canvas.offsetTop);
+		mymouseup(_x,_y, event);	
+		event.preventDefault();
+}
+
+
+
+//alert('100');
+init();
+//alert('101');
+
+var minx, maxx, miny, maxy;
+function drawoffscreen(style1, style2, graycol, lwm, simtime)
+{
+	var PTSIZ = 4 * lwm;
+
+	// styling
+	offscreenCtx.strokeStyle = style1;
+	offscreenCtx.fillStyle =  style2;
+	offscreenCtx.lineWidth = 1*lwm;
+	//offscreenCtx.lineWidth=1;
+	
+
+	// draw points
+	
+	if(NUMP>0)
+	for(var b=0; b<NUMP; b++)
+	{
+
+		if(PT[b] == POINT_FIXED)
+			offscreenCtx.fillStyle =  style2;
+		else
+			offscreenCtx.fillStyle =  style1;
+
+		offscreenCtx.beginPath();
+		offscreenCtx.arc(x[b], y[b], R[b]*lwm*1.0,0,2*Math.PI);
+		//offscreenCtx.rect(x[b]-PTSIZ/2, y[b]-PTSIZ/2, PTSIZ, PTSIZ);
+		offscreenCtx.fill();
+	}
+	offscreenCtx.fillStyle =  style1;
+
+
+	// highlight selected point
+	if(highlightp != -1)
+	{
+		offscreenCtx.beginPath();
+		offscreenCtx.arc(x[highlightp], y[highlightp], R[highlightp]*1.5*lwm,0,2*Math.PI);
+		offscreenCtx.stroke();	
+	}
+
+
+	// draw springs
+	var sca = 1.0;
+	for(var i=0; i<NUMS; i++)
+	{
+		
+		// draw small tick in the middle of spring-muscle
+		var si = springs[i*3+0];
+		var sj = springs[i*3+1];	
+	    if(muscle[i])
+	    {
+	    	var tx = x[sj]-x[si];
+	    	var ty = y[sj]-y[si];
+	    	var nx = ty;		// rotate by 90 deg.
+	    	var ny = -tx;
+	    	slen[i] = dist(x[si], y[si], x[sj], y[sj]);
+	    	nx/=slen[i];
+	    	ny/=slen[i];
+
+	    	if(mousemode == MOUSE_MOVEBAR_STARTED)
+	    	{
+	    		//if(mousemovebar==i)		// selected bar is the one we draw now
+	    		//	
+	    		//else
+	    		if(mousemovebar==i)
+	    		{
+					offscreenCtx.beginPath();
+			    	offscreenCtx.arc(x[si]+tx*0.5,y[si]+ty*0.5,RADIUS*lwm,0,2*Math.PI);
+			    	//offscreenCtx.lineTo((x[si]+tx*0.5-nx*RADIUS*lwm*sca),(y[si]+ty*0.5-ny*RADIUS*lwm*sca));
+			    	offscreenCtx.stroke();
+
+	    		}
+	    			//sca = 1.1+0.25*Math.sin(alwaystime*20.0);
+	    		//else
+	    			//sca = 1;
+	    	}
+
+    		offscreenCtx.beginPath();
+	    	offscreenCtx.moveTo((x[si]+tx*0.5+nx*RADIUS*lwm*sca),(y[si]+ty*0.5+ny*RADIUS*lwm*sca));
+	    	offscreenCtx.lineTo((x[si]+tx*0.5-nx*RADIUS*lwm*sca),(y[si]+ty*0.5-ny*RADIUS*lwm*sca));
+	    	offscreenCtx.stroke();
+	    	
+	    }
+
+		// draw spring
+
+		offscreenCtx.beginPath();
+   		offscreenCtx.moveTo( x[si] , y[si]);
+	    offscreenCtx.lineTo( x[sj],  y[sj]);
+    	offscreenCtx.stroke();
+	    
+	}
+
+	
+	offscreenCtx.beginPath();
+
+
+	// draw spring for mouse
+	if(mousemode == MOUSE_SPRING_STARTED)
+	{
+		offscreenCtx.moveTo(x[mouse_start_point], y[mouse_start_point]);
+	    offscreenCtx.lineTo(sxend, syend);
+	}
+
+
+
+	// draw the main gui bar
+	offscreenCtx.rect(0,GUISY,GUIW,H);
+	offscreenCtx.stroke(); 
+/*	// draw the gui bar on the right
+	var THUMBW = GUIW;
+	var THUMBH = GUIW*0.7;
+	offscreenCtx.drawImage(thumbs[0], W-GUIW, THUMBH*0, THUMBW, THUMBH);
+	offscreenCtx.drawImage(thumbs[1], W-GUIW, THUMBH*1, THUMBW, THUMBH);
+	offscreenCtx.drawImage(thumbs[1], W-GUIW, THUMBH*2, THUMBW, THUMBH);
+	offscreenCtx.drawImage(thumbs[1], W-GUIW, THUMBH*3, THUMBW, THUMBH);
+	offscreenCtx.drawImage(thumbs[1], W-GUIW, THUMBH*4, THUMBW, THUMBH);
+	offscreenCtx.drawImage(thumbs[1], W-GUIW, THUMBH*5, THUMBW, THUMBH);
+	offscreenCtx.rect(W-GUIW,0,GUIW,H);
+	offscreenCtx.stroke(); 
+	// thumbnails*/
+
+	// draw minor sin axes
+	//
+	offscreenCtx.strokeStyle = graycol;
+	offscreenCtx.beginPath();	
+	offscreenCtx.moveTo( GUIW/2, SINHEIGHT);
+	offscreenCtx.lineTo( GUIW/2, GUISY);
+	offscreenCtx.moveTo( 0, SINHEIGHT/4);
+	offscreenCtx.lineTo( GUIW, SINHEIGHT/4);
+	offscreenCtx.moveTo( 0, SINHEIGHT/2);
+	offscreenCtx.lineTo( GUIW, SINHEIGHT/2);
+	offscreenCtx.moveTo( 0, 3*SINHEIGHT/4);
+	offscreenCtx.lineTo( GUIW, 3*SINHEIGHT/4);
+	offscreenCtx.stroke(); 
+
+	offscreenCtx.strokeStyle = style1;
+
+	var res = 1.0/20.0;
+	var sy,dx=dx0=0;
+
+	offscreenCtx.beginPath();	
+	var NN = 20;
+	var res = 1.0/NN;
+	dx0=0;
+	for(var j=0; j<=NN; j++)
+	{
+		sy = j*res * 2.0 * Math.PI;		// 0-1 * 2PI
+
+		dx = GUIW/2 + Math.sin(sy+wavedir*simtime*SPEED) * GUIW/2 * (AMP/AMPMAX);
+
+
+		offscreenCtx.moveTo( dx0, GUISY+(j*res-res)*(SINHEIGHT-GUISY));
+	    if(j>0)
+	    	offscreenCtx.lineTo( dx,  GUISY+(j*res )*(SINHEIGHT-GUISY));
+	    dx0=dx;
+	}
+
+	// left panel gui decoration
+	// line between sinus and bottom
+	offscreenCtx.moveTo( xbarmuscle1, ybarmuscle1);
+    offscreenCtx.lineTo( xbarmuscle2, ybarmuscle1);
+    offscreenCtx.moveTo( xbarmuscle1, ybarmuscle2);
+    offscreenCtx.lineTo( xbarmuscle2, ybarmuscle2);
+	offscreenCtx.stroke();
+
+	// muscles	
+	for(var s=0; s<NUMS; s++)
+	if(muscle[s])
+	{
+		// draw muscle bar on GUI element
+		offscreenCtx.beginPath();
+		offscreenCtx.moveTo( 0, musclebary[s] + DEFMUSCLEBARY);
+		offscreenCtx.lineTo( GUIW, musclebary[s] + DEFMUSCLEBARY);
+		offscreenCtx.stroke();
+		offscreenCtx.beginPath();
+		offscreenCtx.arc(GUIW/2+musclebarx[s], musclebary[s]+DEFMUSCLEBARY, RADIUS*lwm, 0, 2*Math.PI);
+		offscreenCtx.stroke();			
+		if(s==ms)				// mouse over the muscle
+		{
+			offscreenCtx.beginPath();
+			offscreenCtx.moveTo( GUIW/2+musclebarx[s], musclebary[s]+DEFMUSCLEBARY+RADIUS*lwm*2 );
+			offscreenCtx.lineTo( GUIW/2+musclebarx[s], musclebary[s]+DEFMUSCLEBARY-RADIUS*lwm*2 );
+			offscreenCtx.stroke();
+		}
+
+	}
+
+	// draw controls g, f, k
+	offscreenCtx.font="12px Courier";
+	offscreenCtx.fillText("g",GUIW / 3 - FS, ybarmuscle2 + FS); 
+	offscreenCtx.fillText("f",2*GUIW / 3 - FS, ybarmuscle2 +FS); 
+	offscreenCtx.fillText("k",GUIW - FS, ybarmuscle2 +FS); 
+
+
+	offscreenCtx.beginPath();	
+	offscreenCtx.moveTo( 0, YBOTTOMGFK);			// horizontal bar
+	offscreenCtx.lineTo( GUIW, YBOTTOMGFK);
+	offscreenCtx.moveTo( XBOTTOMF, ybarmuscle2);		// vertical lines
+	offscreenCtx.lineTo( XBOTTOMF, H);
+	offscreenCtx.moveTo( XBOTTOMK, ybarmuscle2);
+	offscreenCtx.lineTo( XBOTTOMK, H);
+	
+
+	offscreenCtx.moveTo( XBOTTOMG, 				YBOTTOMGFK + (1.0-g/GMAX)*YBOTTOMHEIGHT);
+	offscreenCtx.lineTo( XBOTTOMG+XBOTTOMDELTA, YBOTTOMGFK + (1.0-g/GMAX)*YBOTTOMHEIGHT);
+	offscreenCtx.moveTo( XBOTTOMG+XBOTTOMDELTA/2, H);
+	offscreenCtx.lineTo( XBOTTOMG+XBOTTOMDELTA/2, YBOTTOMGFK + (1.0-g/GMAX)*YBOTTOMHEIGHT);
+
+
+	offscreenCtx.moveTo( XBOTTOMF, 				YBOTTOMGFK + (1.0-f/FMAX)*YBOTTOMHEIGHT);
+	offscreenCtx.lineTo( XBOTTOMF+XBOTTOMDELTA, YBOTTOMGFK + (1.0-f/FMAX)*YBOTTOMHEIGHT);
+	offscreenCtx.moveTo( XBOTTOMF+XBOTTOMDELTA/2, H);
+	offscreenCtx.lineTo( XBOTTOMF+XBOTTOMDELTA/2, YBOTTOMGFK + (1.0-f/FMAX)*YBOTTOMHEIGHT);
+
+	offscreenCtx.moveTo( XBOTTOMK, 				YBOTTOMGFK + (1.0-k/KMAX)*YBOTTOMHEIGHT);
+	offscreenCtx.lineTo( XBOTTOMK+XBOTTOMDELTA, YBOTTOMGFK + (1.0-k/KMAX)*YBOTTOMHEIGHT);
+	offscreenCtx.moveTo( XBOTTOMK+XBOTTOMDELTA/2, H);
+	offscreenCtx.lineTo( XBOTTOMK+XBOTTOMDELTA/2, YBOTTOMGFK + (1.0-k/KMAX)*YBOTTOMHEIGHT);
+	offscreenCtx.stroke(); 
+
+	// solid circles on bars
+	offscreenCtx.beginPath();
+	offscreenCtx.arc(XBOTTOMG+XBOTTOMDELTA/2 , YBOTTOMGFK + (1.0-g/GMAX)*YBOTTOMHEIGHT , 0.5*RADIUS*lwm, 0, 2*Math.PI);
+	offscreenCtx.fill();		
+	offscreenCtx.beginPath();
+	offscreenCtx.arc(XBOTTOMF+XBOTTOMDELTA/2 , YBOTTOMGFK + (1.0-f/FMAX)*YBOTTOMHEIGHT , 0.5*RADIUS*lwm, 0, 2*Math.PI);
+	offscreenCtx.fill();		
+	offscreenCtx.beginPath();
+	offscreenCtx.arc(XBOTTOMK+XBOTTOMDELTA/2 , YBOTTOMGFK + (1.0-k/KMAX)*YBOTTOMHEIGHT , 0.5*RADIUS*lwm, 0, 2*Math.PI);
+	offscreenCtx.fill();		
+
+	//offscreenCtx.restore();
+
+}
+
+loop=function() 
+{
+	//alert('101');
+	alwaystime = alwaystime + deltatime;
+
+	if(initialized==1)
+	{
+		if(!pause)
+		{
+			simtime = simtime + deltatime;
+
+			// muscles
+			for(var s=0; s<NUMS; s++)
+			if(muscle[s])
+			{
+				//springs[s*3+2] 
+				//= springslen[s] * (1 + AMP * Math.sin( simtime * SPEED + (s+1)*3.14/5.0));
+
+				var relBarY = (-(musclebary[s]+DEFDISTBELOWSINHEIGHT))/SINHEIGHT;	// 0-1
+				var relBarX = ((GUIW/2+musclebarx[s])/GUIW);						// 0-1
+
+				if( relBarY > 0 )
+				springs[s*3+2] = springslen[s] * (1 + relBarX*AMP * Math.sin( wavedir*simtime * SPEED + (relBarY)*2.0*3.141519));							
+			}
+
+			for(var b=0; b<NUMP; b++)
+			{
+				fx[b] = 0;	7
+				fy[b] = m[b]*g*gonoff;
+
+				// friction (Stokes)
+				fx[b] -= CDRAG*vx[b];
+				fy[b] -= CDRAG*vy[b];
+			}
+
+			// Hooke Law
+			var x1,x2,y1,y2,r12d;
+			var force;
+			var vx12,vy12;
+			var Fx,Fy;
+			for(var i=0 ; i < NUMS ; ++i)
+			{
+				x1 = x[ springs[i*3+0] ];
+				y1 = y[ springs[i*3+0] ];				
+				x2 = x[ springs[i*3+1] ];
+				y2 = y[ springs[i*3+1] ];				
+				r12d = dist(x1,y1,x2,y2);
+				if(r12d != 0)
+				{
+					vx12 = vx[springs[i*3+0]] - vx[springs[i*3+1]];
+					vy12 = vy[springs[i*3+0]] - vy[springs[i*3+1]];
+
+					force = (r12d - springs[i*3+2]) * k + (vx12 * (x1 - x2) + vy12 * (y1 - y2)) * KD / r12d;
+
+					Fx = ((x1 - x2) / r12d ) * force;
+					Fy = ((y1 - y2) / r12d ) * force;
+
+					fx[ springs[i*3+0] ] -= Fx;
+					fy[ springs[i*3+0] ] -= Fy;
+					fx[ springs[i*3+1] ] += Fx;
+					fy[ springs[i*3+1] ] += Fy;
+				}
+			
+				//nx[i] =  (y1 - y2) / r12d;
+				//ny[i] =  -(x1 - x2) / r12d;
+				slen[i] = r12d;
+			}			
+
+			
+
+			for(var b=0; b<NUMP; b++)
+			if(b!=dragpoint)
+			if(b!=springs[dragspring*3+0] && b!=springs[dragspring*3+1])	// none of points used in drag spring
+			if(PT[b] != POINT_FIXED)
+			{
+				vx[b] = vx[b] + fx[b]/m[b]*dt;
+				vy[b] = vy[b] + fy[b]/m[b]*dt;
+				x[b] = x[b] + vx[b]*dt;
+				y[b] = y[b] + vy[b]*dt;
+				if(x[b]<R[b]+GUIW)	{ x[b] = R[b] + GUIW;  vy[b]=vy[b]*f;vx[b]=-vx[b]; if(autoreverseonoff && waslefthit==0) {wavedir*=-1; waslefthit=1; wasrighthit=0}}  //
+				if(y[b]<R[b])	{ y[b] = R[b]; vy[b]=-vy[b]; vx[b]=vx[b]*f;}
+				//if(x[b]>W-R[b]-GUIW)	{ x[b] = W-R[b]-GUIW;  vy[b]=vy[b]*f; vx[b]=-vx[b]; if(autoreverseonoff) wavedir*=-1;} //
+				if(x[b]>W-R[b])	{ x[b] = W-R[b];  vy[b]=vy[b]*f; vx[b]=-vx[b]; if(autoreverseonoff && wasrighthit==0) {wavedir*=-1; wasrighthit=1; waslefthit=0;}} //
+				if(y[b]>H-R[b])	{ y[b] = H-R[b]; vy[b]=-vy[b]; vx[b]=vx[b]*f;}	// bottom//=vx[b]*0.5;
+			}
+		}
+
+	//alert('102');
+		// draw my stuff
+	//	drawing=1;
+	//drawoffscreen("rgb(255,255,255)", "rgb(255,255,255)","rgb(255,255,255)", 32, simtime);	
+		
+		//Clear Screen
+
+		offscreenCtx.fillStyle = Black;
+		offscreenCtx.fillRect(0,0,W,H);
+		//drawoffscreen("rgb(255,255,255)", "rgb(255,255,255)", "rgb(120,120,120)",1.0,simtime);
+		drawoffscreen(P1color, P2color, GrayColor,1.0,simtime);
+//		drawing=0;
+		ctx.drawImage(offscreenCanvas, 0,0);
+	
+	}
+	//alert('103');
+
+	requestAnimationFrame( loop );
+};
+//alert('106');
+
+requestAnimationFrame( loop );
+// 30 Hz
+//setInterval(loop, 1000/50);
+
+</script>
+
+
+<!-- adobe kuler Copy of Settle -->
+ <style type="text/css">
+html, body 
+{
+ 	background: rgb(0,0,0);
+ 	margin: 0px; 
+   	font-family: "Arial", Arial, monospace;
+
+ }
+
+section {
+  float: right;
+   margin: 0;
+  width: 63%;
+}
+aside {
+  float: right;
+    margin: 14px 1.5% 10px 1.5%;
+  width: 43%;
+}
+
+  canvas { /*rgb(51,255,51)*/
+  	border: none; /* dotted 1px rgb(145,124,143); */
+  	border-bottom: 2px dotted rgb(145,124,143);
+  	border-top: 1px dotted rgb(145,124,143);
+  	border-right: 1px dotted rgb(145,124,143);
+  	background: rgb(0,0,0);
+    margin-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 100%;
+   }
+   
+button {
+    background-color: #ffffff; 
+    border: none;
+    color: black;
+    padding: 2px 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  	border: solid 1px; 
+  	 border-radius: 1px;
+}
+button:hover
+{
+transform: scale(1.0);
+-webkit-filter: brightness(90%);
+transition: all .1s ease-in-out;
+}
+.but{
+ 	background: none; 
+    border: none;
+    display: inline-block;
+  	width: 60px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  margin: auto;      
+  border: 1px solid;
+  border-color: #00aaff;    
+}
+
+.but:hover
+{
+transform: scale(1.1);
+-webkit-filter: brightness(100%);
+transition: all .1s ease-in-out;
+}
+
+.div800 {
+	 margin-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0 auto;
+    display: block;
+    width: 800px;
+    border: none;/*1px dashed;*/
+    text-align: right;
+}
+.column {
+    float: left;
+    width: 30%;
+    padding: 5%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+	height: 30px;
+}
+.aLeft div {
+    float: left;
+    clear: none; 
+}
+.aRight div {
+    float: right;
+    clear: none; 
+}
+.selectmenu {
+	width: 199px;
+	padding-left: 10px;
+	height: 30px;
+}
+
+.btn {
+  background-color: Black;
+  border: none;
+  color: white;
+
+  padding: 2px 2px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn2 {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 6px 6px;
+  font-size: 18px;
+  cursor: pointer;
+}
+/*#button{clear:both;float:right;width:100px}*/
+
+/*  body { background: rgb(47,52,64); }*/
+/* remove underline */
+a:link { text-decoration: none; color: black; }
+a:visited {text-decoration: none; color: black;}
+a:hover {text-decoration: none; color: black;}
+a:active { text-decoration: none; color: black; }
+ </style>
+ </body>
+</html>
+
+

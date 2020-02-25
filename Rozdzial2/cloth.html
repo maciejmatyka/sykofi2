@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Cloth JS, Maciej Matyka 2018</title>
+    <meta name="description" content="Symulacja zachowania się tkaniny w polu grawitacyjnym. Kod
+    przygotowany na potrzeby ilustracji rozdziału o modelu mas i sprężynek w książce
+    'Symulacje Komputerowe w Fizyce, wydanie 2 - rozszerzone'. ">
+</head>
+ <body>
+
+ 
+<canvas id="mycanvas" width="200" height="200"></canvas>
+<br>
+
+
+<script type="text/javascript">
+
+var W = 667;
+var H = 375;
+
+var SCALESCREEN = 1;
+var clothScore=0;
+var NUMP = 171;
+var NUMS = 0;//NUMP+1;
+var BALLRADIUS = 40;
+var KD = 10;
+var KS = 345;	// should not be equal (visualization)
+var dt = 0.02;
+
+var mouseIsDown = false;
+var freepoint=[];
+var x=[];
+var y=[];
+var xm1 = [];
+var ym1 = [];
+var xp1 = [];
+var yp1 = [];
+var vx=[];
+var vy=[];
+var fx=[];
+var fy=[];
+var springs=[];
+var SS=4;
+var nx=[];
+var ny=[];
+var YTOP=H/6;
+var cut = 0;
+var cutclicked = 1;
+var NX = 60;
+var NY = 20;
+var isRedStarUp  = 0;
+var numStarBottom = 0;
+
+var soundsonoff = 0;
+
+
+var step=0;
+var gx = 0.0;
+var gy = 30;//210.0;
+var mass=[];
+var Score=0;
+
+var GCLOTH = 9.8;
+var devicegx = 0;
+var devicegy = 9.8;
+var grotx;
+var groty;
+var RotationBonus =1;
+var isAdditionalSpring=0;
+
+var wasatearinghere;
+var initializedCloth=0;
+
+var mouseIsDown = false;
+var quitCloth=0;
+
+var prevwasatearinghere = 0;
+
+var wascalledcomeback=0;
+var logo = new Image();
+var canvas;
+var ctx;
+
+window.onload = function()
+{
+	// pobierz identyfikatory dla płótna
+	canvas = document.getElementById('mycanvas');
+	W=canvas.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+	H=canvas.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+	ctx = canvas.getContext('2d');
+
+	// załaduj logo
+	logo.src = 'logo.jpg';
+	
+	// pierwsze wywołanie pętli
+	initCloth();
+	requestAnimationFrame(loopCloth);
+}
+
+
+function getMousePos(ev)
+{
+	var r = canvas.getBoundingClientRect();
+	return {
+		x: (ev.pageX - canvas.offsetLeft)/SCALESCREEN,
+		y: (ev.pageY - canvas.offsetTop)/SCALESCREEN
+		//ev.clientX - r.left,
+		//y: //ev.clientY - r.top
+		};
+}
+
+
+function remove_local_events()
+{
+	canvas.removeEventListener("touchstart", touchStartHandlerCloth, false);
+	canvas.removeEventListener("touchend", touchEndHandlerCloth, false);
+	canvas.removeEventListener("touchmove", touchMoveHandlerCloth, false);  			
+	canvas.removeEventListener("mousedown", mouseDownHandlerCloth, true);
+	canvas.removeEventListener("mouseup", mouseUpHandlerCloth, true);
+	canvas.removeEventListener("mousemove", mouseMoveHandlerCloth, true);   
+
+}
+
+function AddSpring(pi,i,j,_k)
+{
+	springs[pi*SS+0]=i;
+	springs[pi*SS+1]=j;
+	springs[pi*SS+2]=Math.sqrt( (x[i]-x[j])*(x[i]-x[j])+(y[i]-y[j])*(y[i]-y[j]));
+	springs[pi*SS+3]=_k;
+	NUMS++;
+}
+
+function delSpring(s)
+{
+	springs[s*SS+0] = springs[(NUMS-1)*SS+0];
+	springs[s*SS+1] = springs[(NUMS-1)*SS+1];
+	springs[s*SS+2] = springs[(NUMS-1)*SS+2];
+	springs[s*SS+3] = springs[(NUMS-1)*SS+3];
+	NUMS--;	
+}
+
+function cutting(_x,_y)
+{
+	// find if any point closest than epsilon
+	var eps = 12;
+	
+	for(var i=0; i<NUMP; i++)
+	{
+		var d = dist(x[i],_x,y[i],_y);
+		if(d<eps)
+		{
+			freepoint[i] = 1;			
+			if(Math.random()<0.25)
+			{
+				//addStar(1);
+				//addScore(3);
+				clothScore+=3;
+				//addInfo(x[i], y[i], "+30", 20, 0, -1, 0);
+				/*if(soundsonoff==1)
+				{
+					clicksnd.play();
+				}*/
+			}
+
+		}
+		
+	}
+}
+
+
+
+function CreateCloth()
+{
+	var k;
+	k=0;
+	NUMS=0;
+	NUMP=0;
+	
+	for(var j=0 ; j < NY ; ++j)
+	for(var i=0 ; i < NX ; ++i)
+	{
+		x[k] = 0.25/2*W+0.25*i*W/(NX-1);
+		y[k] = H/12.5+j*5.5*H/400;
+		xm1[k] = x[k];
+		ym1[k] = y[k];
+		xp1[k] = x[k];
+		yp1[k] = y[k];
+		
+		vx[k] = (Math.random()-0.5)*Math.sin(10.1*j)*20.0*j;
+		vy[k] = (Math.random()-0.5)*Math.sin(10.1*j)*20.0*j;
+		fx[k] = (Math.random()-0.5)*1000.1;
+		fy[k] = (Math.random()-0.5)*1000.1;
+		mass[k] =1.1;
+		freepoint[k]=0; 
+		k++;
+	}
+	NUMP=k;
+
+	
+	// springs
+	k=0;7
+	//l->r
+	for(var j=0 ; j<NY ; ++j)
+	{
+		for(var i=0 ; i<NX-1 ; ++i)
+		{
+			AddSpring(NUMS,k,k+1, KS);   
+			k++;
+		}
+		k++;
+	}
+
+	k=0;
+	// u->d
+	for(var i=0 ; i<NX ; ++i)
+	for(var j=0 ; j<NY ; ++j)
+	{
+		if(k+NX<NX*NY)
+		AddSpring(NUMS,k,k+NX,KS );   
+		k++;
+	}
+
+}
+
+function dist(x1,x2,y1,y2)
+{
+	return Math.sqrt( (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) );
+}
+var closestpoint = 0;
+function findclosest(_x, _y)
+{
+	closestpoint = -1;
+	var dmin=1e1;
+	///var mindistancetocatch=20;
+	for(var p=NX+1; p<NUMP; p++)
+	{
+		var d = dist(x[p],_x,y[p],_y);
+		if(d<dmin)
+		{
+			closestpoint = p;
+			dmin=d;
+		}
+	}
+}
+
+
+var mousedownx;
+var mousedowny;
+var pointdownx;
+var pointdowny;
+
+function mymousedown(_x, _y) 
+{	
+	mousedownx=_x;
+	mousedowny=_y;
+	mouseIsDown=true;	
+	
+//	if(inRepeatButton(_x,_y))	return;
+//	if(inBackButton(_x,_y))		return;
+//	if(inNextButton(_x,_y))		return;
+
+	//buttons_mousedown(_x,_y);
+	// decide cut or not to cut
+	var dmin=1e6;
+	for(var p=NX+1; p<NUMP; p++)
+	{
+		var d = dist(x[p],_x,y[p],_y);
+		if(d<dmin && (!freepoint[p]))
+		{
+			closestpoint = p;
+			dmin=d;
+		}
+	}		
+	if(dmin<0.009*W)
+		cut=1;
+	else
+		cut=0;
+			
+	if(cut==0)
+	{
+		if(closestpoint!=-1)
+		{
+			pointdownx = x[closestpoint];
+			pointdowny = y[closestpoint];
+		}
+	}
+	else
+	{
+		cutting(_x,_y);		
+		//if(closestpoint!=-1)
+		{
+			pointdownx = x[closestpoint];
+			pointdowny = y[closestpoint];
+		}
+
+	}
+	
+} 
+
+
+function mymouseup(_x, _y) 
+	{ 
+		mouseIsDown = false;
+		closestpoint = -1;
+		
+		//if(processModeInfo())
+		//	return;
+		
+		
+		//buttons_mouseup(_x,_y);
+	}
+
+var xm0,ym0;
+function mymousemove(_x, _y) 
+{
+		
+	if(mouseIsDown)
+	{
+		//buttons_mousemove(_x,_y); 
+		if(cut==0)
+		{
+			if(closestpoint!=-1 && closestpoint>NX)
+			{
+				x[closestpoint] = (_x+(pointdownx-mousedownx));
+				y[closestpoint] = (_y+(pointdownx-mousedownx));
+			}
+		}
+		else
+		{
+			cutting(_x, _y);			
+		}
+
+	}
+}
+
+var touches;
+//prevent from scrolling
+function touchMoveHandlerCloth(e)
+{
+		touches = e.changedTouches;
+		var _x = (touches[0].pageX-canvas.offsetLeft)/SCALESCREEN;
+		var _y = (touches[0].pageY-canvas.offsetTop)/SCALESCREEN;    			
+		mymousemove(_x,_y);
+		e.preventDefault();
+}
+
+function touchStartHandlerCloth(e)
+{ 
+			touches = e.changedTouches;
+			var _x = (touches[0].pageX-canvas.offsetLeft)/SCALESCREEN;
+			var _y = (touches[0].pageY-canvas.offsetTop)/SCALESCREEN;    			
+			mymousedown(_x,_y);				
+			e.preventDefault();
+}
+
+function touchEndHandlerCloth(event)
+{ 
+			var _x = (touches[0].pageX-canvas.offsetLeft)/SCALESCREEN;
+			var _y = (touches[0].pageY-canvas.offsetTop)/SCALESCREEN;    			
+			mymouseup(_x,_y);				
+			//e.preventDefault();
+}
+
+function mouseDownHandlerCloth(event)
+{
+	var p = getMousePos(event);
+	var _x = p.x;
+	var _y = p.y;
+
+	mymousedown(_x, _y);
+	event.preventDefault();
+}
+
+function mouseUpHandlerCloth(event)
+{
+	var p = getMousePos(event);
+	var _x = p.x;
+	var _y = p.y;
+	mymouseup(_x,_y);
+	event.preventDefault();
+}
+
+function mouseMoveHandlerCloth(event)
+{
+	var p = getMousePos(event);
+	var _x = p.x;
+	var _y = p.y;
+	mymousemove(_x,_y);
+	event.preventDefault();
+}
+
+var setClothuninitialized = function()
+{
+	initializedCloth=0;
+}
+
+var doconstraints = 1;
+var constraintsOnOff = function ()
+{
+		doconstraints = 1 - doconstraints;
+}
+
+
+//Initialize function
+var initCloth = function () {
+    // TODO:: Do your initialization job
+	//t=0;
+	//t+=60;
+	
+
+	canvas.addEventListener("mousedown", mouseDownHandlerCloth, true);
+	canvas.addEventListener("mouseup", mouseUpHandlerCloth, true);
+	canvas.addEventListener("mousemove", mouseMoveHandlerCloth, true);   
+	
+    canvas.addEventListener("touchstart", touchStartHandlerCloth, false);
+    canvas.addEventListener("touchend", touchEndHandlerCloth, false);
+    canvas.addEventListener("touchmove", touchMoveHandlerCloth, false);    
+ 	
+ 	window.addEventListener("keypress", constraintsOnOff, false); 
+
+
+    flownin=0;
+	
+	if(!initializedCloth)
+	{
+		step=0;
+		NUMS=0;
+		//level++;
+		wasatearinghere=0;
+		CreateCloth();
+		//addScore(1);
+	}
+	initializedCloth=1;
+    
+    window.addEventListener("deviceorientation", function(e) 
+    		   {
+    		      alpha= e.alpha;
+    		      beta = e.beta;
+    		      gamma = e.gamma;
+    		   }, true);    
+    
+    
+  //  start();
+    quitCloth=0;
+	//level=2;
+	
+	ctx.strokeStyle = "rgb(245,249,252)";
+	ctx.globalAlpha=0.9;
+	
+
+};
+
+ 
+
+function doApplyInverseDynamicsConstraint(p1,p2, len0)
+{
+	var	r12x;			// actual distance vector
+	var	r12y;			// actual distance vector
+	var r12d;			// actual distance vector length
+	var	diff;			// distance vector - rest length
+	
+	// calculate distance of spring start and end points
+	
+	x1 = x[ p1 ];
+	y1 = y[ p1 ];				
+	x2 = x[ p2 ];
+	y2 = y[ p2 ];				
+	r12x = x1 - x2;
+	r12y = y1 - y2;
+	r12d = Math.sqrt( r12x*r12x + r12y*r12y );
+	diff	=	Math.abs(r12d - len0);		// distance vector - rest length
+
+	
+	// if distance between points in larger than maximum distance then
+	// apply constraint
+
+	var _maximumDistance = 0.4 * len0;
+
+
+	if( doconstraints )					// changed by user input
+	if(diff > _maximumDistance )
+	{
+		// use diff for calculation of distance minus _maximumDistance
+
+		diff = diff - _maximumDistance;
+
+		// norm r12 vector
+
+		r12x /= r12d;
+		r12y /= r12d;
+
+		// calculate vector which will be added and substituted from p1 and p2
+		r12x = r12x * (diff / 2.0);
+		r12y = r12y * (diff / 2.0);
+
+		// finally apply constraints
+
+		//if(p1.m)
+		if(freepoint[p1]+freepoint[p2] == 0)
+		{
+			if(p1>=NX)
+			if(p1!=closestpoint)
+			{
+				x[p1] = x[p1] - r12x;
+				y[p1] = y[p1] - r12y;
+			}
+			//if(p2.m)
+			if(p2!=closestpoint)
+			{
+				x[p2] = x[p2] + r12x;
+				y[p2] = y[p2] + r12y;
+			}
+		}
+	}
+	
+}		
+
+loopCloth=function() 
+{
+	
+	angle = 0;//alpha*Math.PI/180.0;
+	grotx = gx*Math.cos(angle)-gy*Math.sin(angle);
+	groty = gx*Math.sin(angle)+gy*Math.cos(angle);	
+	
+
+	
+
+	
+	//drawProcessInfoMode(infoclothimg);
+	
+	//if(infomodeon==0)
+	if(initializedCloth==1)
+	{
+		//if(!pause)
+		{
+		
+				// count freepoints and reset
+				var numf = 0;
+				for(var i=0; i<NUMP; i++)
+				{
+					//if(freepoint[i]) numf++;
+					if(y[i] > H) numf++;
+				}
+				if(numf > NUMP-NUMP/5)
+				{
+					initializedCloth=0;
+					mouseIsDown=false;
+					initCloth();
+				}
+
+
+				// gravity
+				for(var i=NX; i<NUMP; i++)
+				if(i!=closestpoint)
+				{
+					fx[i] = mass[i]*(grotx+GCLOTH*devicegx); //0;
+					fy[i] = mass[i]*(groty+GCLOTH*devicegy);//mass[i]*g;
+				}
+				
+				// spring
+				var x1,x2,y1,y2;
+				var r12d;
+				var f;
+	
+				var vx12,vy12;
+				var Fx,Fy;
+				var volume;
+				for(var i=0 ; i < NUMS ; ++i)
+				if(!(freepoint[springs[i*SS+0]] + freepoint[springs[i*SS+1]]) )
+				{
+					x1 = x[ springs[i*SS+0] ];
+					y1 = y[ springs[i*SS+0] ];				
+					x2 = x[ springs[i*SS+1]];
+					y2 = y[ springs[i*SS+1] ];				
+					var _ks =  springs[i*SS+3];
+	
+					r12d = Math.sqrt ( (x1 - x2) *(x1 - x2)  +  (y1 - y2) * (y1 - y2) );
+					
+																// root  of the distance
+					if(r12d != 0)
+					{
+						vx12 = vx[springs[i*SS+0]] - vx[springs[i*SS+1]];
+						vy12 = vy[springs[i*SS+0]] - vy[springs[i*SS+1]];
+	
+						f = (r12d - springs[i*SS+2]) * _ks + (vx12 * (x1 - x2) + vy12 * (y1 - y2)) * KD / r12d;
+	
+						Fx = ((x1 - x2) / r12d ) * f;
+						Fy = ((y1 - y2) / r12d ) * f;
+	
+						fx[ springs[i*SS+0] ] -= Fx;
+						fy[ springs[i*SS+0] ] -= Fy;
+						fx[ springs[i*SS+1] ] += Fx;
+						fy[ springs[i*SS+1] ] += Fy;
+					}
+				
+					nx[i] =  (y1 - y2) / r12d;
+					ny[i] =  -(x1 - x2) / r12d;
+				}			
+				
+			if(step==0)
+			{
+				step=1;
+				for(var i=0; i<NUMP; i++)
+				if(i!=closestpoint)
+				{
+					//if(i!=0)
+					xp1[i] = x[i]+dt*dt*fx[i]/mass[i];
+					yp1[i] = y[i]+dt*dt*fy[i]/mass[i];
+				}
+					
+			}
+			else
+			{
+				for(var i=NX; i<NUMP; i++)
+				if(i!=closestpoint)
+				{	
+					xp1[i] = 2*x[i]-xm1[i]+dt*dt*fx[i]/mass[i];	
+					yp1[i] = 2*y[i]-ym1[i]+dt*dt*fy[i]/mass[i];
+				}
+			}
+			
+			
+			
+			
+			for(var i=NX; i<NUMP; i++)
+			if(i!=closestpoint)
+			{
+				
+				xm1[i] = x[i];
+				ym1[i] = y[i];
+				x[i] =	xp1[i];
+				y[i] = 	yp1[i];	
+	
+				vx[i] = (x[i] - xm1[i]) / (2*dt);
+				vy[i] = (y[i] - ym1[i]) / (2*dt);
+				
+			}
+	
+			
+			// tearing
+			var dd;
+			var r12d;
+			
+			for(var i=NUMS-2 ; i > 0 ; i--)
+			if(mouseIsDown)
+			{
+					
+					var k1 = springs[i*SS+0];
+					var k2 = springs[i*SS+1];
+					x1 = x[ k1 ];
+					y1 = y[ k1 ];				
+					x2 = x[ k2 ];
+					y2 = y[ k2 ];				
+					if(!freepoint[k1] && !freepoint[k2])
+					{
+						r12d = dist(x1,x2,y1,y2);
+		
+						if(Math.abs(r12d - springs[i*SS+2])/springs[i*SS+2]>8.0)
+						{
+							freepoint[k1]=1;
+							
+							for(var kk=0; kk<NUMP; kk++)
+							if(freepoint[kk]==0)
+							{
+								dd=dist(x[kk],x2, y[kk], y2);
+								if(dd>20 && dd<40)
+								{
+									//if(Math.random()>0.35)
+									{
+										freepoint[kk]=1;
+										if(Math.random()>0.7)
+										{
+											//addScore(6);
+											clothScore+=6;
+											//addInfo(x[kk], y[kk], "Tearing bonus", 30, 1.0*(Math.random()-0.5), -1, 0);
+											//addInfo(x[kk], y[kk], "+150 points", 30, 0, -1*(Math.random()-0.5), 1000);
+											
+											
+										}
+									}
+									wasatearinghere+=1;
+								}
+						}
+					}
+				}
+			}
+			prevwasatearinghere = wasatearinghere;
+	
+		
+			
+			for(var i=0; i<NUMS; i++)
+				doApplyInverseDynamicsConstraint(springs[i*SS+0],springs[i*SS+1], springs[i*SS+2],i);
+			for(var i=NUMS-1; i>=0; i--)
+				doApplyInverseDynamicsConstraint(springs[i*SS+0],springs[i*SS+1], springs[i*SS+2],i);
+			
+	
+			for(var i=NX; i<NUMP; i++)
+			if(i!=closestpoint)		
+			{
+				vx[i] = (x[i] - xm1[i]) / (2*dt);
+				vy[i] = (y[i] - ym1[i]) / (2*dt);
+			}
+		
+		} // !pause
+		
+		ctx.fillStyle="rgb(250,253,250)";
+		ctx.fillRect(0,0,W,H);			
+		ctx.fillStyle="rgb(0,0,0)";
+//		ctx.fillRect(0,0,W,H/8);
+//		ctx.fillRect(0,H-H/6.5,W,H);
+				
+		
+		ctx.lineWidth=1.0;
+		ctx.globalAlpha=1.0;
+		ctx.strokeStyle = "rgb(25,25,25)";
+				
+
+		var x1,y1,x2,y2;
+		ctx.beginPath();		
+		for(var i=NX-1; i<NUMS; i+=1)
+		if(!(freepoint[springs[i*SS+0]] + freepoint[springs[i*SS+1]]) )
+		{
+			x1 = x[springs[i*SS+0]];
+			y1 = y[springs[i*SS+0]];
+			x2 = x[springs[i*SS+1]];
+			y2 = y[springs[i*SS+1]];
+			ctx.moveTo(x1,y1);
+			ctx.lineTo(x2,y2);
+		}
+		
+		ctx.stroke();
+		
+	
+		//ctx.fillStyle = "rgb(245,249,252)";
+		ctx.fillStyle = "rgb(22,22,22)";
+		//ctx.beginPath();
+		var a=0;
+		var b=1;
+		ctx.beginPath();
+		isRedStarUp = 1;
+		numStarBottom = 0;
+		for(var i=0; i<NX; i++)
+		{			
+			
+			ctx.beginPath();
+			ctx.arc(x[i],y[i],1.5,0,2*Math.PI);
+			ctx.fill();
+
+		}
+
+		ctx.beginPath();
+		if(isAdditionalSpring==1)
+		{
+			//ctx.strokeStyle = "rgb(245,149,152)";
+			//ctx.globalAlpha=1.0;
+			ctx.moveTo(x[closestpoint],y[closestpoint]);
+			ctx.lineTo(x[NUMP+1],y[NUMP+1]);
+			ctx.stroke();
+		}
+	}
+
+	// narysuj logo
+	ctx.drawImage(logo,0,0);
+
+
+	requestAnimationFrame(loopCloth);
+}
+
+
+
+
+  </script>
+<!-- adobe kuler Copy of Settle -->
+ <style type="text/css">
+  canvas { border: 0px solid rgb(0,0,0); background: rgb(63,86,102);  }
+      html, body {
+        overflow: hidden;
+    } </style>
+ </body>
+</html>

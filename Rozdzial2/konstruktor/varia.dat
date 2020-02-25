@@ -1,0 +1,68 @@
+<!--<p style="text-align:center;" width="800">
+	Todo:<br>
+	
+	- import/export of models<br>
+	
+	Links: <br>
+	<a href="https://web.archive.org/web/20040212024753/http://www.warptera.com/">https://web.archive.org/web/20040212024753/http://www.warptera.com/</a>
+	<a href="https://web.archive.org/web/20031208183323/http://www.sodaplaycentral.com:80/models.php">https://web.archive.org/web/20031208183323/http://www.sodaplaycentral.com:80/models.php</a>
+	http://www.lightcycle.org/workspace/spring_set/spring_set_appvar.pde
+	https://processing.org/discourse/alpha/board_Contribution_Simlation_action_display_num_1083008179.html
+	http://www.lightcycle.org/workspace/spring_set/
+	http://www.tom-carden.co.uk/p5/soda_rip/appvar/index.html
+	https://web.archive.org/web/20031210110220/http://www.sodaplaycentral.com:80/articles/mss.php
+https://web.archive.org/web/20031208180149/http://www.sodaplaycentral.com:80/articles/articles.php
+https://web.archive.org/web/20160417141419/http://www.warptera.com:80/
+
+.. https://web.archive.org/web/20050309104454/http://sodaplay.com:80/constructor/beta/daintywalker.xml
+<model><comment/><container width="651" height="422"/><environment gravity="0.38046992" friction="0.028299415" springyness="0.5"/><collisions surface_friction="0.1" surface_reflection="-0.75"/><wave amplitude="0.23404256" phase="0.34554338" speed="0.012156863"/><settings gravitydirection="down" wavedirection="forward" autoreverse="on"/><nodes><mass id="m0" x="392.49963" y="73.369934" vx="-0.8951623" vy="-0.45419145"/><mass id="m1" x="337.63043" y="79.90161" vx="-0.7782596" vy="-0.05345259"/><mass id="m2" x="244.59506" y="78.90823" vx="-0.71850866" vy="-0.17758165"/><mass id="m3" x="186.78564" y="81.27075" vx="-1.0234175" vy="0.275354"/><mass id="m4" x="204.06589" y="2.0" vx="0.009436024" vy="0.5353442"/><mass id="m5" x="292.18124" y="52.208008" vx="-1.1719137" vy="-0.26688462"/><mass id="m6" x="339.63538" y="8.446869" vx="-1.6100771" vy="-0.7390088"/><mass id="m7" x="291.58768" y="109.44028" vx="-0.69016933" vy="-0.023878502"/><mass id="m8" x="369.77155" y="2.0" vx="0.021985983" vy="0.66246766"/><mass id="m9" x="219.71793" y="11.564728" vx="-3.2211688" vy="-0.43107113"/></nodes><links><spring a="m0" b="m1" restlength="55.0"/><spring a="m1" b="m2" restlength="93.0"/><spring a="m2" b="m3" restlength="58.0"/><spring a="m2" b="m5" restlength="54.589375"/><spring a="m5" b="m1" restlength="51.971146"/><spring a="m1" b="m7" restlength="55.470715"/><spring a="m7" b="m2" restlength="56.302753"/><spring a="m7" b="m5" restlength="57.035076"/><spring a="m5" b="m3" restlength="109.14211"/><spring a="m3" b="m7" restlength="108.52189"/><spring a="m7" b="m0" restlength="106.60675"/><spring a="m0" b="m5" restlength="103.32473"/><spring a="m0" b="m2" restlength="148.19601"/><spring a="m1" b="m3" restlength="150.78603"/><muscle a="m3" b="m4" restlength="79.47956" amplitude="0.5" phase="0.7901786"/><muscle a="m1" b="m6" restlength="77.7946" amplitude="0.5" phase="0.98660713"/><muscle a="m6" b="m0" restlength="80.23092" amplitude="0.5" phase="0.7901786"/><muscle a="m0" b="m8" restlength="78.92401" amplitude="0.5" phase="0.2857143"/><muscle a="m8" b="m1" restlength="77.16217" amplitude="0.5" phase="0.53125"/><muscle a="m2" b="m9" restlength="79.47956" amplitude="0.5" phase="0.0"/><muscle a="m9" b="m3" restlength="79.47956" amplitude="0.5" phase="0.2857143"/><muscle a="m4" b="m2" restlength="78.77182" amplitude="0.5" phase="0.5401786"/></links></model>
+</p>
+-->
+
+
+/*<model>
+	<comment/>
+	<container width="651" height="422"/>
+	<environment gravity="1.006620712" friction="0.05031007" springyness="0.5"/>
+	<collisions surface_friction="0.1" surface_reflection="-0.75"/>
+	<wave amplitude="1.0" phase="0.2336628" speed="0.012941176"/>
+	<settings gravitydirection="down" wavedirection="reverse" autoreverse="on"/>
+	<nodes>
+		<mass id="m0" x="331.325653165698" y="58.86311393901" vx="0.710084308216" vy="1.836994272996"/>
+		<mass id="m1" x="228.505917080009" y="116.759596639609" vx="0.432272009177" vy="0.082200742466"/>
+		<mass id="m2" x="234.487521317697" y="0" vx="0.178649863099" vy="0.857045494056"/>
+		<mass id="m3" x="289.044971485615" y="0" vx="-0.089068413539" vy="0.203648396092"/>
+		<mass id="m4" x="302.603988024402" y="0" vx="-0.074293154952" vy="0.418893400645"/>
+		<mass id="m5" x="278.570723069406" y="0" vx="-0.074293154952" vy="0.418593208633"/>
+	</nodes>
+	<links>
+		<spring a="m0" b="m1" restlength="116.992312648857"/>
+		<spring a="m1" b="m2" restlength="116.819865442004"/>
+		<spring a="m2" b="m0" restlength="117.820204681754"/>
+		<spring a="m3" b="m4" restlength="14.449913974188"/>
+		<spring a="m4" b="m5" restlength="21.600000858307"/>
+		<spring a="m5" b="m3" restlength="14.449913974188"/>
+		<muscle a="m0" b="m3" restlength="59.675122771276" amplitude="0.5" phase="0.2857143"/>
+		<muscle a="m3" b="m2" restlength="57.712394293284" amplitude="0.5" phase="0.7901786"/>
+		<muscle a="m3" b="m1" restlength="101.056816015637" amplitude="0.34" phase="0.5401786"/>
+	</links>
+
+	<triangles>
+		<triangle a="m1" b="m2" c="m3" drawing="d1"/>
+	</triangles>
+	<drawings>
+		<drawing id="d1" a="0,0" b="100,0" c="50,100">
+			<polygon color="ff4040">
+				<point x="20" y="0"/>
+				<point x="80" y="0"/>
+				<point x="50" y="100"/>
+			</polygon>
+			<polygon color="ffc0c0">
+				<point x="40" y="0"/>
+				<point x="60" y="0"/>
+				<point x="50" y="100"/>
+			</polygon>
+		</drawing>
+	</drawings>
+</model>
+*/
