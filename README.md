@@ -26,7 +26,7 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
 <img align="right" width="140" height="140" src="_IMG/lbm.jpg">
 
 * [**Rozdzial4/lbmfluid_book/**](Rozdzial4/lbmfluid_book/)
-  * implementacja C/C++ modelu [Gazu Sieciowego Boltzmanna LBM](https://en.wikipedia.org/wiki/Lattice_Boltzmann_methods) w 
+  * implementacja C/C++ modelu Gazu Sieciowego Boltzmanna LBM w 
   wersji jednofazowej z komentarzami odpowiadającymi układowi w rozdziale z książki. Jest to prosta implementacja modelu
   jednorelaksacyjnego z wizualizacją w OpenGL i biblioteką GLUT. Dodatkowo do kodu dołączone są procedury wizualizacji
   poprzez śledzenie ruchu cząsteczek płynu i ich rozsmarowywanie. Uwaga: możliwe są problemy z podwójnym buforowaniem na niektórych
@@ -35,8 +35,15 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
 <img align="right" width="140" height="140" src="_IMG/lbm3D.jpg">
 
 * [**Rozdzial4/lbmfluid3D**](Rozdzial4/lbmfluid3D)
-  * Model [LBM](https://en.wikipedia.org/wiki/Lattice_Boltzmann_methods) w wersji trójwymiarowej.
+  * Model [LBM](https://en.wikipedia.org/wiki/Lattice_Boltzmann_methods) w wersji trójwymiarowej, przybliżenie jednorelaksacyjne BGK.
   
+
+<img align="right" width="140" height="140" src="_IMG/drivencavitymrt.jpg">
+
+* [**Rozdzial4/lbmfluid-mrt/**](Rozdzial4/lbmfluid-mrt/)
+  * Przepływ w komorze (ang. Driven Cavity Flow). Implementacja moelu wielorelaksacyjnego (MRT) przepływu jednofazowego 2D z użyciem LBM dla 
+  wysokich [liczb Reynoldsa](https://pl.wikipedia.org/wiki/Liczba_Reynoldsa).
+
   
 <img align="right" width="140" height="140" src="_IMG/lbmmulti.jpg">
 
