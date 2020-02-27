@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>DLA-DiffusionLimitedAggregation</title>
+ </head>
+ <body>
+ 
+<canvas id="mycanvas" width="320" height="200"></canvas>
+<script type="text/javascript">
+
+var W=320;
+var H=200;
+var tab=[];
+var x=[];
+var y=[];
+var N = 5750;
+
+var mouseIsDown = false;
+
+var canvas = document.getElementById('mycanvas');
+var ctx = canvas.getContext('2d');
+function resizeCanvas() 
+{
+	canvas.style.width = window.innerWidth + "px";
+	canvas.style.height = window.innerHeight + "px";
+};
+// Webkit/Blink will fire this on load, but Gecko doesn't.
+window.onresize = resizeCanvas;
+// So we fire it manually...
+resizeCanvas();
+
+
+
+function getMousePos(event)
+{
+
+	var r = canvas.getBoundingClientRect();
+	return {
+			x: event.clientX,//(ev.pageX  - canvas.offsetLeft),
+			y: event.clientY//(ev.pageY  - canvas.offsetTop)
+		};
+}
+
+
+
+canvas.onmousedown = function (event) 
+{
+	mouseIsDown = true; 
+	var p = getMousePos(event);
+	var x = Math.floor(p.x * W / window.innerWidth);
+	var y = Math.floor(p.y * H / window.innerHeight);
+	tab[x + W*y] = 1;
+	event.preventDefault();
+}
+
+
+/*canvas.addEventListener('contextmenu', function(event) 
+{
+	init();
+	event.preventDefault();
+}, false);*/
+
+canvas.onmouseup = function (event) { 
+	mouseIsDown = false;
+event.preventDefault();
+ }	
+canvas.onmousemove = function (event)
+{
+	if(mouseIsDown)
+	{
+		var p = getMousePos(event);
+		var x = Math.floor(p.x * W / window.innerWidth);
+		var y = Math.floor(p.y * H / window.innerHeight);
+		tab[x + W*y] = 1;
+	}
+	event.preventDefault();
+}
+
+
+
+loop=function() 
+{
+
+	for(var i=0; i<N; i++)
+	{	
+		var r = Math.floor(Math.random() * 4);
+		var d=1;
+		switch(r)
+		{
+			case 0:	x[i]=x[i]+d; break;
+			case 1:	x[i]=x[i]-d; break;
+			case 2:	y[i]=y[i]+d; break;
+			case 3:	y[i]=y[i]-d; break;
+			default:
+				break;
+		}
+		//x[i]=x[i]+1;
+		
+		if(x[i]<0||x[i]>W||y[i]<0||y[i]>H)
+		{
+			x[i] = Math.floor(Math.random() * W);
+			y[i] = Math.floor(Math.random() * H);
+		}
+
+		var pos = x[i] + W * y[i];
+
+		if(tab[pos] + tab[pos-1] + tab[pos+1] + tab[pos+W] + tab[pos-W]+ tab[pos+W-1] + tab[pos-W-1]+ tab[pos+W+1] + tab[pos-W+1] > 0 )
+		{
+			tab[pos] = 1;
+			x[i] = x[N-1];
+			y[i] = y[N-1];
+			N--;
+		}
+	}
+
+	// draw
+
+	ctx.clearRect (0,0,W,H);
+	ctx.fillStyle = "rgb(245,229,252)";	
+	for(var i=0; i<W; i++)
+	for(var j=0; j<H; j++)
+	{
+		if(tab[i+W*j])
+		{			
+			ctx.fillRect (i,j,1,1);
+		}
+	}
+	ctx.fillStyle = "rgb(245,229,192)";	
+	for(var i=0; i<N; i++)
+	{
+		ctx.fillRect (x[i],y[i],1,1);
+	}
+
+	requestAnimationFrame(loop);
+}
+
+
+function init()
+{
+	canvas.addEventListener ("mouseout", canvas.onmouseup, false);
+
+	for(var i=0; i<W; i++)
+	for(var j=0; j<H; j++)
+	{
+		tab[i+W*j] = 0;
+	}
+
+	//tab[W/2+(H/2)*(W)] = 1;
+
+	for(var i=0; i<N; i++)
+	{
+		x[i] = Math.floor(Math.random()*W);
+		y[i] = Math.floor(Math.random()*H);
+	}
+}
+
+init();
+requestAnimationFrame(loop);
+
+	
+
+  </script>
+<!-- adobe kuler Copy of Settle -->
+ <style type="text/css">
+  canvas { border: 1px solid rgb(0,0,0); background: rgb(23,26,22);  }
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: rgb(247,252,254); 
+}
+  button { background: rgb(63,86,102); border: 1px solid rgb(0,0,0); color:rgb(245,229,192);   font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;  font-size:60%; }
+ </style>
+ </body>
+</html>

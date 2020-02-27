@@ -80,6 +80,11 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
 * [**Bonus/ripple2d.html**](Bonus/ripple2d.html)
   * Prosty automat komórkowy generujący rozchodzenie się fal w dwóch wymiarach. Kod w HTML5 z wizualizacją w przeglądarce.
 
+    <img align="right" width="140" height="140" src="_IMG/dla.jpg">
+
+* [**Bonus/ripple2d.html**](Bonus/dla.html)
+  * Tworzenie struktur - fraktali - DLA ([Diffusion Limited Aggregation](https://en.wikipedia.org/wiki/Diffusion-limited_aggregation)) - bardzo proste, ale ciekawe zjawisko fizyczne i prosty model służący do jego symulacji. Program w JS/HTML5, wizualizacja w czasie rzeczywistym. Interakcja myszą pozwala na dokładanie nowych zarodków fraktala.
+
   <img align="right" width="140" height="140" src="_IMG/palabos.jpg">
 
 * [**Bonus/PalabosCG/**](Bonus/PalabosCG/)
