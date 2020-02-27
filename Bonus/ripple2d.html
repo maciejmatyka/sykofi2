@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>2D Water</title>
+ </head>
+ <body>
+
+ <div class="wrapper" style="margin: 0 auto; width: 800px; position: relative; float: left;">
+	<canvas id="mycanvas" width="640" height="480"></canvas>
+</div>
+<script src="../include/backleft.js"></script>
+<br>
+
+<script type="text/javascript">
+
+var SCALE = 6;
+
+var W = 130*1;
+var H = 130*1;	
+var N = 8;
+
+var map = []
+var map2 = []
+
+var smoothed = []
+
+var canvas = document.getElementById('mycanvas');
+canvas.width = W*SCALE;
+canvas.height = H*SCALE;
+var ctx = canvas.getContext('2d');
+
+var offscreenCanvas = document.createElement('canvas');
+offscreenCanvas.width = canvas.width;
+offscreenCanvas.height = canvas.height;
+var offscreenCtx = offscreenCanvas.getContext('2d');
+
+var id = offscreenCtx.createImageData(1,1); // only do this once per page
+var d  = id.data;                        // only do this once per page
+d[3]   = 255;			//alpha
+
+var mouseIsDown = false;
+var clicked = false;
+
+function hit(x,y)
+{
+	x/=SCALE;
+	y/=SCALE;
+	x|=0;
+	y|=0;
+	// handle add sand event
+	map[x+y*W] = map2[x+y*W] = 1255;
+	map[x+(y-1)*W] = map2[x+(y-1)*W] = 1255;
+	map[x+1+(y)*W] = map2[x+1+(y)*W] = 1255;
+	map[x-1+(y)*W] = map2[x-1+(y)*W] = 1255;
+	map[x+(y+1)*W] = map2[x+(y+1)*W] = 1255;
+	map[x+1+(y-1)*W] = map2[x+1+(y-1)*W] = 1255;
+	map[x+1+(y+1)*W] = map2[x+1+(y+1)*W] = 1255;
+	map[x-1+(y-1)*W] = map2[x-1+(y-1)*W] = 1255;
+	map[x-1+(y+1)*W] = map2[x-1+(y+1)*W] = 1255;
+	
+}
+
+function getMousePos(e)
+{
+	var r = canvas.getBoundingClientRect();
+
+	return {
+			x: e.pageX - canvas.offsetLeft,
+			y: e.pageY - canvas.offsetTop
+		};
+
+}
+
+var prevx,prevy;
+canvas.onmousedown = function (event) 
+{ 
+	//var x = event.clientX;
+	//var y = event.clientY;
+	//x-=canvas.offsetLeft;
+	//y-=canvas.offsetTop;
+	var m = getMousePos(event);
+	var x = m.x;
+	var y = m.y;
+
+	hit(x,y);
+	mouseIsDown = true; 
+	clicked = true;
+}
+canvas.onmouseup = function (event) 
+{ 
+	mouseIsDown = false; 
+}
+
+canvas.onmousemove = function (event) 
+{ 
+	var m = getMousePos(event);
+	var x = m.x;
+	var y = m.y;
+
+	if(mouseIsDown)
+		hit(x,y);
+	//mouseIsDown = true; 
+}
+
+// http://stackoverflow.com/questions/521295/javascript-random-seeds
+var seed = 1;
+function random() {
+    var x = Math.sin(seed++) * 10000;
+    return x - Math.floor(x);
+}
+
+var step = 1;
+function computemap()
+{
+  	var damping = 0.9;
+  	step=1-step;
+
+  	if(!(step%2) )
+  	{
+
+		// corners
+  		/*map2[0+0] = map2[1+1*W];  
+  		map2[W-1+0] = map2[W-1+1*W]; 
+  		map2[0+(H-1)*W] = map2[1+(H-2)*W];  
+  		map2[W-1+(H-1)*W] = map2[W-1+(H-2)*W]; */
+
+		for(i=1;i<W-1; i++)	map2[i+0*W] = map2[i+1*W];  // j=0
+		for(i=1;i<W-1; i++)	map2[i+(H-1)*W] = map2[i+(H-2)*W];  // j=H-1
+		for(j=1;j<H-1; j++)	map2[0+j*W] = map2[1+j*W];  // i=0
+		for(j=1;j<H-1; j++)	map2[W-1+j*W] = map2[W-2+j*W];  // i=W-1
+
+	  	for(i=1;i<W-1; i++)
+		for(j=1;j<H-1; j++)
+		{
+			map2[i+j*W] = (map[i-1+j*W] + map[i+1+j*W] + map[i+(j+1)*W]+ map[i+(j-1)*W])/2.0 - map2[i+j*W];
+	        map2[i+j*W] = map2[i+j*W] * damping;       
+		}
+
+		for(i=1;i<W-1; i++)
+		for(j=1;j<H-1; j++)
+		{
+			smoothed[i+j*W]=(map[i-1+j*W] + map[i+1+j*W] + map[i+(j+1)*W]+ map[i+(j-1)*W])/4.0;
+			//smoothed[i+j*W]=map2[i+j*W];//(map2[i+j*W]+map[i+j*W])/2;
+		}
+	}
+	else
+	{
+  		
+
+		// corners
+/*  		map[0+0] = map[1+1*W];  
+  		map[W-1+0] = map[W-1+1*W]; 
+  		map[0+(H-1)*W] = map[1+(H-2)*W];  
+  		map[W-1+(H-1)*W] = map[W-1+(H-2)*W]; */
+
+  		// lines
+		for(i=1;i<W-1; i++)	map[i+0*W] = map[i+1*W];  // j=0
+		for(i=1;i<W-1; i++)	map[i+(H-1)*W] = map[i+(H-2)*W];  // j=H-1
+		for(j=1;j<H-1; j++)	map[0+j*W] = map[1+j*W];  // i=0
+		for(j=1;j<H-1; j++)	map[W-1+j*W] = map[W-2+j*W];  // i=W-1
+
+		// main
+		for(i=1;i<W-1; i++)
+		for(j=1;j<H-1; j++)
+		{
+			map[i+j*W] = (map2[i-1+j*W] + map2[i+1+j*W] + map2[i+(j+1)*W]+ map2[i+(j-1)*W])/2.0 - map[i+j*W];
+	        map[i+j*W] = map[i+j*W] * damping;       
+		}
+
+		for(i=1;i<W-1; i++)
+		for(j=1;j<H-1; j++)
+		{
+			smoothed[i+j*W]=(map2[i-1+j*W] + map2[i+1+j*W] + map2[i+(j+1)*W]+ map2[i+(j-1)*W])/4.0;
+			//smoothed[i+j*W]=map[i+j*W];//(map2[i+j*W]+map[i+j*W])/2;
+		}
+	}
+
+}
+
+function draw()
+{
+	var c;
+	
+	for(i=0;i<W; i++)
+	for(j=0;j<H; j++)
+	{
+		c= smoothed[i+j*W];
+		offscreenCtx.fillStyle="rgb("+(c|0).toString()+","+(c|0).toString()+","+(2*c|0).toString()+")";
+		offscreenCtx.fillRect(i*SCALE,j*SCALE,SCALE,SCALE);
+	}
+	
+}
+function init()
+{
+	for(i=0;i<W; i++)
+	for(j=0;j<H; j++)
+	{
+		map[i+j*W] = map2[i+j*W] = 0;
+
+		
+			//map[i+j*W] = map2[i+j*W] = 1;
+	}
+
+	seed = 101;
+	for(i=0; i<N;i++)
+	{
+		var x = (random()*W)|0;
+		var y = (random()*H)|0;
+
+
+	map[x+(y)*W] = map2[x+(y)*W] = 1255;
+	map[x+(y-1)*W] = map2[x+(y-1)*W] = 1255;
+	map[x+1+(y)*W] = map2[x+1+(y)*W] = 1255;
+	map[x-1+(y)*W] = map2[x-1+(y)*W] = 1255;
+	map[x+(y+1)*W] = map2[x+(y+1)*W] = 1255;
+	map[x+1+(y-1)*W] = map2[x+1+(y-1)*W] = 1255;
+	map[x+1+(y+1)*W] = map2[x+1+(y+1)*W] = 1255;
+	map[x-1+(y-1)*W] = map2[x-1+(y-1)*W] = 1255;
+	map[x-1+(y+1)*W] = map2[x-1+(y+1)*W] = 1255;
+
+
+	}
+}
+
+var prevLoop=new Date;
+var steploop=0;
+
+window.onload = function()
+{
+	init();
+}
+
+loop=function() 
+{
+	var thisLoop = new Date;
+	var fps = 1000 / (thisLoop - prevLoop);
+	prevLoop = thisLoop;
+	
+	offscreenCtx.clearRect(0,0,W,H);
+	
+	computemap();
+	draw();
+
+
+	
+
+	if(!clicked)
+	{
+			offscreenCtx.beginPath();
+			offscreenCtx.strokeStyle="#eeeeee";
+			offscreenCtx.arc(SCALE*W/2,SCALE*H/2.3,5+35.0*Math.sin(fps*0.009),0,2*Math.PI);
+            offscreenCtx.stroke();
+			offscreenCtx.font="30px Arial";
+			offscreenCtx.fillStyle="#ffeeee";
+			offscreenCtx.fillText("click here...",SCALE*W/2+Math.random()*1.0,Math.random()*1.0+SCALE*H/2);
+		}
+
+	// swap buffer
+	ctx.clearRect(0,0,W,H);
+	ctx.drawImage(offscreenCanvas, 0,0);
+	requestAnimationFrame(loop);
+}
+
+
+// 30 Hz
+//setInterval(loop, 1000/50);
+loop();
+	
+
+
+//	document.write("AAAA\n");
+  </script>
+<!-- adobe kuler Copy of Settle -->
+ <style type="text/css">
+  canvas { border: 2px solid rgb(0,0,0); background: rgb(244,244,202); }
+  h1 { color: rgb(155,155,135); font-family: "Arial";}
+  body { background: rgb(55,55,68); }
+  
+ </style>
+ </body>
+</html>
