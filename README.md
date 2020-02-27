@@ -56,6 +56,12 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
 * [**Rozdzial4/lbmfluid3D-multiphase/**](Rozdzial4/lbmfluid3D-multiphase/)
   * Implementacja przepływu wielofazowego 3D z użyciem [LBM](https://en.wikipedia.org/wiki/Lattice_Boltzmann_methods) i modelu Shan-Chen omawianego w
   książce.
+
+<img align="right" width="140" height="140" src="_IMG/lbmtau1.jpg">
+
+* [**Rozdzial4/lbmfluid-tauone3D/**](Rozdzial4/lbmfluid-tauone3D/)
+  * Implementacja modelu LBM bez funckcji rozkładu prędkości w wersji 3D i 2D (model [LBMTAU1](https://arxiv.org/abs/1912.09327)).
+
   
 <img align="right" width="140" height="140" src="_IMG/fractal.jpg">
 
@@ -73,6 +79,11 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
 
 * [**Bonus/ripple2d.html**](Bonus/ripple2d.html)
   * Prosty automat komórkowy generujący rozchodzenie się fal w dwóch wymiarach. Kod w HTML5 z wizualizacją w przeglądarce.
+
+  <img align="right" width="140" height="140" src="_IMG/palabos.jpg">
+
+* [**Bonus/PalabosCG/**](Bonus/PalabosCG/)
+  * Skrypt do biblioteki [Palabos](https://palabos.unige.ch/) umożliwiający rendering 3D z użyciem RayTracingu (PovRay) powierzchni swobodnej płynu.
 
 [(c) Maciej Matyka, 2020](http://panoramix.ift.uni.wroc.pl/~maq/eng/)
 
