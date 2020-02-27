@@ -32,10 +32,22 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
   poprzez śledzenie ruchu cząsteczek płynu i ich rozsmarowywanie. Uwaga: możliwe są problemy z podwójnym buforowaniem na niektórych
   systemach operacyjnych, wtedy należy dokładniej przyjrzeć się sterownikom i działaniu OpenGL.
 
+<img align="right" width="120" height="120" src="_IMG/lbm3D.jpg">
+
+* [**Rozdzial4/lbmfluid3D**](Rozdzial4/lbmfluid3D)
+  * Model [LBM](https://en.wikipedia.org/wiki/Lattice_Boltzmann_methods) w wersji trójwymiarowej.
+  
+  
 <img align="right" width="120" height="120" src="_IMG/lbmmulti.jpg">
 
-* [**Rozdzial4/lbmfluidOK-multiphase/**](Rozdzial4/lbmfluidOK-multiphase/)
-  * Implementacja przepływu wielofazowego z użyciem [LBM](https://en.wikipedia.org/wiki/Lattice_Boltzmann_methods) i modelu Shan-Chen omawianego w
+* [**Rozdzial4/lbmfluid2D-multiphase/**](Rozdzial4/lbmfluid2D-multiphase/)
+  * Implementacja przepływu wielofazowego 2D z użyciem [LBM](https://en.wikipedia.org/wiki/Lattice_Boltzmann_methods) i modelu Shan-Chen omawianego w
+  książce.
+
+<img align="right" width="120" height="120" src="_IMG/lbmmulti3D.jpg">
+
+* [**Rozdzial4/lbmfluid3D-multiphase/**](Rozdzial4/lbmfluid3D-multiphase/)
+  * Implementacja przepływu wielofazowego 3D z użyciem [LBM](https://en.wikipedia.org/wiki/Lattice_Boltzmann_methods) i modelu Shan-Chen omawianego w
   książce.
   
 <img align="right" width="120" height="120" src="_IMG/fractal.jpg">
