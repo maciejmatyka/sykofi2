@@ -26,12 +26,18 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
 <img align="right" width="120" height="120" src="_IMG/lbm.jpg">
 
 * [**Rozdzial4/lbmfluid_book/**](Rozdzial4/lbmfluid_book/)
-  * implementacja C/C++ modelu [Gazu Sieciowego Boltzmanna](https://en.wikipedia.org/wiki/Lattice_Boltzmann_methods) w 
+  * implementacja C/C++ modelu [Gazu Sieciowego Boltzmanna LBM](https://en.wikipedia.org/wiki/Lattice_Boltzmann_methods) w 
   wersji jednofazowej z komentarzami odpowiadającymi układowi w rozdziale z książki. Jest to prosta implementacja modelu
   jednorelaksacyjnego z wizualizacją w OpenGL i biblioteką GLUT. Dodatkowo do kodu dołączone są procedury wizualizacji
   poprzez śledzenie ruchu cząsteczek płynu i ich rozsmarowywanie. Uwaga: możliwe są problemy z podwójnym buforowaniem na niektórych
   systemach operacyjnych, wtedy należy dokładniej przyjrzeć się sterownikom i działaniu OpenGL.
 
+<img align="right" width="120" height="120" src="_IMG/lbmmulti.jpg">
+
+* [**Rozdzial4/lbmfluidOK-multiphase/**](Rozdzial4/lbmfluidOK-multiphase/)
+  * Implementacja przepływu wielofazowego z użyciem [LBM](https://en.wikipedia.org/wiki/Lattice_Boltzmann_methods) i modelu Shan-Chen omawianego w
+  książce.
+  
 <img align="right" width="120" height="120" src="_IMG/fractal.jpg">
 
 * [**Bonus/81fractalifs/fractalifs.cpp**](Bonus/81fractalifs/fractalifs.cpp)
@@ -43,6 +49,11 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
 * [**Bonus/82IsingModel/ising.cpp**](Bonus/82IsingModel/ising.cpp)
   * Implementacja modelu sieciowego magnetyzmu (model Isinga), program w C++ z wizualizacją w OpenGL. Program pozwala na obserowanie 
   ewolucji układu spinów w czasie dla różnej temperatury.
+
+  <img align="right" width="120" height="120" src="_IMG/ripples.jpg">
+
+* [**Bonus/ripple2d.html**](Bonus/ripple2d.html)
+  * Prosty automat komórkowy generujący rozchodzenie się fal w dwóch wymiarach. Kod w HTML5 z wizualizacją w przeglądarce.
 
 [(c) Maciej Matyka, 2020](http://panoramix.ift.uni.wroc.pl/~maq/eng/)
 
