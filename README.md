@@ -7,7 +7,7 @@ Zbiór kodów źródłowych do książki
 
 <img align="right" width="120" height="120" src="_IMG/cloth.jpg">
 
-* **Rozdzial2/cloth.html**
+* [**Rozdzial2/cloth.html**](Rozdzial2/cloth.html)
   * tkanina złożona z punktów i połączeń sprężystych, możliwość
 interakcji z użyciem myszy, metoda Verlet całkowania równań różniczkowych
 ruchu, kod i wizualizacja w HTML5
@@ -30,9 +30,12 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
   * Implementacja modelu sieciowego magnetyzmu (model Isinga), program w C++ z wizualizacją w OpenGL. Program pozwala na obserowanie 
   ewolucji układu spinów w czasie dla różnej temperatury.
 
+<img align="right" width="120" height="120" src="_IMG/fractal.jpg">
 
+* **Bonus/82IsingModel/ising.cpp**
+  * Program C/C++ generujący fraktal typu IFS (paproć). Kod wykonany na podstawie książki J. Kudrewicz, Fraktale i chaos, WNT 2015.
+  Program generuje plik graficzny typu .ppm (Portable Pixel Map) - prosty format graficzny w trybie ASCII omówiony w książce w rozdziale o symulacji płynów.
+
+  
 (c) Maciej Matyka, 2020
-Licencja:
-- zamieszczone kody stanowią ilustrację treści w książce
-- autor nie odpowiada za ich działanie porządane i nieporządane
-- można sie z kodów uczyć, nie należy ich używać do innych celów
+
