@@ -18,6 +18,7 @@ własnych obiektów z mięśniami
 
 
 <img align="right" width="100" height="100" src="Bonus/82IsingModel/T1.jpg">
+
 * **Bonus/82IsingModel/ising.cpp**
   * Implementacja modelu sieciowego magnetyzmu (model Isinga)
 
