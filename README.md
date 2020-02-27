@@ -23,6 +23,14 @@ ruchu, kod i wizualizacja w HTML5
   * Replika programu ["Soda Constructor"](https://en.wikipedia.org/wiki/Soda_Constructor) - umożliwia budowanie 
 własnych obiektów z dodatkowymi sprężynami, których długość w stanie równowagi jest zależna od czasu (mięśnie)
 
+<img align="right" width="140" height="140" src="_IMG/softbody3d.jpg">
+  
+* [**Rozdzial2/SoftBody3D**](Rozdzial2/SoftBody3D)
+  * Implementacja C++ trójwymiarowego [modelu ciała miękkiego](http://www.ift.uni.wroc.pl/~maq/papers/matyka03.pdf) opartego o ciśnienie. 
+  Program wykorzystuje OpenGL i pozwala na symulację w czasie rzeczywistym. 
+  Niektóre z obiektów (ręka, koala) wykonał Mariusz Jarosz (dziękuję!).
+
+
 <img align="right" width="140" height="140" src="_IMG/lbm.jpg">
 
 * [**Rozdzial4/lbmfluid_book/**](Rozdzial4/lbmfluid_book/)
