@@ -32,7 +32,7 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
 
 <img align="right" width="120" height="120" src="_IMG/fractal.jpg">
 
-* **Bonus/82IsingModel/ising.cpp**
+* **Bonus/81fractalifs/fractalifs.cpp**
   * Program C/C++ generujący fraktal typu IFS (paproć). Kod wykonany na podstawie książki J. Kudrewicz, Fraktale i chaos, WNT 2015.
   Program generuje plik graficzny typu .ppm (Portable Pixel Map) - prosty format graficzny w trybie ASCII omówiony w książce w rozdziale o symulacji płynów.
 
