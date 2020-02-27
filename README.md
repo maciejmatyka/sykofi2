@@ -14,26 +14,26 @@ ruchu, kod i wizualizacja w HTML5
 
 <img align="right" width="120" height="120" src="_IMG/softbody.jpg">
 
-* **Rozdzial2/softbody.html**
+* [**Rozdzial2/softbody.html**](Rozdzial2/softbody.html)
   * Ciało miękkie 2D (punkty, sprężyny i siła ciśnienia), kod i wizualizacja w HTML5.
 
 <img align="right" width="120" height="120" src="_IMG/konstruktor.jpg">
   
-* **Rozdzial2/konstruktor/konstruktor.html**
+* [**Rozdzial2/konstruktor/konstruktor.html**](Rozdzial2/konstruktor/konstruktor.html)
   * Replika programu ["Soda Constructor"](https://en.wikipedia.org/wiki/Soda_Constructor) - umożliwia budowanie 
 własnych obiektów z dodatkowymi sprężynami, których długość w stanie równowagi jest zależna od czasu (mięśnie)
 
 <img align="right" width="120" height="120" src="_IMG/fractal.jpg">
 
-* **Bonus/81fractalifs/fractalifs.cpp**
+* [**Bonus/81fractalifs/fractalifs.cpp**](Bonus/81fractalifs/fractalifs.cpp)
   * Program C/C++ generujący fraktal typu IFS (paproć). Kod wykonany na podstawie książki J. Kudrewicz, Fraktale i chaos, WNT 2015.
   Program generuje plik graficzny typu .ppm (Portable Pixel Map) - prosty format graficzny w trybie ASCII omówiony w książce w rozdziale o symulacji płynów.
 
 <img align="right" width="120" height="120" src="_IMG/Ising.jpg">
 
-* **Bonus/82IsingModel/ising.cpp**
+* [**Bonus/82IsingModel/ising.cpp**](Bonus/82IsingModel/ising.cpp)
   * Implementacja modelu sieciowego magnetyzmu (model Isinga), program w C++ z wizualizacją w OpenGL. Program pozwala na obserowanie 
   ewolucji układu spinów w czasie dla różnej temperatury.
 
-(c) Maciej Matyka, 2020
+[(c) Maciej Matyka, 2020](http://panoramix.ift.uni.wroc.pl/~maq/eng/)
 
