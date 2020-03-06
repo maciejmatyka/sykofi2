@@ -1,0 +1,21 @@
+/*
+
+
+Program:		Powierzchnia.exe				
+Wersja:			brak
+Wersja jezykowa:	brak
+Autor:			Maciej Matyka
+System Operacyjny:	win\linux
+Wymagane Biblioteki 
+do kompilacji:		Glut
+
+Opis:
+	Trojwymiarowa powierzchnia opadajaca na kule kolizji. Powierzchnia sklada sie z odpowiednich polaczen
+	punktow materialnych.
+
+	Klawisze
+		klawiatura numeryczna - orientacja
+		g - grawitacja on/off
+
+Uwaga: Do uruchomienia programu potrzebny jest plik glut32.dll (windows)
+*/

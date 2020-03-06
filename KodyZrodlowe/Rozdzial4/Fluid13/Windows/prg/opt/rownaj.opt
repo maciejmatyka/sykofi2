@@ -1,0 +1,108 @@
+
+
+/* Config file for "fluid" program. */
+
+/* output size */
+
+WIDTH = 320
+HEIGHT = 200
+
+/* number of cell in x and y direction */
+
+NX = 64
+NY = 40
+
+/* gravity values uv (float) */
+
+GX = 0
+GY = -0.1
+
+/* time step dt */
+
+DT = 0.5
+
+/* viscosity of the fluid */
+
+VIS = 0.6
+
+
+
+/* stability criteria */
+
+STABILITY = 0.1
+
+/* Graphics mode
+
+0 - particles with pressure field color
+1 - particles one color set
+2 - velocity vectors
+3 - particles & vectors
+
+*/
+
+GMODE = 0
+
+
+PAR BOX 1 1 320 100 2 0.0 0.0
+
+PAR BOX 1 1 320 50 2 0.0 0.0
+
+PAR BALL 80 180 10 2 0.0 0.0
+
+PARTICLES:
+
+PAR BOX 1 1 80 130 1 0.0 0.0
+
+
+PAR BOX 80 1 160 80 1 0.0 0.0
+
+PAR BOX 160 1 240 40 1 0.0 0.0
+PAR BOX 240 1 320 180 1 0.0 0.0
+
+ENDPAR.
+
+
+/*
+  "fluid" will take here a cells coordinates for boundaries. Cells
+  specify only one closed curve of boundaries. Remember - boundary
+  MUST be specified as free slip or no slip boundary - rest as you want.
+  You can use 5 types of boundaries.
+
+  IN           -       input particle wall
+  OUT          -       out particle wall
+  FRSLP        -       free slip cell
+  NOSLP        -       no slip cell
+
+  i,j are cartesian coordinates of cell (i=(1..nx), j=(1..ny))
+
+*/
+
+/* i j type */
+
+BNDCELLS:
+
+ 1   1            FRSLP
+ NX  1            FRSLP
+ NX  NY           FRSLP
+
+ 48  NY           FRSLP
+ 48  7            FRSLP
+ 46  7            FRSLP
+ 46  NY           FRSLP
+ 
+ 32  NY           FRSLP
+ 32  7            FRSLP
+ 30  7            FRSLP
+ 30  NY           FRSLP
+ 
+ 16  NY           FRSLP
+ 16  7            FRSLP
+ 14  7            FRSLP
+ 14 NY            FRSLP
+
+ 1   NY           FRSLP
+ 1   1            FRSLP
+
+ENDBND.
+
+

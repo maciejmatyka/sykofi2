@@ -1,0 +1,77 @@
+
+
+/* Config file for "fluid" program. */
+
+/* output size */
+
+WIDTH = 320
+HEIGHT = 200
+
+/* number of cell in x and y direction */
+
+NX = 32
+NY = 20
+
+/* gravity values uv (float) */
+
+GX = 0
+GY = -10.0
+
+/* time step dt */
+
+DT = 0.2
+
+/* viscosity of the fluid */
+
+VIS = 0.2
+
+
+
+/* stability criteria */
+
+STABILITY = 0.05
+
+
+
+
+PARTICLES:
+
+PAR BALL 180 180 14 2 0.0 0.0
+
+PAR BOX 1 41 80 170 2 0.0 0.0
+PAR BOX 1 1 320 40 2 0.0 0.0
+
+ENDPAR.
+
+
+/*
+  "fluid" will take here a cells coordinates for boundaries. Cells
+  specify only one closed curve of boundaries. Remember - boundary
+  MUST be specified as free slip or no slip boundary - rest as you want.
+  You can use 5 types of boundaries.
+
+  IN           -       input particle wall
+  OUT          -       out particle wall
+  FRSLP        -       free slip cell
+  NOSLP        -       no slip cell
+
+  i,j are cartesian coordinates of cell (i=(1..nx), j=(1..ny))
+
+*/
+
+/* i j type */
+
+BNDCELLS:
+
+ 1   1            NOSLP
+ NX  1            NOSLP
+ NX  NY           NOSLP
+ 8   NY           NOSLP
+ 8   4            NOSLP
+ 6   4            NOSLP
+ 6   NY           NOSLP
+ 1   NY           NOSLP
+ 1   1            NOSLP
+
+ENDBND.
+

@@ -1,0 +1,22 @@
+/*
+
+
+Program:		Fluid				
+Wersja:			1.3
+Wersja jezykowa:	angielska
+Autor:			Maciej Matyka
+System Operacyjny:	Win/Linux (osobne wersje)
+Wymagane Biblioteki 
+do kompilacji:		Fox/Glut
+
+Opis:
+	Rozwiazanie numeryczne rownan Naviera-Stokesa dla cieczy niescisliwej. Wersja dla Windows
+	potrafi samodzielnie wygenerowac animacje .avi przy uzyciu biblioteki VFW (Video For Windows). 
+	Wersja linuxowa pracuje w trybie tekstowym i generuje pliki .ppm (kolejne klatki).
+
+Uwaga:
+	Do zabawy polecam wersje okienkowa, ale do powaznych symulacji lepiej uzywac stabilniejszej i
+	poprawnie w moim mniemaniu napisanej wersji tekstowej (rowniez pod Windows)
+
+
+*/

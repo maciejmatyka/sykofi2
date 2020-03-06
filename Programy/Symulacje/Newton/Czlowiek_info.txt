@@ -1,0 +1,20 @@
+/*
+
+
+Program:		Czlowiek.exe				
+Wersja:			brak
+Wersja jezykowa:	brak
+Autor:			Maciej Matyka
+System Operacyjny:	win\linux
+Wymagane Biblioteki 
+do kompilacji:		Glut
+
+Opis:
+	Taniec postaci czlowieka zbudowanej na polaczeniach sprezystych punktow materialnych.
+	Klawisze
+
+		klawiatura numeryczna - orientacja
+		g - grawitacja on/off
+
+Uwaga: Do uruchomienia programu potrzebny jest plik glut32.dll (windows)
+*/

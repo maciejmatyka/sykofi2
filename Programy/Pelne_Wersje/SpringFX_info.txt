@@ -1,0 +1,17 @@
+/*
+
+
+Program:		SpringFX				
+Wersja:			1.0
+Wersja jezykowa:	angielska
+Autor:			Maciej Matyka
+System Operacyjny:	Win\Linux
+Wymagane Biblioteki 
+do kompilacji:		Fox\Glut
+
+Opis:
+	Pojedynczy punkt materialny w polu grawitacyjnym Ziemii. Prosty przyklad wykorzystania
+	najprostszych schematow numerycznych w wiekszym programie.
+
+
+*/

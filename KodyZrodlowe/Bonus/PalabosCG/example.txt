@@ -1,0 +1,29 @@
+How to repeat the splash of liquid drop 
+example?
+
+1. We work on the Linux machine.
+
+2. Install all  the necessary  software 
+mentioned in the readme.txt.
+
+3. Copy PalabosSplash to your   working
+directory of Palabos and   modify paths
+in the Makefile and compile it. 
+
+4. Run  the ./splashDrop  using:
+
+./splashDrop tmp/ 1.e-3 100 3.e-4 15000
+
+you   may  tune  parameters a bit, e.g.
+
+./splashDrop  tmp/ visc  res dt itermax
+
+5. Copy all files from   the  PalabosCG 
+directory  into  the  working directory 
+(where tmp/ is).
+
+6. Run ./PalabosCG.sh
+
+If  everything  went well you can  find
+movie.mp4 in your tmp/ directory.
+

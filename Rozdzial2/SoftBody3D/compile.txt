@@ -1,1 +1,0 @@
-g++ *.cpp -lglut -lGLU -lGL

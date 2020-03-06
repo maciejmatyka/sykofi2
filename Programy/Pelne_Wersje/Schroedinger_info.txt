@@ -1,0 +1,17 @@
+/*
+
+
+Program:		Schroedinger				
+Wersja:			1.0
+Wersja jezykowa:	angielska
+Autor:			Maciej Matyka
+System Operacyjny:	Win/Linux (Linux - rekompilacja)
+Wymagane Biblioteki 
+do kompilacji:		Fox/Glut
+
+Opis:
+	Rozwiazanie numeryczne rownania Shroedingera w dwoch wymiarach. Symulacja zjawisk kwantowych
+	(dwie lub jedna paczka Gaussowska w stanie poczatkowym).
+
+
+*/

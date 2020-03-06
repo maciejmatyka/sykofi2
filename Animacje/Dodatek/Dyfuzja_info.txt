@@ -1,0 +1,9 @@
+
+Animacja: 	Dyfuzja.mpg
+Autor:		Maciej Matyka
+Kodowanie:	MPEG-1
+Opis:
+	Prosty automat komórkowy przy pomocy którego przeprowadzono symulacjê
+	Dyfuzji gazu idealnego. Automat dzia³a na siatce kwadratowej, st¹d w 
+	ogl¹danej animacji dostrzec mo¿na pewne nieprawid³owoœci.
+	Dostêpny kod Ÿród³owy programu przeprowadzaj¹cego tê symulacjê.

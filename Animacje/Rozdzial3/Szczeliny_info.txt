@@ -1,0 +1,9 @@
+
+Animacja:	Szczeliny.mpg
+Autor:		Maciej Matyka
+Kodowanie:	MPEG-1
+
+Opis:
+	Ulozenie szczelin jak w doswiadczeniu Younga z fizyki fal. Wizualizacja dyfrakcji, interferencji
+	rozchodzacych sie impulsow falowych w dwoch wymiarach. Animacja stworzona przy uzyciu programu Waves.
+

@@ -1,2 +1,0 @@
-- mesh subdivision (MeshLab?)
-- solve compression issue at the beginning

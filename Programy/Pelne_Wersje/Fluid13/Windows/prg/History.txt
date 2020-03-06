@@ -1,0 +1,42 @@
+
+New features of "Fluid" program: 
+
+
+Version 1.0 Date: 1.1.2001
+--------------------------
+
+	- first release, pure ansi c code
+	- second place (no first place this year) in physic software competition on University Of Wroclaw
+
+
+Version 1.1 Date: 13.VII.2001
+-----------------------------
+
+	- first release on the internet
+	- user interface written using FOX library (www.cfdrc.com) in c++
+	- compiled under Windows (VC++) platform and released as demo on the web
+	- nine point method of laplace discredtation implemented
+	- version very limited in demo version
+	- source code possibly to buy
+
+Version 1.2 Date: 2.VII.2001
+----------------------------
+
+	- most user interface rewritten (still FOX)
+	- a lot of demo version limitations cleared
+	
+Version 1.21 Date: 15.VII.2001
+------------------------------
+
+	- faster loading .opt files. small bug removed - now loading of .opt files is very fast
+	- User Interface work better - "STOP" button don't must be pressed at the end of calculation
+	- particle configuration can be changed little in program by mouse control (beta - still 
+	  developed function)
+
+Version 1.3 Date: 20.VII.2001
+------------------------------
+
+	- output for .avi files implemented, no more big .ppm files!
+	- only one limitation for demo version - animations generated with demoversion have text "Demo version"
+	  on a screen
+	
