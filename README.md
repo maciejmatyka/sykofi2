@@ -7,25 +7,25 @@ Zbiór kodów źródłowych do książki
 
 <img align="right" width="140" height="140" src="_IMG/cloth.jpg">
 
-* [**KodyzrodloWe/rOzdzial4/cloth.html**](KodyzrodloWe/rOzdzial4/cloth.html)
+* [**KodyZrodlowe/Rozdzial2/cloth.html**](KodyZrodlowe/Rozdzial2/cloth.html)
   * tkanina złożona z punktów i połączeń sprężystych, możliwość
 interakcji z użyciem myszy, metoda Verlet całkowania równań różniczkowych
 ruchu, kod i wizualizacja w HTML5
 
 <img align="right" width="140" height="140" src="_IMG/softbody.jpg">
 
-* [**KodyzrodloWe/rOzdzial4/softbody.html**](KodyzrodloWe/rOzdzial4/softbody.html)
+* [**KodyZrodlowe/Rozdzial2/softbody.html**](KodyZrodlowe/Rozdzial2/softbody.html)
   * Ciało miękkie 2D (punkty, sprężyny i siła ciśnienia), kod i wizualizacja w HTML5.
 
 <img align="right" width="140" height="140" src="_IMG/konstruktor.jpg">
   
-* [**KodyzrodloWe/rOzdzial4/konstruktor/konstruktor.html**](KodyzrodloWe/rOzdzial4/konstruktor/konstruktor.html)
+* [**KodyZrodlowe/Rozdzial2/konstruktor/konstruktor.html**](KodyZrodlowe/Rozdzial2/konstruktor/konstruktor.html)
   * Replika programu ["Soda Constructor"](https://en.wikipedia.org/wiki/Soda_Constructor) - umożliwia budowanie 
 własnych obiektów z dodatkowymi sprężynami, których długość w stanie równowagi jest zależna od czasu (mięśnie)
 
 <img align="right" width="140" height="140" src="_IMG/softbody3d.jpg">
   
-* [**KodyzrodloWe/rOzdzial4/SoftBody3D**](KodyzrodloWe/rOzdzial4/SoftBody3D)
+* [**KodyZrodlowe/Rozdzial2/SoftBody3D**](KodyZrodlowe/Rozdzial2/SoftBody3D)
   * Implementacja C++ trójwymiarowego [modelu ciała miękkiego](http://www.ift.uni.wroc.pl/~maq/papers/matyka03.pdf) opartego o ciśnienie. 
   Program wykorzystuje OpenGL i pozwala na symulację w czasie rzeczywistym. 
   Niektóre z obiektów (ręka, koala) wykonał Mariusz Jarosz (dziękuję!).
@@ -33,7 +33,7 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
 
 <img align="right" width="140" height="140" src="_IMG/lbm.jpg">
 
-* [**Kodyzrodlowe/Rozdzial4/lbmfluid_book/**](Kodyzrodlowe/Rozdzial4/lbmfluid_book/)
+* [**KodyZrodlowe/Rozdzial4/lbmfluid_book/**](KodyZrodlowe/Rozdzial4/lbmfluid_book/)
   * implementacja C/C++ modelu Gazu Sieciowego Boltzmanna LBM w 
   wersji jednofazowej z komentarzami odpowiadającymi układowi w rozdziale z książki. Jest to prosta implementacja modelu
   jednorelaksacyjnego z wizualizacją w OpenGL i biblioteką GLUT. Dodatkowo do kodu dołączone są procedury wizualizacji
@@ -42,32 +42,32 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
 
 <img align="right" width="140" height="140" src="_IMG/lbm3D.jpg">
 
-* [**Kodyzrodlowe/Rozdzial4/lbmfluid3D**](Kodyzrodlowe/Rozdzial4/lbmfluid3D)
+* [**KodyZrodlowe/Rozdzial4/lbmfluid3D**](KodyZrodlowe/Rozdzial4/lbmfluid3D)
   * Model [LBM](https://en.wikipedia.org/wiki/Lattice_Boltzmann_methods) w wersji trójwymiarowej, przybliżenie jednorelaksacyjne BGK.
   
 
 <img align="right" width="140" height="140" src="_IMG/drivencavitymrt.jpg">
 
-* [**Kodyzrodlowe/Rozdzial4/lbmfluid-mrt/**](Kodyzrodlowe/Rozdzial4/lbmfluid-mrt/)
+* [**KodyZrodlowe/Rozdzial4/lbmfluid-mrt/**](KodyZrodlowe/Rozdzial4/lbmfluid-mrt/)
   * Przepływ w komorze (ang. Driven Cavity Flow). Implementacja moelu wielorelaksacyjnego (MRT) przepływu jednofazowego 2D z użyciem LBM dla 
   wysokich [liczb Reynoldsa](https://pl.wikipedia.org/wiki/Liczba_Reynoldsa).
 
   
 <img align="right" width="140" height="140" src="_IMG/lbmmulti.jpg">
 
-* [**Kodyzrodlowe/Rozdzial4/lbmfluid2D-multiphase/**](Kodyzrodlowe/Rozdzial4/lbmfluid2D-multiphase/)
+* [**KodyZrodlowe/Rozdzial4/lbmfluid2D-multiphase/**](KodyZrodlowe/Rozdzial4/lbmfluid2D-multiphase/)
   * Implementacja przepływu wielofazowego 2D z użyciem [LBM](https://en.wikipedia.org/wiki/Lattice_Boltzmann_methods) i modelu Shan-Chen omawianego w
   książce.
 
 <img align="right" width="140" height="140" src="_IMG/lbmmulti3D.jpg">
 
-* [**Kodyzrodlowe/Rozdzial4/lbmfluid3D-multiphase/**](Kodyzrodlowe/Rozdzial4/lbmfluid3D-multiphase/)
+* [**KodyZrodlowe/Rozdzial4/lbmfluid3D-multiphase/**](KodyZrodlowe/Rozdzial4/lbmfluid3D-multiphase/)
   * Implementacja przepływu wielofazowego 3D z użyciem [LBM](https://en.wikipedia.org/wiki/Lattice_Boltzmann_methods) i modelu Shan-Chen omawianego w
   książce.
 
 <img align="right" width="140" height="140" src="_IMG/lbmtau1.jpg">
 
-* [**Kodyzrodlowe/Rozdzial4/lbmfluid-tauone3D/**](Kodyzrodlowe/Rozdzial4/lbmfluid-tauone3D/)
+* [**KodyZrodlowe/Rozdzial4/lbmfluid-tauone3D/**](KodyZrodlowe/Rozdzial4/lbmfluid-tauone3D/)
   * Implementacja modelu LBM bez funckcji rozkładu prędkości w wersji 3D i 2D (model [LBMTAU1](https://arxiv.org/abs/1912.09327)).
 
   
