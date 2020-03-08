@@ -9,7 +9,7 @@ Kompletna lista materiałów z opisem znajduje się w książce.
 <img align="right" width="140" height="140" src="Ilustracje/Wydanie2/cloth.jpg">
 
 * [**KodyZrodlowe/Rozdzial2/cloth.html**](KodyZrodlowe/Rozdzial2/cloth.html)
-  * tkanina złożona z punktów i połączeń sprężystych, możliwość
+  * Tkanina złożona z punktów i połączeń sprężystych, możliwość
 interakcji z użyciem myszy, metoda Verlet całkowania równań różniczkowych
 ruchu, kod i wizualizacja w HTML5
 
@@ -35,7 +35,7 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
 <img align="right" width="140" height="140" src="Ilustracje/Wydanie2/lbm.jpg">
 
 * [**KodyZrodlowe/Rozdzial4/lbmfluid_book/**](KodyZrodlowe/Rozdzial4/lbmfluid_book/)
-  * implementacja C/C++ modelu Gazu Sieciowego Boltzmanna LBM w 
+  * Implementacja C/C++ modelu Gazu Sieciowego Boltzmanna LBM w 
   wersji jednofazowej z komentarzami odpowiadającymi układowi w rozdziale z książki. Jest to prosta implementacja modelu
   jednorelaksacyjnego z wizualizacją w OpenGL i biblioteką GLUT. Dodatkowo do kodu dołączone są procedury wizualizacji
   poprzez śledzenie ruchu cząsteczek płynu i ich rozsmarowywanie. Uwaga: możliwe są problemy z podwójnym buforowaniem na niektórych
