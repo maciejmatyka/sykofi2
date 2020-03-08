@@ -50,7 +50,7 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
 <img align="right" width="140" height="140" src="Ilustracje/Wydanie2/drivencavitymrt.jpg">
 
 * [**KodyZrodlowe/Rozdzial4/lbmfluid-mrt/**](KodyZrodlowe/Rozdzial4/lbmfluid-mrt/)
-  * Przepływ w komorze (ang. Driven Cavity Flow). Implementacja moelu wielorelaksacyjnego (MRT) przepływu jednofazowego 2D z użyciem LBM dla 
+  * Przepływ w komorze (ang. Driven Cavity Flow). Implementacja modelu wielorelaksacyjnego (MRT) przepływu jednofazowego 2D z użyciem LBM dla 
   wysokich [liczb Reynoldsa](https://pl.wikipedia.org/wiki/Liczba_Reynoldsa).
 
   
