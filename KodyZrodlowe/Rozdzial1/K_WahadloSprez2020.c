@@ -40,15 +40,15 @@ static void Init(void)
 /* Sta³e */
 	dt=0.01f;
 	g=-9.8f;
-	k=4.5;
+	k=523.5;
 	m=0.3;
-	point[0] = 0.1;
-    point[1] = -0.3;
+	point[0] = 0.0;
+    point[1] = -0.9;
 
 /* Warunki pocz¹tkowe rozwi¹zania numerycznego */
 
 //	pvr=0.2;
-	pvx=2.5;
+	pvx=1.9;//2.5;
 	pvy=0.0;
 
 	t=0;
@@ -258,12 +258,12 @@ static void Draw(void)
     glEnd();
 */
 
-	glLineWidth(2);
+	glLineWidth(4);
 	RysujSprezyne(0,0+MOVEY,point[0],point[1]+MOVEY);
 
 
 
-	glLineWidth(3);
+	glLineWidth(5);
 	glColor3f(0.6,0.6,0.5);
 	//RysujWektor(point[0],point[1]+MOVEY,pr*sin(teta+omega*dt),pr*cos(teta+omega*dt)+MOVEY,15.5f,0,0);
 	RysujWektor(point[0],point[1]+MOVEY,point[0],point[1]+MOVEY+g*0.002,15.5f,0,0);

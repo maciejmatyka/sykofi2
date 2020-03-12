@@ -6,6 +6,19 @@ Kompletna lista materiałów z opisem znajduje się w książce.
 
 *Zbiór i opisy wybranych kodów źródłowych:*
 
+<img align="right" width="180" height="140" src="KodyZrodlowe/Rozdzial1/K_Sprez_biale.png">
+* [**KodyZrodlowe/Rozdzial1/K_Sprez_biale.c**](KodyZrodlowe/Rozdzial1/K_Sprez_biale.c)
+  *Symulacja ruchu trzech różnych mas zawieszonych na sprężynach z wizualizacją chwilowej siły wypadkowej. 
+
+<img align="right" width="180" height="140" src="KodyZrodlowe/Rozdzial1/K_Wahadlo.png">
+* [**KodyZrodlowe/Rozdzial1/K_Wahadlo.png.c**](KodyZrodlowe/Rozdzial1/K_Wahadlo.png.c)
+  *Rozwiązanie numeryczne wahadła  matematycznego metodą Eulera. 
+
+<img align="right" width="180" height="140" src="KodyZrodlowe/Rozdzial1/K_WahadloSprez2020.png">
+* [**KodyZrodlowe/Rozdzial1/K_WahadloSprez2020.c**](KodyZrodlowe/Rozdzial1/K_WahadloSprez2020.c)
+  *Symulacja punktu materialnego zawieszonego na sprężynie (całkowanie metodą Eulera). Wersja poprawiona (w stosunku do pierwszego wydania, w którym model nie do końca odpowiadał tej sytuacji fizycznej). Oryginalne kody z pierwszego wydania zostały zachowane w katalogu. 
+
+
 <img align="right" width="180" height="140" src="KodyZrodlowe/Rozdzial2/Newton3d/4_powierzchnia_kula_ok.png">
 
 * [**KodyZrodlowe/Rozdzial2/Newton3d/4_powierzchnia_kula_ok/**](KodyZrodlowe/Rozdzial2/Newton3d/4_powierzchnia_kula_ok/)
@@ -118,5 +131,5 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
 * [**Kodyzrodlowe/Bonus/PalabosCG/**](Kodyzrodlowe/Bonus/PalabosCG/)
   * Skrypt do biblioteki [Palabos](https://palabos.unige.ch/) umożliwiający rendering 3D z użyciem RayTracingu (PovRay) powierzchni swobodnej płynu.
 
-[(c) Maciej Matyka, 2020](http://panoramix.ift.uni.wroc.pl/~maq/eng/)
+[(c) Maciej Matyka, 2002-2020](http://panoramix.ift.uni.wroc.pl/~maq/eng/)
 

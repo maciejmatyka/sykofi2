@@ -28,7 +28,7 @@
 GLenum rgb, doubleBuffer=1, windType;
 GLint windW, windH;
 
-#include "tkmap.c"
+//#include "tkmap.c"
 
 GLenum mode=0;
 GLint size;
@@ -44,7 +44,7 @@ float point3[3] = {
 };
 
 
-double y=0,dy=0,v=-6.40,dv=0,t=0,dt=0.01,g=-9.8;
+double y=0,dy=0,v=-6.40,dv=0,t=0,dt=0.09,g=-9.8;
 double k=0.4;
 
 double y2=0,dy2=0,v2=-6.40,dv2=0;
@@ -157,7 +157,8 @@ void RysujSprezyne(double x1, double y1, double x2, double y2)
 	double _wx1,_wy1,_wx2,_wy2;
 	int i;
 
-
+    glLineWidth(4);
+    glEnable(GL_LINE_SMOOTH);
 	
 	vsize=sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1));
 
@@ -236,7 +237,6 @@ void RysujSprezyne(double x1, double y1, double x2, double y2)
 	glVertex2f(wx1,wy1);
 	glVertex2f(wx2+ (x2/vsize)*vsize*4/frac,wy2+ (y2/vsize)*vsize*4/frac);
 	glEnd();
-
 
 }
 
@@ -434,19 +434,19 @@ int main(int argc, char **argv)
 	exit(1);
     }
 
-    windW = 300;
-    windH = 300;
+    windW = 600;
+    windH = 600;
     glutInitWindowPosition(0, 0); glutInitWindowSize( windW, windH);
 
     windType = (rgb) ? GLUT_RGB : GLUT_INDEX;
     windType |= (doubleBuffer) ? GLUT_DOUBLE : GLUT_SINGLE;
     glutInitDisplayMode(windType);
 
-    if (glutCreateWindow("Point Test") == GL_FALSE) {
+    if (glutCreateWindow("Oscylatory harmoniczne") == GL_FALSE) {
 	exit(1);
     }
 
-    InitMap();
+//    InitMap();
 
     Init();
 
