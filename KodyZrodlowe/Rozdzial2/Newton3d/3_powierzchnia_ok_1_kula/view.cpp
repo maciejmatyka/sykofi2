@@ -286,7 +286,7 @@ void Draw(void)
 
 	glPointSize(2);
 
-	glEnable(GL_LIGHTHNING);
+//	glEnable(GL_LIGHTING);
 
 #ifdef rysuj_punkty	
 	glBegin(GL_POINTS);

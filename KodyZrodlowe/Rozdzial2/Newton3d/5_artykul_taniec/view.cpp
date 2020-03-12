@@ -674,7 +674,7 @@ void Draw(void)
 
 
 
-  	MyBox();
+//  	MyBox();
 
   // 	CartesianVectors();
 

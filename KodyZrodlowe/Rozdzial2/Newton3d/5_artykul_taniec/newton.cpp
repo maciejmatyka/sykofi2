@@ -20,12 +20,12 @@
 
 
 
-int szer=250,wys=250;
+int szer=650,wys=650;
 
 float xmin=-0.9,xmax=0.9,ymin=-0.9,ymax=0.9, zmin = -0.9, zmax = 0.9;
 
 
-float dt=0.004;//5;//5;
+float dt=0.0041;//5;//5;
 
 
 float tlumienie = 1.0;
