@@ -6,7 +6,19 @@ Kompletna lista materiałów z opisem znajduje się w książce.
 
 *Zbiór i opisy wybranych kodów źródłowych:*
 
-<img align="right" width="140" height="140" src="KodyZrodlowe/Rozdzial2/Tentacles/tentacles.png">
+<img align="right" width="180" height="140" src="KodyZrodlowe/Rozdzial2/Newton3d/4_powierzchnia_kula_ok.png">
+
+* [**KodyZrodlowe/Rozdzial2/Newton3d/4_powierzchnia_kula_ok/**](KodyZrodlowe/Rozdzial2/Newton3d/4_powierzchnia_kula_ok/)
+  * Kula spadająca na powierzchnię złożoną z punktów i sprężynek. Użytkownik może dodawać więcej kul
+  które również oddziałują między sobą (C++ z użyciem OpenGL (GLUT)). 
+
+<img align="right" width="180" height="140" src="KodyZrodlowe/Rozdzial2/Newton3d/8_powierzchnia.png">
+
+* [**KodyZrodlowe/Rozdzial2/Newton3d/8_powierzchnia/**](KodyZrodlowe/Rozdzial2/Newton3d/8_powierzchnia/)
+  * Tkanina zawieszona na obracającej się belce z dodatkową kolizją z dużą kulą w części centralnej 
+    (C++ z użyciem OpenGL (GLUT)). 
+
+<img align="right" width="180" height="140" src="KodyZrodlowe/Rozdzial2/Tentacles/tentacles.png">
 
 * [**KodyZrodlowe/Rozdzial2/Tentacles/**](KodyZrodlowe/Rozdzial2/Tentacles/)
   * Obiekt złożony ze sprężynek i punktów doczepionych do sztywnej kuli. Ruch kuli wprawia 
