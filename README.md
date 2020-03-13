@@ -11,7 +11,6 @@ Kompletna lista materiałów z opisem znajduje się w książce.
 * [**KodyZrodlowe/Rozdzial1/K_WahadloSprez2020.c**](KodyZrodlowe/Rozdzial1/K_WahadloSprez2020.c)
   * Symulacja punktu materialnego zawieszonego na sprężynie (całkowanie metodą Eulera). Wersja poprawiona (w stosunku do pierwszego wydania, w którym model nie do końca odpowiadał tej sytuacji fizycznej). Oryginalne kody z pierwszego wydania zostały zachowane w katalogu. 
 
-
 <img align="right" width="180" height="140" src="KodyZrodlowe/Rozdzial2/Newton3d/4_powierzchnia_kula_ok.png">
 
 * [**KodyZrodlowe/Rozdzial2/Newton3d/_4_powierzchnia_kula_ok/**](KodyZrodlowe/Rozdzial2/Newton3d/_4_powierzchnia_kula_ok/)
@@ -60,6 +59,15 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
   * Implementacja C++ trójwymiarowego [modelu ciała miękkiego](http://www.ift.uni.wroc.pl/~maq/papers/matyka03.pdf) opartego o ciśnienie. 
   Program wykorzystuje OpenGL i pozwala na symulację w czasie rzeczywistym. 
   Niektóre z obiektów (ręka, koala) wykonał Mariusz Jarosz (dziękuję!). [Film.](https://youtu.be/H4WR-rPpgDc)
+
+
+<img align="right" width="140" height="140" src="KodyZrodlowe/Rozdzial3/Waves.png">
+
+* [**KodyZrodlowe/Rozdzial3/Waves/**](KodyZrodlowe/Rozdzial3/Waves/)
+  * Rozwiązanie numeryczne równania falowego w dwóch wymiarach. Załączony jest kod w dwóch wersjach - zarówno 
+  jako duża aplikacja okienkowa z użyciem GUI (interfejs użytownika z użyciem Fox Toolkit) jak i [wersja uproszczona
+  bez interfejsu](KodyZrodlowe/Rozdzial3/Waves_nogui) użytkownika - z samą wizualizacją. Program w wersji z interfejsem umożliwia interakcję, dodawanie 
+  źródeł, przeszkód. Dodatkowo zamieszczona została też wersja HTML5 *****?????*****, którą obejrzeć można np. [tu](http://panoramx.ift.uni.wroc.pl/~maq/felp.pl/waves/). [Film.](https://youtu.be/YwkbOYIwFwk)
 
 
 <img align="right" width="140" height="140" src="Ilustracje/Wydanie2/lbm.jpg">

@@ -1,0 +1,16 @@
+1. requires GLUT (http://www.opengl.org/resources/libraries/glut/)
+2. press 1,2,3 to change config. 
+3. use mouse too.
+
+
+ /** Rules
+ *
+ * 1. Use at your own risk.
+ * 2. It's free 4 learning.
+ * 3. You like it? You may donate my ferrari. Follow PayPal link at my home page.
+ *
+ * Enjoy!
+ */
+
+done by Maciej Matyka, Bremen, 2009.
+
