@@ -31,7 +31,7 @@ Kompletna lista materiałów z opisem znajduje się w książce.
   * Symulacja ruchu postaci zbudowanej z punktów i sprężynek imitująca taniec postaci.
     (C++ z użyciem OpenGL (GLUT)). [Film.](https://youtu.be/5q-Dut1SFLA)
 
-<img align="right" width="180" height="140" src="KodyZrodlowe/Rozdzial2/Tentacles/tentacles.png">
+<img align="right" width="180" height="140" src="KodyZrodlowe/Rozdzial2/Tentacles.png">
 
 * [**KodyZrodlowe/Rozdzial2/Tentacles/**](KodyZrodlowe/Rozdzial2/Tentacles/)
   * Obiekt złożony ze sprężynek i punktów doczepionych do sztywnej kuli. Ruch kuli wprawia 
