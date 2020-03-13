@@ -24,12 +24,12 @@ Kompletna lista materiałów z opisem znajduje się w książce.
   * Tkanina zawieszona na obracającej się belce z dodatkową kolizją z dużą kulą w części centralnej 
     (C++ z użyciem OpenGL (GLUT)). 
 
-<img align="right" width="180" height="140" src="KodyZrodlowe/Rozdzial2/Newton3d/5_artykul_taniec.png">
+<img align="right" width="120" height="140" src="KodyZrodlowe/Rozdzial2/Newton3d/5_artykul_taniec.png">
 
 * [**KodyZrodlowe/Rozdzial2/Newton3d/_5_artykul_taniec/**](KodyZrodlowe/Rozdzial2/Newton3d/_5_artykul_taniec/)
 * [**KodyZrodlowe/Rozdzial2/Newton3d/_6_taniec_260402/**](KodyZrodlowe/Rozdzial2/Newton3d/_6_taniec_260402/)
   * Symulacja ruchu postaci zbudowanej z punktów i sprężynek imitująca taniec postaci.
-    (C++ z użyciem OpenGL (GLUT)). [**https://youtu.be/5q-Dut1SFLA**](Film.)
+    (C++ z użyciem OpenGL (GLUT)). [Film.](https://youtu.be/5q-Dut1SFLA)
 
 <img align="right" width="180" height="140" src="KodyZrodlowe/Rozdzial2/Tentacles/tentacles.png">
 
