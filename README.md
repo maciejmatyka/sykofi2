@@ -45,10 +45,8 @@ Kompletna lista materiałów z opisem znajduje się w książce.
 interakcji z użyciem myszy, metoda Verlet całkowania równań różniczkowych
 ruchu, kod i wizualizacja w HTML5
 
-<img align="right" width="140" height="140" src="Ilustracje/Wydanie2/softbody.jpg">
-
 * [**KodyZrodlowe/Rozdzial2/softbody.html**](KodyZrodlowe/Rozdzial2/softbody.html)
-  * Ciało miękkie 2D (punkty, sprężyny i siła ciśnienia), kod i wizualizacja w HTML5.
+  * Ciało miękkie w dwóch wymiarach - implementacja i wizualizacja w HTML5.
 
 <img align="right" width="140" height="140" src="Ilustracje/Wydanie2/konstruktor.jpg">
   
@@ -61,7 +59,7 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
 * [**KodyZrodlowe/Rozdzial2/SoftBody3D**](KodyZrodlowe/Rozdzial2/SoftBody3D)
   * Implementacja C++ trójwymiarowego [modelu ciała miękkiego](http://www.ift.uni.wroc.pl/~maq/papers/matyka03.pdf) opartego o ciśnienie. 
   Program wykorzystuje OpenGL i pozwala na symulację w czasie rzeczywistym. 
-  Niektóre z obiektów (ręka, koala) wykonał Mariusz Jarosz (dziękuję!).
+  Niektóre z obiektów (ręka, koala) wykonał Mariusz Jarosz (dziękuję!). [Film.](https://youtu.be/H4WR-rPpgDc)
 
 
 <img align="right" width="140" height="140" src="Ilustracje/Wydanie2/lbm.jpg">
