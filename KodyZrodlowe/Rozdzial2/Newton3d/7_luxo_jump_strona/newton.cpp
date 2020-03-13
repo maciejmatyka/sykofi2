@@ -20,7 +20,7 @@
 
 
 
-int szer=500,wys=500;
+int szer=600,wys=600;
 
 float xmin=-10.9,xmax=10.9,ymin=-0.9,ymax=0.9, zmin = -0.9, zmax = 0.9;
 

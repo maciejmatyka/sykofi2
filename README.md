@@ -6,7 +6,6 @@ Kompletna lista materiałów z opisem znajduje się w książce.
 
 *Zbiór i opisy wybranych kodów źródłowych:*
 
-
 <img align="right" width="140" height="140" src="KodyZrodlowe/Rozdzial1/K_WahadloSprez2020.png">
 
 * [**KodyZrodlowe/Rozdzial1/K_WahadloSprez2020.c**](KodyZrodlowe/Rozdzial1/K_WahadloSprez2020.c)
@@ -15,15 +14,22 @@ Kompletna lista materiałów z opisem znajduje się w książce.
 
 <img align="right" width="180" height="140" src="KodyZrodlowe/Rozdzial2/Newton3d/4_powierzchnia_kula_ok.png">
 
-* [**KodyZrodlowe/Rozdzial2/Newton3d/4_powierzchnia_kula_ok/**](KodyZrodlowe/Rozdzial2/Newton3d/4_powierzchnia_kula_ok/)
+* [**KodyZrodlowe/Rozdzial2/Newton3d/_4_powierzchnia_kula_ok/**](KodyZrodlowe/Rozdzial2/Newton3d/_4_powierzchnia_kula_ok/)
   * Kula spadająca na powierzchnię złożoną z punktów i sprężynek. Użytkownik może dodawać więcej kul
   które również oddziałują między sobą (C++ z użyciem OpenGL (GLUT)). 
 
 <img align="right" width="180" height="140" src="KodyZrodlowe/Rozdzial2/Newton3d/8_powierzchnia.png">
 
-* [**KodyZrodlowe/Rozdzial2/Newton3d/8_powierzchnia/**](KodyZrodlowe/Rozdzial2/Newton3d/8_powierzchnia/)
+* [**KodyZrodlowe/Rozdzial2/Newton3d/_8_powierzchnia/**](KodyZrodlowe/Rozdzial2/Newton3d/_8_powierzchnia/)
   * Tkanina zawieszona na obracającej się belce z dodatkową kolizją z dużą kulą w części centralnej 
     (C++ z użyciem OpenGL (GLUT)). 
+
+<img align="right" width="180" height="140" src="KodyZrodlowe/Rozdzial2/Newton3d/5_artykul_taniec.png">
+
+* [**KodyZrodlowe/Rozdzial2/Newton3d/_5_artykul_taniec/**](KodyZrodlowe/Rozdzial2/Newton3d/_5_artykul_taniec/)
+* [**KodyZrodlowe/Rozdzial2/Newton3d/_6_taniec_260402/**](KodyZrodlowe/Rozdzial2/Newton3d/_6_taniec_260402/)
+  * Symulacja ruchu postaci zbudowanej z punktów i sprężynek imitująca taniec postaci.
+    (C++ z użyciem OpenGL (GLUT)). [**https://youtu.be/5q-Dut1SFLA**](Film.)
 
 <img align="right" width="180" height="140" src="KodyZrodlowe/Rozdzial2/Tentacles/tentacles.png">
 
