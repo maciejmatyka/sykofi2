@@ -1,7 +1,6 @@
-﻿# Symulacje Komputerowe w Fizyce, wydanie 2
+﻿# [Symulacje Komputerowe w Fizyce, wydanie 2](https://helion.pl/ksiazki/symulacje-komputerowe-w-fizyce-wydanie-ii-maciej-matyka,sykof2.htm)
 
-Zbiór kodów źródłowych, programów, ilustracji i animacji do książki
-[Maciej Matyka, "Symulacje Komputerowe w Fizyce", wydanie 2, Helion 2020](https://helion.pl/ksiazki/symulacje-komputerowe-w-fizyce-wydanie-ii-maciej-matyka,sykof2.htm#format/d)
+Zbiór kodów źródłowych, programów, ilustracji i animacji do książki.
 Kompletna lista materiałów z opisem znajduje się w książce.
 
 *Zbiór i opisy wybranych kodów źródłowych:*
