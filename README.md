@@ -113,12 +113,12 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
 * [**KodyZrodlowe/Rozdzial4/FldSurface**](KodyZrodlowe/Rozdzial4/FldSurface)
   * Zachowanie się płynu z powierzchnią swobodną, rozwiązanie uproszczonych równań płytkiej wody. Problemy z niestabilnością rozwiązania są rezultatem zastosowanej metody jawnej całkowania i mogą być wyeliminowane albo poprzez zmianę parametrów symulacji (mniejsze amplitudy fal początkowych), albo przez zastosowanie innych metod numerycznych.
 
-<img align="right" width="140" height="140" src="KodyZrodlowe/Rozdzial4/Fluid13_3.png">
+<img align="right" width="190" height="140" src="KodyZrodlowe/Rozdzial4/Fluid13_3.png">
 * [**KodyZrodlowe/Rozdzial4/Fluid13**](KodyZrodlowe/Rozdzial4/Fluid13)
   * Rozwiązanie numeryczne rownań Naviera-Stokesa dla cieczy nieściśliwej metodą cząstek w komórce (Marker-and-cell). Wersja dla Windows potrafi samodzielnie wygenerowaź animacje .avi przy użyciu biblioteki VFW (Video For Windows).  Wersja dla linux pracuje w trybie tekstowym i generuje pliki .ppm (kolejne klatki animacji). 
 
 
-<img align="right" width="140" height="140" src="KodyZrodlowe/Rozdzial5/Shroedinger.png">
+<img align="right" width="190" height="140" src="KodyZrodlowe/Rozdzial5/Shroedinger.png">
 * [**KodyZrodlowe/Rozdzial5/Shroedinger/**](KodyZrodlowe/Rozdzial5/Shroedinger/)
   * Mechanika kwantowa - rozwiązanie numeryczne równania Shroedingera zależnego od czasu i wizualizacja modułu funkcji falowej w postaci funkcji 3D. [Film.](https://youtu.be/N4BVsYdI-5s)
 
