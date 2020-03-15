@@ -14,26 +14,27 @@ Kompletna lista materiałów z opisem znajduje się w książce.
 
 * [**KodyZrodlowe/Rozdzial2/Newton3d/_4_powierzchnia_kula_ok/**](KodyZrodlowe/Rozdzial2/Newton3d/_4_powierzchnia_kula_ok/)
   * Kula spadająca na powierzchnię złożoną z punktów i sprężynek. Użytkownik może dodawać więcej kul
-  które również oddziałują między sobą (C++ z użyciem OpenGL (GLUT)). 
+  które również oddziałują między sobą (C++ z użyciem OpenGL (GLUT)).
+  [<img src="Animacje/yt.png"](https://youtu.be/ITYYzqQaabg) 
 
 <img align="right" width="180" height="140" src="KodyZrodlowe/Rozdzial2/Newton3d/8_powierzchnia.png">
 
 * [**KodyZrodlowe/Rozdzial2/Newton3d/_8_powierzchnia/**](KodyZrodlowe/Rozdzial2/Newton3d/_8_powierzchnia/)
   * Tkanina zawieszona na obracającej się belce z dodatkową kolizją z dużą kulą w części centralnej 
-    (C++ z użyciem OpenGL (GLUT)). 
+    (C++ z użyciem OpenGL (GLUT)).  [<img src="Animacje/yt.png"](https://youtu.be/OnlN151u6s4)
 
 <img align="right" width="120" height="140" src="KodyZrodlowe/Rozdzial2/Newton3d/5_artykul_taniec.png">
 
 * [**KodyZrodlowe/Rozdzial2/Newton3d/_5_artykul_taniec/**](KodyZrodlowe/Rozdzial2/Newton3d/_5_artykul_taniec/)
 * [**KodyZrodlowe/Rozdzial2/Newton3d/_6_taniec_260402/**](KodyZrodlowe/Rozdzial2/Newton3d/_6_taniec_260402/)
   * Symulacja ruchu postaci zbudowanej z punktów i sprężynek imitująca taniec postaci.
-    (C++ z użyciem OpenGL (GLUT)). [Film.](https://youtu.be/5q-Dut1SFLA)
+    (C++ z użyciem OpenGL (GLUT)). <img src="Animacje/yt.png"](https://youtu.be/5q-Dut1SFLA) 
 
 <img align="right" width="180" height="140" src="KodyZrodlowe/Rozdzial2/Tentacles.png">
 
 * [**KodyZrodlowe/Rozdzial2/Tentacles/**](KodyZrodlowe/Rozdzial2/Tentacles/)
   * Obiekt złożony ze sprężynek i punktów doczepionych do sztywnej kuli. Ruch kuli wprawia 
-  w ruch doczepione "włosy". Implementacja w języku C++ z użyciem OpenGL (GLUT). 
+  w ruch doczepione "włosy". Implementacja w języku C++ z użyciem OpenGL (GLUT). [<img src="Animacje/yt.png"](https://youtu.be/4byiRI6opxo) 
 
 
 <img align="right" width="140" height="140" src="Ilustracje/Wydanie2/cloth.jpg">
@@ -41,23 +42,23 @@ Kompletna lista materiałów z opisem znajduje się w książce.
 * [**KodyZrodlowe/Rozdzial2/cloth.html**](KodyZrodlowe/Rozdzial2/cloth.html)
   * Tkanina złożona z punktów i połączeń sprężystych, możliwość
 interakcji z użyciem myszy, metoda Verlet całkowania równań różniczkowych
-ruchu, kod i wizualizacja w HTML5
+ruchu, kod i wizualizacja w HTML5. [<img src="Animacje/yt.png"](https://youtu.be/Wp00L3i3hOI) 
 
 * [**KodyZrodlowe/Rozdzial2/softbody.html**](KodyZrodlowe/Rozdzial2/softbody.html)
-  * Ciało miękkie w dwóch wymiarach - implementacja i wizualizacja w HTML5.
+  * Ciało miękkie w dwóch wymiarach - implementacja i wizualizacja w HTML5. 
 
 <img align="right" width="140" height="140" src="Ilustracje/Wydanie2/konstruktor.jpg">
   
 * [**KodyZrodlowe/Rozdzial2/konstruktor/konstruktor.html**](KodyZrodlowe/Rozdzial2/konstruktor/konstruktor.html)
   * Replika programu ["Soda Constructor"](https://en.wikipedia.org/wiki/Soda_Constructor) - umożliwia budowanie 
-własnych obiektów z dodatkowymi sprężynami, których długość w stanie równowagi jest zależna od czasu (mięśnie)
+własnych obiektów z dodatkowymi sprężynami, których długość w stanie równowagi jest zależna od czasu (mięśnie). [<img src="Animacje/yt.png"](https://youtu.be/DJjRNtIyULw) 
 
 <img align="right" width="140" height="140" src="Ilustracje/Wydanie2/softbody3d.jpg">
   
 * [**KodyZrodlowe/Rozdzial2/SoftBody3D**](KodyZrodlowe/Rozdzial2/SoftBody3D)
   * Implementacja C++ trójwymiarowego [modelu ciała miękkiego](http://www.ift.uni.wroc.pl/~maq/papers/matyka03.pdf) opartego o ciśnienie. 
   Program wykorzystuje OpenGL i pozwala na symulację w czasie rzeczywistym. 
-  Niektóre z obiektów (ręka, koala) wykonał Mariusz Jarosz (dziękuję!). [Film.](https://youtu.be/H4WR-rPpgDc)
+  Niektóre z obiektów (ręka, koala) wykonał Mariusz Jarosz (dziękuję!). [<img src="Animacje/yt.png"](https://youtu.be/H4WR-rPpgDc)
 
 
 <img align="right" width="160" height="120" src="KodyZrodlowe/Rozdzial3/Waves2.png">
@@ -65,7 +66,7 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
 * [**KodyZrodlowe/Rozdzial3/Waves/**](KodyZrodlowe/Rozdzial3/Waves/)
   * Rozwiązanie numeryczne równania falowego w dwóch wymiarach. Załączony jest kod w dwóch wersjach - zarówno 
   jako duża aplikacja okienkowa z użyciem GUI (interfejs użytownika z użyciem Fox Toolkit) jak i [wersja uproszczona
-  bez interfejsu](KodyZrodlowe/Rozdzial3/Waves_nogui) użytkownika - z samą wizualizacją. Program w wersji z interfejsem umożliwia interakcję, dodawanie źródeł, przeszkód. Dodatkowo zamieszczona została też wersja HTML5 *****?????*****, którą [można też uruchomić](http://panoramx.ift.uni.wroc.pl/~maq/felp.pl/waves/) w internecie. [Film.](https://youtu.be/YwkbOYIwFwk)
+  bez interfejsu](KodyZrodlowe/Rozdzial3/Waves_nogui) użytkownika - z samą wizualizacją. Program w wersji z interfejsem umożliwia interakcję, dodawanie źródeł, przeszkód. Dodatkowo zamieszczona została też wersja HTML5 *****?????*****, którą [można też uruchomić](http://panoramx.ift.uni.wroc.pl/~maq/felp.pl/waves/) w internecie. [<img src="Animacje/yt.png"](https://youtu.be/YwkbOYIwFwk)
 
 
 <img align="right" width="140" height="140" src="Ilustracje/Wydanie2/lbm.jpg">
