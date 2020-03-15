@@ -151,7 +151,7 @@ void InitSurface(void)
 
 	for(i=0;i<NX;i++)
 	{
-		S[i] = B[i];
+		S[i] = B[i]+0.07;
 	}	
 
 
