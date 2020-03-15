@@ -1,0 +1,12 @@
+
+Animacja: 	Wahadla.mpg
+Autor:		Maciej Matyka
+Kodowanie:	MPEG-1
+Opis:
+	Dwa wahad³a matematyczne zawieszone na niewa¿kich mocno naci¹gniêtych niciach.
+	Ruch wahade³ w polu grawitacyjnym zobrazowany jest dodatkowo poprzez dwa
+	wektory - jeden z nich wizualizujê chwilow¹ prêdkoœæ punktu materialnego
+	zawieszonego na koñcu wahad³a. Drugi z wektorów wskazuje aktualny (w zasadzie -
+	zawsze ten sam) wektor si³y grawitacji.	
+
+	Dostêpny kod Ÿród³owy programu przeprowadzaj¹cego tê symulacjê.

@@ -8,7 +8,7 @@ Kompletna lista materiałów z opisem znajduje się w książce.
 <img align="right" width="140" height="140" src="KodyZrodlowe/Rozdzial1/K_WahadloSprez2020.png">
 
 * [**KodyZrodlowe/Rozdzial1/K_WahadloSprez2020.c**](KodyZrodlowe/Rozdzial1/K_WahadloSprez2020.c)
-  * Symulacja punktu materialnego zawieszonego na sprężynie (całkowanie metodą Eulera). Wersja poprawiona (w stosunku do pierwszego wydania, w którym model nie do końca odpowiadał tej sytuacji fizycznej). Oryginalne kody z pierwszego wydania zostały zachowane w katalogu. 
+  * Symulacja punktu materialnego zawieszonego na sprężynie (całkowanie metodą Eulera). Wersja poprawiona (w stosunku do pierwszego wydania, w którym model nie do końca odpowiadał tej sytuacji fizycznej). Oryginalne kody z pierwszego wydania zostały zachowane w katalogu. [<img src="Animacje/yt.png"](https://youtu.be/NBER9orXyzw)
 
 <img align="right" width="180" height="140" src="KodyZrodlowe/Rozdzial2/Newton3d/4_powierzchnia_kula_ok.png">
 
