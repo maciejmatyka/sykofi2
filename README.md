@@ -122,36 +122,36 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
 
 <img align="right" width="190" height="140" src="KodyZrodlowe/Rozdzial5/Shroedinger.png">
 
-* [**KodyZrodlowe/Rozdzial5/Shroedinger/**](KodyZrodlowe/Rozdzial5/Shroedinger/)
+* [**KodyZrodlowe/Rozdzial5/Shroedinger**](KodyZrodlowe/Rozdzial5/Shroedinger)
   * Mechanika kwantowa - rozwiązanie numeryczne równania Shroedingera zależnego od czasu i wizualizacja modułu funkcji falowej w postaci funkcji 3D. [<img src="Animacje/yt.png">](https://youtu.be/N4BVsYdI-5s)
 
 
 <img align="right" width="140" height="140" src="Ilustracje/Wydanie2/fractal.jpg">
 
-* [**Kodyzrodlowe/Bonus/81fractalifs/fractalifs.cpp**](Kodyzrodlowe/Bonus/81fractalifs/fractalifs.cpp)
+* [**KodyZrodlowe/Bonus/81fractalifs**](Kodyzrodlowe/Bonus/81fractalifs/fractalifs)
   * Program C/C++ generujący fraktal typu IFS (paproć). Kod wykonany na podstawie książki J. Kudrewicz, Fraktale i chaos, WNT 2015.
   Program generuje plik graficzny typu .ppm (Portable Pixel Map) - prosty format graficzny w trybie ASCII omówiony w książce w rozdziale o symulacji płynów. [<img src="Animacje/yt.png">](https://youtu.be/uavD7GWERk4)
 
 <img align="right" width="140" height="140" src="Ilustracje/Wydanie2/Ising.jpg">
 
-* [**Kodyzrodlowe/Bonus/82IsingModel/ising.cpp**](Kodyzrodlowe/Bonus/82IsingModel/ising.cpp)
+* [**KodyZrodlowe/Bonus/82IsingModel**](Kodyzrodlowe/Bonus/82IsingModel)
   * Implementacja modelu sieciowego magnetyzmu (model Isinga), program w C++ z wizualizacją w OpenGL. Program pozwala na obserowanie 
   ewolucji układu spinów w czasie dla różnej temperatury.
   [<img src="Animacje/yt.png">](https://youtu.be/4xjH_S65a4w)
 
   <img align="right" width="140" height="140" src="Ilustracje/Wydanie2/ripples.jpg">
 
-* [**Kodyzrodlowe/Bonus/ripple2d.html**](Kodyzrodlowe/Bonus/ripple2d.html)
+* [**KodyZrodlowe/Bonus/ripple2d.html**](Kodyzrodlowe/Bonus/ripple2d.html)
   * Prosty automat komórkowy generujący rozchodzenie się fal w dwóch wymiarach. Kod w HTML5 z wizualizacją w przeglądarce.
 
     <img align="right" width="140" height="140" src="Ilustracje/Wydanie2/dla.jpg">
 
-* [**Kodyzrodlowe/Bonus/ripple2d.html**](Kodyzrodlowe/Bonus/dla.html)
+* [**KodyZrodlowe/Bonus/dla.html**](Kodyzrodlowe/Bonus/dla.html)
   * Tworzenie struktur - fraktali - DLA ([Diffusion Limited Aggregation](https://en.wikipedia.org/wiki/Diffusion-limited_aggregation)) - bardzo proste, ale ciekawe zjawisko fizyczne i prosty model służący do jego symulacji. Program w JS/HTML5, wizualizacja w czasie rzeczywistym. Interakcja myszą pozwala na dokładanie nowych zarodków fraktala.
 
   <img align="right" width="140" height="140" src="Ilustracje/Wydanie2/palabos.jpg">
 
-* [**Kodyzrodlowe/Bonus/PalabosCG/**](Kodyzrodlowe/Bonus/PalabosCG/)
+* [**KodyZrodlowe/Bonus/PalabosCG/**](Kodyzrodlowe/Bonus/PalabosCG/)
   * Skrypt do biblioteki [Palabos](https://palabos.unige.ch/) umożliwiający rendering 3D z użyciem RayTracingu (PovRay) powierzchni swobodnej płynu. 
 [<img src="Animacje/yt.png">](https://youtu.be/l3bncPlBX_I)
 
