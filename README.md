@@ -117,7 +117,7 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
 <img align="right" width="190" height="140" src="KodyZrodlowe/Rozdzial4/Fluid13_3.png">
 
 * [**KodyZrodlowe/Rozdzial4/Fluid13**](KodyZrodlowe/Rozdzial4/Fluid13)
-  * Rozwiązanie numeryczne rownań Naviera-Stokesa dla cieczy nieściśliwej metodą cząstek w komórce (Marker-and-cell). Wersja dla Windows potrafi samodzielnie wygenerowaź animacje .avi przy użyciu biblioteki VFW (Video For Windows).  Wersja dla linux pracuje w trybie tekstowym i generuje pliki .ppm (kolejne klatki animacji). 
+  * Rozwiązanie numeryczne rownań Naviera-Stokesa dla cieczy nieściśliwej metodą cząstek w komórce (Marker-and-cell). Wersja dla Windows potrafi samodzielnie wygenerowaź animacje .avi przy użyciu biblioteki VFW (Video For Windows).  Wersja dla linux pracuje w trybie tekstowym i generuje pliki .ppm (kolejne klatki animacji). [<img src="Animacje/yt.png">](https://youtu.be/KGF8z920nWQ) 
 
 
 <img align="right" width="190" height="140" src="KodyZrodlowe/Rozdzial5/Shroedinger.png">
