@@ -1,6 +1,6 @@
 ﻿# [Symulacje Komputerowe w Fizyce, wydanie 2](https://helion.pl/ksiazki/symulacje-komputerowe-w-fizyce-wydanie-ii-maciej-matyka,sykof2.htm)
 
-Zbiór kodów źródłowych, programów, ilustracji i animacji do książki.
+Zbiór kodów źródłowych, programów, ilustracji i animacji do [książki](https://helion.pl/ksiazki/symulacje-komputerowe-w-fizyce-wydanie-ii-maciej-matyka,sykof2.htm).
 Kompletna lista materiałów z opisem znajduje się w książce.
 
 *Zbiór i opisy wybranych kodów źródłowych:*
@@ -155,5 +155,5 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
   * Skrypt do biblioteki [Palabos](https://palabos.unige.ch/) umożliwiający rendering 3D z użyciem RayTracingu (PovRay) powierzchni swobodnej płynu. 
 [<img src="Animacje/yt.png">](https://youtu.be/l3bncPlBX_I)
 
-[(c) Maciej Matyka, 2002-2020](http://panoramix.ift.uni.wroc.pl/~maq/eng/)
+[(c) [Maciej Matyka](http://panoramix.ift.uni.wroc.pl/~maq/eng/), 2002-2020](http://panoramix.ift.uni.wroc.pl/~maq/eng/)
 
