@@ -130,13 +130,14 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
 
 * [**Kodyzrodlowe/Bonus/81fractalifs/fractalifs.cpp**](Kodyzrodlowe/Bonus/81fractalifs/fractalifs.cpp)
   * Program C/C++ generujący fraktal typu IFS (paproć). Kod wykonany na podstawie książki J. Kudrewicz, Fraktale i chaos, WNT 2015.
-  Program generuje plik graficzny typu .ppm (Portable Pixel Map) - prosty format graficzny w trybie ASCII omówiony w książce w rozdziale o symulacji płynów.
+  Program generuje plik graficzny typu .ppm (Portable Pixel Map) - prosty format graficzny w trybie ASCII omówiony w książce w rozdziale o symulacji płynów. [<img src="Animacje/yt.png">](https://youtu.be/uavD7GWERk4)
 
 <img align="right" width="140" height="140" src="Ilustracje/Wydanie2/Ising.jpg">
 
 * [**Kodyzrodlowe/Bonus/82IsingModel/ising.cpp**](Kodyzrodlowe/Bonus/82IsingModel/ising.cpp)
   * Implementacja modelu sieciowego magnetyzmu (model Isinga), program w C++ z wizualizacją w OpenGL. Program pozwala na obserowanie 
   ewolucji układu spinów w czasie dla różnej temperatury.
+  [<img src="Animacje/yt.png">](https://youtu.be/4xjH_S65a4w)
 
   <img align="right" width="140" height="140" src="Ilustracje/Wydanie2/ripples.jpg">
 
@@ -152,6 +153,7 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
 
 * [**Kodyzrodlowe/Bonus/PalabosCG/**](Kodyzrodlowe/Bonus/PalabosCG/)
   * Skrypt do biblioteki [Palabos](https://palabos.unige.ch/) umożliwiający rendering 3D z użyciem RayTracingu (PovRay) powierzchni swobodnej płynu. 
+[<img src="Animacje/yt.png">](https://youtu.be/l3bncPlBX_I)
 
 [(c) Maciej Matyka, 2002-2020](http://panoramix.ift.uni.wroc.pl/~maq/eng/)
 
