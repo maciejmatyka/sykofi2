@@ -1,0 +1,19 @@
+/*
+
+
+Program:		Plamy				
+Wersja:			1.0
+Wersja jezykowa:	brak
+Autor:			Maciej Matyka
+System Operacyjny:	Win/Lin
+Wymagane Biblioteki 
+do kompilacji:		Glut
+
+Opis:
+	Prosty automat komorkowy - symulacja kreowania sie plam (losowych).
+	Klawisze
+		spacja - nowe plamy
+	
+Uwaga: Do uruchomienia programu potrzebny jest plik glut32.dll (windows)
+
+*/
