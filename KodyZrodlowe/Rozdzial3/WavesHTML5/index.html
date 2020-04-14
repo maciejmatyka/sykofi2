@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html><head>
+<meta property="og:image" content="http://dreamequation.net/waves/shot.png" />
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-2">
+    <title>WAVES by Maciej Matyka</title>
+	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<script src="js/jquery-1.11.3.min.js"></script>
+    <style>
+      html, body { 
+	  background-color: #000000;
+	  font-family: 'Raleway', serif;
+        font-size: 24px;
+		margin: 0; padding: 0; overflow: hidden; 
+		/*border: 2px solid #73AD21;*/
+		border: none;
+		}
+      
+	  #uibox{
+		position: relative;
+		right: 0px;
+		top: 30px;
+		float: right; 
+		background-color: #000000; 
+		color: #ffffff;
+		/*border: 2px solid #73AD21;*/
+		border: none;
+	  }
+
+  #fb 
+	  { 
+		position: relative;
+		bottom: 0px;
+		border: none;
+		}
+		
+#waves { 
+	  font-family: 'Raleway', serif;
+        font-size: 42px;
+		color: #ffffff;
+		width: 60%;
+		margin: 0 auto;
+		/*border: 2px solid #73AD21;*/
+		border: none;
+
+		}
+		
+#version 
+{ 
+	font-family: 'Raleway', serif;
+    font-size: 22px;
+	color: #ffffff;
+	width:30%;
+	margin: 0 auto;
+	border: none;
+	float: right; 
+}		
+
+	  
+	  .unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+		#poke { 
+		font-family: 'Raleway', serif;
+        font-size: 24px;
+		color: #ffffff;
+		
+		width: 60%;
+		margin: 0 auto;
+		user-select: none;
+		border: none;
+		}  
+	a
+	{
+	font-family: 'Raleway', serif;
+        font-size: 42px;
+		color: #ffffff;
+		    text-decoration: none;
+		width: 60%;
+		margin: 0 auto;
+		/*border: 2px solid #73AD21;*/
+		border: none;
+	}
+	
+	#pause { 
+	  font-family: 'Raleway', serif;
+        font-size: 24px;
+		color: #ffffff;
+		
+		width: 60%;
+		margin: 0 auto;
+		user-select: none;
+		border: none;
+		}
+	button
+	{
+		font-family: 'Raleway', serif;
+		font-size: 24px;
+		background-color:  #000000;
+		color: #ffffff;
+		width: 60%;
+		margin: 0 auto;
+		/*border: 2px solid #73AD21;*/
+		border: none;
+	}
+	
+	
+	#reset
+	{
+		font-family: 'Raleway', serif;
+		font-size: 24px;
+		background-color:  #000000;
+		color: #ffffff;
+		/*border: 2px solid #73AD21;*/
+		border: none;
+	}
+
+    </style>
+  </head>
+  <body onload="init();">
+  
+<div id="uibox">
+<div id="waves">
+<a href="http://dreamequation.net/waves/">
+<label class="unselectable">
+W<font color="#005299">A</font><font color="#28a8e0">V</font>E<font color="#fa5153">S
+</font>
+</a>
+</label>
+</div>
+<div id="version">
+1<font color="#f0f299">.</font><font color="#28a8e0">34</font>
+</div>
+
+<br>
+<button onclick="initwave(1)"><img src="1.png" width="150px"></button>
+<br>
+<button onclick="initwave(2)"><img src="2.png" width="150px"></button>
+<br>
+<button onclick="initwave(3)"><img src="3.png" width="150px"></button>
+<br>
+<button onclick="initwave(4)"><img src="4.png" width="150px"></button>
+<br>
+<button onclick="initwave(5)"><img src="5.png" width="150px"></button>
+<br><br>
+<center>
+<!--<label id="picker">&#x2611; PICKER</label>-->
+<!--<label id="clean" class="unselectable"><font color="#28a8e0">CLEAN</font></label>-->
+<br>
+<!--<label id="poke" class="unselectable">
+P<font color="#005299">O</font><font color="#28a8e0">K</font>E</label>
+-->
+
+<label id="pause" class="unselectable">&#x2611; PAUSE</label>
+</center>
+
+<br>
+<br>
+
+<div id="fb">
+<center>
+<a href="https://www.facebook.com/dreamequation.net/"><img src="social-046_facebook.png" width=15%> </a>
+<a href="https://twitter.com/maqpl"><img src="social-twitter.png" width=15%> </a>
+<a href="https://www.youtube.com/user/maqflp"><img src="social-youtube.png" width=15%> </a>
+</center>
+</div>
+
+<br><br>
+
+<div>
+<a href="http://dreamequation.net"><img src="back.png" width="200px"></a>
+</div>
+
+</div>
+
+    <script src="js/three.min.js"></script>
+   <script src="js/OrbitControls.js"></script>
+    <script src="js/waves.js"></script>
+
+<canvas id="mycanvas" style="width: 680px; height: 688px;" height="688" width="680"></canvas>
+</body></html>

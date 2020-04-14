@@ -66,7 +66,7 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
 * [**KodyZrodlowe/Rozdzial3/Waves/**](KodyZrodlowe/Rozdzial3/Waves/)
   * Rozwiązanie numeryczne równania falowego w dwóch wymiarach. Załączony jest kod w dwóch wersjach - zarówno 
   jako duża aplikacja okienkowa z użyciem GUI (interfejs użytownika z użyciem Fox Toolkit) jak i [wersja uproszczona
-  bez interfejsu](KodyZrodlowe/Rozdzial3/Waves_nogui) użytkownika - z samą wizualizacją. Program w wersji z interfejsem umożliwia interakcję, dodawanie źródeł, przeszkód. Dodatkowo zamieszczona została też wersja HTML5 *****?????*****, którą [można też uruchomić](http://panoramx.ift.uni.wroc.pl/~maq/felp.pl/waves/) w internecie. [<img src="Animacje/yt.png">](https://youtu.be/YwkbOYIwFwk)
+  bez interfejsu](KodyZrodlowe/Rozdzial3/Waves_nogui) użytkownika - z samą wizualizacją. Program w wersji z interfejsem umożliwia interakcję, dodawanie źródeł, przeszkód. Dodatkowo zamieszczona została też [**KodyZrodlowe/Rozdzial3/WavesHTML5/**](wersja HTML5), którą [można też uruchomić](http://panoramx.ift.uni.wroc.pl/~maq/felp.pl/waves/) w internecie. [<img src="Animacje/yt.png">](https://youtu.be/YwkbOYIwFwk)
 
 
 <img align="right" width="140" height="140" src="Ilustracje/Wydanie2/lbm.jpg">
