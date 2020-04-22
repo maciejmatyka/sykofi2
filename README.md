@@ -60,6 +60,14 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
   Program wykorzystuje OpenGL i pozwala na symulację w czasie rzeczywistym. 
   Niektóre z obiektów (ręka, koala) wykonał Mariusz Jarosz (dziękuję!). [<img src="Animacje/yt.png">](https://youtu.be/H4WR-rPpgDc)
 
+<img align="right" width="160" height="120" src="KodyZrodlowe/Rozdzial3/Waves1d-2wydanie/fala1d.jpg">
+
+* [**KodyZrodlowe/Rozdzial3/Waves1d-2wydanie/**](KodyZrodlowe/Rozdzial3/Waves1d-2wydanie/)
+  * Rozwiązanie problemu fali w jednym wymiarze z użyciem pochodnej centralnej (dziękuję LB!). Program 
+  w wersjach z wizualizacją jako animacja, zapis klatek w czasie lub mapy kolorów reprezentujących ewoilucję czasową.
+  Animacja: [<img src="Animacje/yt.png">](https://youtu.be/-V1sgTEfflU)
+
+
 <img align="right" width="160" height="120" src="KodyZrodlowe/Rozdzial3/ofwaves/ofwave1-s.png">
 
 * [**KodyZrodlowe/Rozdzial3/ofwaves/**](KodyZrodlowe/Rozdzial3/ofwaves/)

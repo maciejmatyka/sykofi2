@@ -10,7 +10,6 @@ Maciej Matyka, 2020-04-20
 ps. podziękowania dla autora erraty do wydania 1 dzięki
 któremu udało się naprawić błędy związane z oryginalnym podejściem.
 **/
-
 #include <windows.h>
 #include <stdio.h>
 #include <string.h>
@@ -34,23 +33,20 @@ float t = 0;
 // computational mesh
 
 const int NX = 500;
-const float v2 = 0.01; // prędkość^2 fali
 double U[NX+1];
 double E[NX+1];             // dla lepszej czytelności kodu zmianę wychylenia w czasie oznaczamy literką
 int Flag[NX+1];             // E zamiast literką V jak zapisano w książce
 
 // numerical constants
 
-const float DT = 0.045;    // krok czasowy
-const float DX = 0.5;      // rozmiar oczka siatki obliczeniowej
+const float v2 = 0.01; // velocity^2
+const float DT = 0.045;    // time dt
+const float DX = 0.5;       // spatial dx
 const float FREQ = 0.01;    // pulsating source frequency
 const float AMPLITUDE = 0.1;
 const int C_SRC = 2;        // pulsating source cell flag
 const int C_BND = 1;        // bundary cell flag
 
-
-// A - Inicjalizuj tablice wychyleń oraz oznaczenia
-// komórek (oznaczenia jak w książce)
 void init_waves()
 {
 	for(int i=0; i<NX; i++)
@@ -65,46 +61,40 @@ void init_waves()
     Flag[NX/2-1] = C_SRC;
 }
 
-// pętla symulacji
+// idle - simulation step
 static void idle(void)
 {
 	int i,j;
 	float x,y;
+	// solve equation for U
+	// dU/dt = nabla^2 E
 
-	// przyrost czasu
 	t = t + DT;
 
-	// B - źródło fali
-	for(i=0;i<=NX;i++)
-    {
-        if(Flag[i] & C_SRC)
-        {
-            if(t>2*PI/FREQ)      // czas trwania imulsu minął?
-                Flag[i] &= (~C_SRC); // zdejmij flagę komórki źródłowej
-            else
-                U[i] = sin( t*FREQ ) * AMPLITUDE;
-        }
-    }
+	for(i=1;i<NX;i++)
+    if(!(Flag[i] & C_SRC))
+	{
+		E[i] = E[i] + v2*DT*(U[i+1] - 2*U[i] + U[i-1])/(DX*DX);
+	}
 
-    // C - oblicz nową wartość wychylenia i jego pochodnej E
+	// solve equation for E
+	// dE/dt = U
 	for(i=0;i<=NX;i++)
-    {
-       if(Flag[i] == 0)            // tylko komórki puste - nie źródłowe i nie brzegowe
-       {
-          E[i] = E[i] + v2*DT*(U[i+1] - 2*U[i] + U[i-1])/(DX*DX);
-          U[i] = U[i] + E[i] * DT;
-       }
-    }
+    if(!(Flag[i] & C_SRC))
+	{
+		U[i] = U[i] + E[i] * DT;
+	}
 
-    // D- warunki brzegowe
+	// start boundaries: pulsating sources
+
 	for(i=0;i<=NX;i++)
-    {
-      if(Flag[i] & C_BND)
-      {
-        U[i] = E[i] = 0.0f;
-      }
-    }
+	if(Flag[i] & C_SRC)
+		U[i] = sin( t*FREQ ) * AMPLITUDE;
 
+	// boundaries
+	for(i=0;i<=NX;i++)
+	if(Flag[i] & C_BND)
+		U[i] = E[i] = 0.0f;
 
 	glutPostRedisplay();
 }
@@ -161,9 +151,6 @@ static void Draw(void)
 	glLineWidth(2);
 
 	point1[0]=-1+(2/(float)NX);
-
-	// E - rysuj falę na podstawie obliczonych
-	//     wychyleń E
 
 		for(i=1;i<NX;i++)
 		{
