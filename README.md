@@ -60,6 +60,11 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
   Program wykorzystuje OpenGL i pozwala na symulację w czasie rzeczywistym. 
   Niektóre z obiektów (ręka, koala) wykonał Mariusz Jarosz (dziękuję!). [<img src="Animacje/yt.png">](https://youtu.be/H4WR-rPpgDc)
 
+<img align="right" width="160" height="120" src="KodyZrodlowe/Rozdzial3/ofwaves/ofwave1-s.png">
+
+* [**KodyZrodlowe/Rozdzial3/ofwaves/**](KodyZrodlowe/Rozdzial3/ofwaves/)
+  * Program Waves zaimplementowany z użyciem biblioteki [OpenFrameworks](http://openframeworks.cc//).
+  z interfejsem użytkownika (GUI) do zmiany parametrów.
 
 <img align="right" width="160" height="120" src="KodyZrodlowe/Rozdzial3/Waves2.png">
 

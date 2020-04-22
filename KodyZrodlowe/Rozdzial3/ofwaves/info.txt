@@ -1,0 +1,3 @@
+Wersja programu Waves napisana z użyciem biblioteki Open Frameworks.
+Uwaga: w stosunku do opisu w książce jest różnica w nazwach tablic i E zostało tu zamienione z U.
+Maciej Matyka, 2020-04-22
