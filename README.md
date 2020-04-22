@@ -162,6 +162,22 @@ własnych obiektów z dodatkowymi sprężynami, których długość w stanie ró
 * [**KodyZrodlowe/Bonus/dla.html**](KodyZrodlowe/Bonus/dla.html)
   * Tworzenie struktur - fraktali - DLA ([Diffusion Limited Aggregation](https://en.wikipedia.org/wiki/Diffusion-limited_aggregation)) - bardzo proste, ale ciekawe zjawisko fizyczne i prosty model służący do jego symulacji. Program w JS/HTML5, wizualizacja w czasie rzeczywistym. Interakcja myszą pozwala na dokładanie nowych zarodków fraktala.
 
+  <img align="right" width="140" height="140" src="KodyZrodlowe/Bonus/lbm_turbulencje_compute_shaders/lbmcompute-cascaded_s.jpg">
+
+* [**KodyZrodlowe/Bonus/lbm_turbulencje_compute_shaders/**](KodyZrodlowe/Bonus/lbm_turbulencje_compute_shaders/)
+  * Programy źródłowe symulacji zjawisk przepływów turbulentnych i wielofazowych wykonane przybliżeniem 
+  Smagorińskiego. Implementację modelu turbulencji opracował Nicholas Delbosc (dziękuję!). Kody zostały zaimplementowane
+  w technologii programów cieniowania na karcie GPU (Compute Shaders).
+[<img src="Animacje/yt.png">](https://youtu.be/8zg8wkvOVfk)
+
+  <img align="right" width="140" height="140" src="KodyZrodlowe/Bonus/DrivenCavity-Sources/VorticityStream/vorticity_result.jpg">
+
+* [**KodyZrodlowe/Bonus/DrivenCavity-Sources/**](KodyZrodlowe/Bonus/DrivenCavity-Sources/)
+  * Implementacja C++ trzech standardowe metod symulacji płynów używających bezpośredniej 
+  dyskretyzacji równań Naviera-Stokesa. Zaimplementowane są trzy metody:
+  SIMPLE (Semi Implicit Method for Pressure Linked Equations), SIMPLER (Revised) oraz 
+  podejście z funkcją wirowości i prądu. Opis metod można znaleźć w [Dokumenty/29-matyka-simple.pdf](raporcie).
+
   <img align="right" width="140" height="140" src="Ilustracje/Wydanie2/palabos.jpg">
 
 * [**KodyZrodlowe/Bonus/PalabosCG/**](KodyZrodlowe/Bonus/PalabosCG/)

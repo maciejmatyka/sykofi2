@@ -1,0 +1,100 @@
+
+Whoaaa... Its about 8 years now when it was written...
+
+Finally I decided to publish it free on the web as I get quite a large
+demand on shating them.
+
+Enjoy and happy coding,
+
+mq.2011
+
+============================================================
+
+
+Maciej Matyka                                            Wroclaw, 20.VII.2003
+maq@ift.uni.wroc.pl
+
+
+
+
+This text document explains some technical details about source Codes for the 
+article:
+
+Matyka, M.,"Solution to two-dimensional Incompressible Navier-Stokes Equations
+with SIMPLE, SIMPLER and Vorticity-Stream Function Approaches. Driven-Lid
+Cavity Problem: Solution and Visualization.", CFD Project Report #1, 15.II.2003
+
+Article is available on the web page of the author:
+http://panoramix.ift.uni.wroc.pl/~maq
+
+--------------------------------------------------------------------------------
+
+In an archive DrivenCavitySources.zip you will find three different source codes
+for three different solvers to incompressible Navier-Stokes equations. Sources 
+were made by me for the course: "TMV053 Computational Fluid Mechanics" on University 
+of Linkoping in Sweden during my exchange studies in 2003.
+
+
+Sources which you get from me are made only to illustrate implementation of 
+theory which has been shown in article which is lited below. No especially focus 
+has been made to produce "high level" software from it, but I hope (I am sure, 
+and I hope) that you will find in that sources some implementation help.
+
+
+It is important, that people who want to use the sources in science calculations
+have to consider boundary conditions, which were used in the codes. I am sure,
+that boundary conditions for DRIVEN CAVITY problem are good, since I checked it
+(it was a subject of my project work). But for other type of calculations (like
+"wind tunnel" fluid flow, etc.) new boundary conditions should be implemented in
+function:
+
+void ApplyBoundaryConditions(double **p, double **u, double **v)
+
+in drivencavity.cpp file (or analogue in other solvers).
+
+Implementation details
+----------------------
+
+I used .cpp files to handle c code. It is just more convenient for me, to use
+.cpp compiler, bacause of not important for you, reasons. However, you can 
+easly rewrite codes to "c" language, since I am not using "classes" and other 
+typical .cpp stuff. But, some .cpp style commands (like include <stdio>) shoud 
+be rewrited to .c analogues. Please contact me, if you really need .c code of 
+the solver and you have problem with rewriting it.
+
+However - please compile .cpp files. I am using MSVisual Studio 6.0 to compile 
+solvers.
+
+Attention: after you compile the files, please make directory "frames/" in
+directory, where solver.exe file is placed. In an archive you can find three 
+different solvers source codes:
+
+SIMPLE SOLVER In directory Simple/
+SIMPLER SOLVER In directory Simpler/
+VORTICITY - STREAM FUNCTION SOLVER in directory VorticityStream/
+
+Codes which I give you there are configured (physical properties and boundary
+conditions) to handle typical test cases of Driven-Lid Cavity problem. You can
+recognize some physical values (i.e. Reynolds number) in source codes. To 
+change physical properties and to select visualization procedure, use main file 
+(drivencavity...cpp). To change visualization procedures, you can use 
+visual.cpp file.
+
+I hope you will succesfully compile and run my codes, and I hope it will be 
+useful for you. It will be very nice to know, that somebody is using my 
+codes, so let me know.
+
+---------------------------------------------
+additional note: If you are interested in my work, you have ideas how 
+to use my work, or you want to work with me, please feel free to contact
+at maq@ift.uni.wroc.pl 
+
+
+ 
+
+
+
+
+
+
+
