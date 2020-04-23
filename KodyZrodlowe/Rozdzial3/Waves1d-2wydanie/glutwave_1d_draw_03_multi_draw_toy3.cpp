@@ -109,20 +109,34 @@ float point2DIST[3] = { 0.0, 1.0, 0.0 };
 #define STEPDIST 18*(DY/BYLODY)
 //#define ANIMATION
 
-
+// czyść cały ekran
 void clearscr()
 {
-/*        glColor3f(1.0,1.0,1.0);
-        glBegin(GL_QUADS);
-        glVertex2f(-1,-1);
-        glVertex2f(-1,1);
-        glVertex2f(1,1);
-        glVertex2f(1,-1);
-        glEnd();*/
         glClearColor(1.0,1.0,1.0,0.0);
         glClear(GL_COLOR_BUFFER_BIT);       // gl hack
         glutSwapBuffers();
         glClear(GL_COLOR_BUFFER_BIT);
+        glutSwapBuffers();
+}
+
+// czyść tylko środkowy panel
+void clearscrMID()
+{
+        glColor3f(1.0,1.0,1.0);
+        glBegin(GL_QUADS);
+        glVertex2f(-0.33,-1);
+        glVertex2f(-0.33,1);
+        glVertex2f(0.33,1);
+        glVertex2f(0.33,-1);
+        glEnd();
+        glutSwapBuffers();              // glhack
+        glColor3f(1.0,1.0,1.0);
+        glBegin(GL_QUADS);
+        glVertex2f(-0.33,-1);
+        glVertex2f(-0.33,1);
+        glVertex2f(0.33,1);
+        glVertex2f(0.33,-1);
+        glEnd();
         glutSwapBuffers();
 }
 
@@ -139,7 +153,7 @@ void init_waves()
 	// place 'sources'
     /*Flag[NX/2] = C_SRC;
     Flag[NX/2-1] = C_SRC;*/
-    Flag[0] |= C_SRC;
+   // Flag[0] |= C_SRC;
 //    Flag[NX/2] |= C_SRC;
  //   Flag[NX/4] |= C_SRC;
  //   Flag[3*NX/4-4] |= C_SRC;
@@ -228,13 +242,13 @@ static void Key(unsigned char key, int x, int y)
     case '+':
         numsrc++;
         init_waves();
-        clearscr();
+        clearscrMID();
         break;
     case '-':
         numsrc--;
         if(numsrc<0) numsrc=0;
         init_waves();
-        clearscr();
+        clearscrMID();
         break;
 
 	default:
@@ -293,7 +307,7 @@ void drawwaveMAP(float SCALE, int &line)
 //    przejscie++;
     if(line > WHEIGHT*2.0)
     {
-        clearscr();
+        clearscrMID();
 
         line -= WHEIGHT*2.0;
     }
