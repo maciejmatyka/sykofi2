@@ -1,4 +1,4 @@
-﻿# [<img align="center" width="326" height="466" src="Ilustracje/sykof2.jpg">](https://helion.pl/ksiazki/symulacje-komputerowe-w-fizyce-wydanie-ii-maciej-matyka,sykof2.htm)
+﻿[<img align="left" width="326" height="466" src="Ilustracje/sykof2.jpg">](https://helion.pl/ksiazki/symulacje-komputerowe-w-fizyce-wydanie-ii-maciej-matyka,sykof2.htm)
 
 # [Symulacje Komputerowe w Fizyce, wydanie 2](https://helion.pl/ksiazki/symulacje-komputerowe-w-fizyce-wydanie-ii-maciej-matyka,sykof2.htm)
 
